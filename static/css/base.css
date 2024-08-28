@@ -1,0 +1,70 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    color: #fafafa;
+    font-family: 'Roboto';
+}
+
+/* Icon styles from Bulma */
+.icon {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.bg-section {
+    background: url('/media/home-page.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #fafafa;
+    width: 100vw; 
+    height: 600px; 
+    position: relative; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+}
+
+.bg-content {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); 
+    text-align: center; 
+    width: 100%; 
+}
+
+.bg-button {
+    position: absolute;
+    bottom: 50px; 
+    text-align: center;
+    width: 100%; 
+}
+
+/* Slightly larger container on xl screens */
+@media (min-width: 1200px) {
+    .container {
+      max-width: 80%;
+    }
+  }
+  
+  /* fixed top navbar only on medium and up */
+  @media (min-width: 992px) {
+      .fixed-top-desktop-only {
+          position: fixed;
+          top: 0;
+          right: 0;
+          left: 0;
+          z-index: 1030;
+      }
+  
+      .header-container {
+          padding-top: 80px;
+      }
+  }
