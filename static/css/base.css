@@ -26,6 +26,7 @@ hr {
     background-color: #44D62C;
 }
 
+
 /* navigation bar section */
 
 #top-nav {
@@ -41,6 +42,30 @@ hr {
     text-transform: uppercase;
 }
 
+
+/* footer section */
+
+.footer-main {
+    background-color: #44D62C;
+}
+
+.links {
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+    list-style: none; 
+}
+
+.links li {
+    padding: 1rem 0;
+    display: inline-block;
+}
+ 
+.links li a i {
+    padding: 0.5rem;
+    font-size: 1.25rem;
+    color: #000
+}
 
 /* home page section */
 
