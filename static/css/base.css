@@ -26,6 +26,16 @@ hr {
     background-color: #44D62C;
 }
 
+.hr-half-right {
+    width: 40%;
+    float: right;
+}
+
+.hr-half-left {
+    width: 40%;
+    float: left;
+}
+
 
 /* navigation bar section */
 
@@ -182,4 +192,18 @@ hr {
     .header-container {
         padding-top: 80px;
     }  
+}
+
+@media (max-width: 768px) { 
+    .hr-half-right, .hr-half-left {
+        float: none; 
+        width: 100%; 
+        margin: 0 auto; 
+    }
+
+    .quote-right, .quote-left {
+        text-align: center; 
+        padding-right: 0; 
+        padding-left: 0; 
+    }
 }
