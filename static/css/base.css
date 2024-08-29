@@ -25,7 +25,7 @@ body {
 /* navigation bar section */
 
 #top-nav {
-    background-color: #6d7171
+    background-color: #44D62C
 }
 
 .nav-link {
@@ -36,6 +36,7 @@ body {
     font-family: 'Oswald', 'sans-serif';
     text-transform: uppercase;
 }
+
 
 /* home page section */
 
@@ -66,6 +67,10 @@ body {
     bottom: 50px; 
     text-align: center;
     width: 100%; 
+}
+
+.btn-green {
+    background-color: #44D62C;
 }
 
 /* Slightly larger container on xl screens */
