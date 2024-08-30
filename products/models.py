@@ -1,6 +1,10 @@
 from django.db import models
 
 class Category(models.Model):
+
+    class Meta :
+        verbose_name_plural = 'Categories'
+
     name = models.CharField(max_length=254)
 
     def __str__(self):
@@ -8,6 +12,10 @@ class Category(models.Model):
 
 
 class Subcategory(models.Model):
+
+    class Meta :
+        verbose_name_plural = 'Subcategories'
+
     # Subcategories related to a parent category
     category = models.ForeignKey('Category', related_name='subcategories', on_delete=models.CASCADE)
     name = models.CharField(max_length=254)

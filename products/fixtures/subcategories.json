@@ -1,0 +1,50 @@
+[
+    {
+      "model": "products.subcategory",
+      "pk": 1,
+      "fields": {
+        "category": 4,
+        "name": "Wireless"
+      }
+    },
+    {
+      "model": "products.subcategory",
+      "pk": 2,
+      "fields": {
+        "category": 4,
+        "name": "Wired"
+      }
+    },
+    {
+      "model": "products.subcategory",
+      "pk": 3,
+      "fields": {
+        "category": 5,
+        "name": "Mechanical"
+      }
+    },
+    {
+      "model": "products.subcategory",
+      "pk": 4,
+      "fields": {
+        "category": 5,
+        "name": "Membrane"
+      }
+    },
+    {
+      "model": "products.subcategory",
+      "pk": 5,
+      "fields": {
+        "category": 6,
+        "name": "Wireless"
+      }
+    },
+    {
+      "model": "products.subcategory",
+      "pk": 6,
+      "fields": {
+        "category": 6,
+        "name": "Wired"
+      }
+    }
+  ]
