@@ -64,7 +64,7 @@ nav, #top-nav {
 }
 
 #delivery-banner {
-    background-color: #000;
+    background-color: #333333;
     color: #fafafa;
     padding: 2px;
 }
@@ -188,6 +188,12 @@ nav, #top-nav {
 .quote-left {
     text-align: left;
     padding-left: 50px;
+}
+
+/* products page section */
+
+.products-container {
+    margin-top: 100px;
 }
 
 /* media queries */
