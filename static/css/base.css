@@ -190,45 +190,26 @@ nav, #top-nav {
     padding-left: 50px;
 }
 
-/* products page section */
-
-.products-container {
-    margin-top: 100px;
-}
-
 /* media queries */
 
+/* Slightly larger container on xl screens */
 @media (min-width: 1200px) {
     .container {
       max-width: 80%;
     }
-}
+  }
   
-/* fixed top navbar only on medium and up */
-@media (min-width: 992px) {
-    .fixed-top-desktop-only {
-        position: fixed;
-        top: 0;
-        right: 0;
-        left: 0;
-        z-index: 1030;
-    }
+  /* fixed top navbar only on medium and up */
+  @media (min-width: 992px) {
+      .fixed-top-desktop-only {
+          position: fixed;
+          top: 0;
+          right: 0;
+          left: 0;
+          z-index: 1030;
+      }
   
-    .header-container {
-        padding-top: 80px;
-    }  
-}
-
-@media (max-width: 768px) { 
-    .hr-half-right, .hr-half-left {
-        float: none; 
-        width: 100%; 
-        margin: 0 auto; 
-    }
-
-    .quote-right, .quote-left {
-        text-align: center; 
-        padding-right: 0; 
-        padding-left: 0; 
-    }
-}
+      .header-container {
+          padding-top: 180px;
+      }
+  }
