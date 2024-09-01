@@ -12,33 +12,48 @@
             </div>
         </li>
 
+        <!-- Mice Dropdown -->
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black mr-5 text-uppercase" href="#" id="mice-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Mice
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="mice-link">
-                <a href="" class="dropdown-item">Wireless</a>
-                <a href="" class="dropdown-item">Wired</a>
+                {% for subcategory in subcategories %}
+                    {% if subcategory.category.name == "Mice" %}
+                        <a href="{% url 'products' %}?subcategory={{ subcategory.name|urlencode }}&category=Mice" class="dropdown-item">{{ subcategory.name }}</a>
+                    {% endif %}
+                {% endfor %}
+                <a href="{% url 'products' %}?category=Mice" class="dropdown-item">All Mice</a>
             </div>
         </li>
 
+        <!-- Keyboards Dropdown -->
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black mr-5 text-uppercase" href="#" id="keyboards-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Keyboards
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="keyboards">
-                <a href="" class="dropdown-item">Mechanical</a>
-                <a href="" class="dropdown-item">Membrane</a>
+            <div class="dropdown-menu border-0" aria-labelledby="keyboards-link">
+                {% for subcategory in subcategories %}
+                    {% if subcategory.category.name == "Keyboards" %}
+                        <a href="{% url 'products' %}?subcategory={{ subcategory.name|urlencode }}&category=Keyboards" class="dropdown-item">{{ subcategory.name }}</a>
+                    {% endif %}
+                {% endfor %}
+                <a href="{% url 'products' %}?category=Keyboards" class="dropdown-item">All Keyboards</a>
             </div>
         </li>
 
+        <!-- Headsets Dropdown -->
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black text-uppercase" href="#" id="headsets-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Headsets
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="headsets-link">
-                <a href="" class="dropdown-item">Wireless</a>
-                <a href="" class="dropdown-item">Wired</a>
+                {% for subcategory in subcategories %}
+                    {% if subcategory.category.name == "Headsets" %}
+                        <a href="{% url 'products' %}?subcategory={{ subcategory.name|urlencode }}&category=Headsets" class="dropdown-item">{{ subcategory.name }}</a>
+                    {% endif %}
+                {% endfor %}
+                <a href="{% url 'products' %}?category=Headsets" class="dropdown-item">All Headsets</a>
             </div>
         </li>
     </ul>
