@@ -190,6 +190,21 @@ nav, #top-nav {
     padding-left: 50px;
 }
 
+/* products page section */
+
+.btt-button {
+    height: 42px;
+    width: 42px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background-color: #333333;
+}
+
+.btt-link {
+    cursor: pointer;
+}
+
 /* media queries */
 
 /* Slightly larger container on xl screens */
