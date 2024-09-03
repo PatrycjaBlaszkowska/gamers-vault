@@ -21,7 +21,9 @@
         <div class="row">
             <div class="col">
                 {% if bag_items %}
-                    <div class="table-responsive"></div>
+                    <div class="table-responsive">
+                        {{ bag_items }}
+                    </div>
                 {% else %}
                     <p class="lead mb-5">Your bag is empty!</p>
                     <a href="{% url 'products' %}" class="btn btn-lg btn-green text-uppercase font-weight-bold mb-5">
