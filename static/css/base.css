@@ -211,7 +211,9 @@ nav, #top-nav {
     background-color: #333333;
 }
 
-.btt-link {
+.btt-link,
+.update-link,
+.remove-item {
     cursor: pointer;
 }
 
