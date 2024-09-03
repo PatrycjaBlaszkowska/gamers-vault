@@ -20,7 +20,9 @@
             <div class="dropdown-menu border-0" aria-labelledby="mice-link">
                 {% for subcategory in subcategories %}
                     {% if subcategory.category.name == "Mice" %}
-                        <a href="{% url 'products' %}?subcategory={{ subcategory.name|urlencode }}&category=Mice" class="dropdown-item">{{ subcategory.name }}</a>
+                        <a href="{% url 'products' %}?subcategory={{ subcategory.name }}&category=Mice" class="dropdown-item">
+                            {{ subcategory.name }}
+                        </a>
                     {% endif %}
                 {% endfor %}
                 <a href="{% url 'products' %}?category=Mice" class="dropdown-item">All Mice</a>

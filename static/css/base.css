@@ -4,25 +4,26 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
-    width: 100%;
 }
 
 body {
     color: #fafafa;
     font-family: 'Roboto', 'sans-serif';
     background-color: #000;
-    min-height: 100vh;
-    margin: 0;
-    position: relative; 
 }
 
-body::after {
-    content: '';
-    display: block;
-    height: 4rem;
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
 }
 
 /* Icon styles from Bulma */
+
 .icon {
     align-items: center;
     display: inline-flex;
@@ -84,12 +85,9 @@ nav, #top-nav {
 
 /* footer section */
 
-.footer-main {
+.footer-main{
+    height: 4.25rem;
     background-color: #44D62C;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
 }
 
 .links {
