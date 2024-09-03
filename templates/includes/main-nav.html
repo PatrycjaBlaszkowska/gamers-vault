@@ -37,7 +37,7 @@
             <div class="dropdown-menu border-0" aria-labelledby="keyboards-link">
                 {% for subcategory in subcategories %}
                     {% if subcategory.category.name == "Keyboards" %}
-                        <a href="{% url 'products' %}?subcategory={{ subcategory.name|urlencode }}&category=Keyboards" class="dropdown-item">{{ subcategory.name }}</a>
+                        <a href="{% url 'products' %}?subcategory={{ subcategory.name }}&category=Keyboards" class="dropdown-item">{{ subcategory.name }}</a>
                     {% endif %}
                 {% endfor %}
                 <a href="{% url 'products' %}?category=Keyboards" class="dropdown-item">All Keyboards</a>
@@ -52,7 +52,7 @@
             <div class="dropdown-menu border-0" aria-labelledby="headsets-link">
                 {% for subcategory in subcategories %}
                     {% if subcategory.category.name == "Headsets" %}
-                        <a href="{% url 'products' %}?subcategory={{ subcategory.name|urlencode }}&category=Headsets" class="dropdown-item">{{ subcategory.name }}</a>
+                        <a href="{% url 'products' %}?subcategory={{ subcategory.name }}&category=Headsets" class="dropdown-item">{{ subcategory.name }}</a>
                     {% endif %}
                 {% endfor %}
                 <a href="{% url 'products' %}?category=Headsets" class="dropdown-item">All Headsets</a>
