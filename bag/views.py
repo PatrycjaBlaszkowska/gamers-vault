@@ -4,15 +4,7 @@ from products.models import Category, Subcategory
 def view_bag(request):
     """ A view that renders the bag page. """
 
-    categories = Category.objects.all()  
-    subcategories = Subcategory.objects.all()
-    
-    context = {
-        'categories': categories,
-        'subcategories': subcategories,
-    }
-
-    return render(request, 'bag/bag.html',context)
+    return render(request, 'bag/bag.html')
 
 
 def add_to_bag(request, item_id):
