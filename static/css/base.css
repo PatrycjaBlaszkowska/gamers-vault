@@ -18,10 +18,6 @@ body {
     min-height: 100vh;
 }
 
-main {
-    flex: 1;
-}
-
 /* Icon styles from Bulma */
 
 .icon {
@@ -44,6 +40,23 @@ hr {
 .hr-half-left {
     width: 40%;
     float: left;
+}
+
+.message-container {
+    position: fixed;
+    top: 200px;
+    right: 15px;
+    z-index: 99999999999;
+}
+
+.custom-toast {
+    overflow: visible;
+    color: #000;
+    font-weight: bold;
+}
+
+.toast-capper {
+    height: 2px;
 }
 
 /* navigation bar section */
@@ -229,14 +242,10 @@ nav, #top-nav {
   /* fixed top navbar only on medium and up */
   @media (min-width: 992px) {
       .fixed-top-desktop-only {
-          position: fixed;
+        position: sticky; 
           top: 0;
           right: 0;
           left: 0;
-          z-index: 1030;
-      }
-  
-      .header-container {
-          padding-top: 180px;
-      }
-  }
+          z-index: 1030; 
+        }
+    }
