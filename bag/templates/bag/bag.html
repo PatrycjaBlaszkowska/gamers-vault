@@ -2,7 +2,6 @@
 {% load static %}
 {% load bag_tools %}
 
-
 {% block page_header %}
     <div class="container header-container">
         <div class="row">
@@ -12,7 +11,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="conatiner ml-5 mr-5">
+    <div class="container ml-5 mr-5">
         <div class="row">
             <div class="col">
                 <hr>
@@ -103,7 +102,7 @@
                                     </span>
                                     <span class="text-uppercase">Keep Shopping</span>
                                 </a>
-                                <a href="" class="btn btn-green font-weight-bold border mt-5 text-uppercase pt-2">
+                                <a href="{% url 'checkout' %}" class="btn btn-green font-weight-bold border mt-5 text-uppercase pt-2">
                                     <span class="text-uppercase">Secure Checkout</span>
                                     <span class="icon">
                                         <i class="fas fa-lock"></i>
