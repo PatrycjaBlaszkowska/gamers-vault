@@ -88,6 +88,7 @@ form.addEventListener('submit', (ev) => {
                             line2: $.trim(form.street_address2.value),
                             city: $.trim(form.town_or_city.value),
                             country: $.trim(form.country.value),
+                            postal_code: $.trim(form.postcode.value),
                             state: $.trim(form.county.value),
                         },
                     },
@@ -120,12 +121,10 @@ form.addEventListener('submit', (ev) => {
                 } else {
                     if (result.paymentIntent.status === 'succeeded') {
                         form.submit();
-                    } else {
-                        console.warn("Payment did not succeed, status:", result.paymentIntent.status); // Log non-succeeded status
                     }
                 }
-            }).catch((error) => {
-                console.error("Error during payment confirmation:", error); // Catch any unexpected errors
             });
+        }).fail(function () {
+            location.reload();
         })
-});
+    });
