@@ -11,7 +11,7 @@
         "price": "160.00",
         "rating": "4.70",
         "image_url": null,
-        "image": "steelseries-apex7-mechanical_5kDMuhP.jpg"
+        "image": "steelseries-apex7-mechanical.png"
       }
     },
     {
@@ -26,7 +26,7 @@
         "price": "170.00",
         "rating": "4.60",
         "image_url": null,
-        "image": "corsair-k70-mechanical.jpg"
+        "image": "corsair-k70-mechanical-.png"
       }
     },
     {
@@ -41,22 +41,22 @@
         "price": "120.00",
         "rating": "4.50",
         "image_url": null,
-        "image": "razer-blackwidow-v3-mechanical.jpg"
+        "image": "razer-blackwidow-v3-mechanical.png"
       }
     },
     {
       "model": "products.product",
       "pk": 5,
       "fields": {
-        "category": null,
-        "subcategory": null,
+        "category": 5,
+        "subcategory": 3,
         "sku": "GEN-GEN-523C373F",
         "name": "Razer Huntsman Elite - Mechanical Keyboard",
         "description": "The new Razer opto-mechanical switches utilize optical technology combined with a new switch design for actuation at the speed of light. And with optical actuation providing less physical contact, you get durability of up to 100 million keystrokes. Optical actuation: With optical actuation enabling reset and actuation at the exact same point, you rack up more keypresses at an insane speed-especially useful for gamers who need tap keys repeatedly. Key stabilizer bar: A key stabilizer bar on the top of the switch ensures keycap motion remains level and consistent no matter which corner of the keycap you press. Experience the familiar clicky feedback of a mechanical keyboard with no resistance during actuation, keeping every keypress super light and balancedMulti-function digital dial: The Razer huntsman elite delivers full functionality with keyboard controls for everything from brightness to volume via a programmable multi-function digital dial with three tactile media keys. All programmable and customizable through synapse 3.",
         "price": "116.00",
         "rating": "4.70",
         "image_url": null,
-        "image": "razer-huntsmanelite-mechanical.jpg"
+        "image": "razer-huntsmanelite-mechanical.png"
       }
     },
     {
@@ -71,7 +71,7 @@
         "price": "40.00",
         "rating": "4.40",
         "image_url": null,
-        "image": "razer-ornata-v3-membrane.jpg"
+        "image": "razer-ornata-v3-membrane.png"
       }
     },
     {
@@ -86,7 +86,7 @@
         "price": "30.00",
         "rating": "4.60",
         "image_url": null,
-        "image": "corsair-k55-membrane.jpg"
+        "image": "corsair-k55-membrane.png"
       }
     },
     {
@@ -101,7 +101,7 @@
         "price": "50.00",
         "rating": "4.60",
         "image_url": null,
-        "image": "steelseries-apex3-membrane.jpg"
+        "image": "steelseries-apex3-membrane.png"
       }
     },
     {
@@ -116,7 +116,7 @@
         "price": "50.00",
         "rating": "4.40",
         "image_url": null,
-        "image": "razer-cynosa-v2-membrane.jpg"
+        "image": "razer-cynosa-v2-membrane.png"
       }
     },
     {
@@ -131,7 +131,7 @@
         "price": "40.00",
         "rating": "4.60",
         "image_url": null,
-        "image": "logitech-g305-wireless-mouse.jpg"
+        "image": "logitech-g305-wireless-mouse.png"
       }
     },
     {
@@ -146,7 +146,7 @@
         "price": "60.00",
         "rating": "4.50",
         "image_url": null,
-        "image": "razer-basilisk-v3-wireless-mouse.jpg"
+        "image": "razer-basilisk-v3-wireless-mouse-.png"
       }
     },
     {
@@ -161,7 +161,7 @@
         "price": "70.00",
         "rating": "4.70",
         "image_url": null,
-        "image": "logitech-gpro-wireless-mouse.jpg"
+        "image": "logitech-gpro-wireless-mouse.png"
       }
     },
     {
@@ -176,7 +176,7 @@
         "price": "55.00",
         "rating": "4.20",
         "image_url": null,
-        "image": "steelseries-aerox3-wireless-mouse.jpg"
+        "image": "steelseries-aerox3-wireless-mouse.png"
       }
     },
     {
@@ -191,7 +191,7 @@
         "price": "20.00",
         "rating": "4.50",
         "image_url": null,
-        "image": "razer-deathadder-wired-mouse.jpg"
+        "image": "razer-deathadder-wired-mouse.png"
       }
     },
     {
@@ -206,7 +206,7 @@
         "price": "25.00",
         "rating": "4.60",
         "image_url": null,
-        "image": "logitech-g402-wired-mouse.jpg"
+        "image": "logitech-g402-wired-mouse.png"
       }
     },
     {
@@ -221,7 +221,7 @@
         "price": "35.00",
         "rating": "4.70",
         "image_url": null,
-        "image": "logitech-g502_-wired-mouse.jpg"
+        "image": "ogitech-g502_-wired-mouse.png"
       }
     },
     {
@@ -236,7 +236,7 @@
         "price": "60.00",
         "rating": "4.40",
         "image_url": null,
-        "image": "corsair-nightsword-wired-mouse.jpg"
+        "image": "corsair-nightsword-wired.png"
       }
     },
     {
@@ -251,7 +251,7 @@
         "price": "110.00",
         "rating": "4.50",
         "image_url": null,
-        "image": "logitech-g733-wireless-headset.jpg"
+        "image": "logitech-g733-wireless-headset.png"
       }
     },
     {
@@ -266,7 +266,7 @@
         "price": "140.00",
         "rating": "4.30",
         "image_url": null,
-        "image": "steelseries-arctis7-wireless-headset.jpg"
+        "image": "teelseries-arctis7-wireless-headset.png"
       }
     },
     {
@@ -281,7 +281,7 @@
         "price": "80.00",
         "rating": "4.30",
         "image_url": null,
-        "image": "corsais-void-wireless-headset.jpg"
+        "image": "corsais-void-wireless-headset.png"
       }
     },
     {
@@ -296,14 +296,14 @@
         "price": "110.00",
         "rating": "4.30",
         "image_url": null,
-        "image": "razer-blackshark-wireless-headset.jpg"
+        "image": "razer-blackshark-wireless-headset.png"
       }
     },
     {
       "model": "products.product",
       "pk": 22,
       "fields": {
-        "category": null,
+        "category": 6,
         "subcategory": 6,
         "sku": "GEN-WIR-F37CFD12",
         "name": "Logitech G432 - Wired Gaming Headset",
@@ -311,7 +311,7 @@
         "price": "40.00",
         "rating": "4.40",
         "image_url": null,
-        "image": "logitech-g432-wired-headset.jpg"
+        "image": "logitech-g432-wired-headset.png"
       }
     },
     {
@@ -326,7 +326,7 @@
         "price": "90.00",
         "rating": "4.40",
         "image_url": null,
-        "image": "razer-kraken-v3-wired-headset.jpg"
+        "image": "razer-kraken-v3-wired-headset.png"
       }
     },
     {
@@ -341,7 +341,7 @@
         "price": "60.00",
         "rating": "4.20",
         "image_url": null,
-        "image": "corair-hs65-wired-headset.jpg"
+        "image": "corair-hs65-wired-headset.png"
       }
     },
     {
@@ -356,7 +356,7 @@
         "price": "140.00",
         "rating": "4.30",
         "image_url": null,
-        "image": "steelseries-arctispro-wired-headset.jpg"
+        "image": "steelseries-arctispro-wired-headset.png"
       }
     }
   ]
