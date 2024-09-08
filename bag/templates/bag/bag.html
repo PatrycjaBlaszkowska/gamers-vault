@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container ml-5 mr-5">
+    <div class="container ml-md-5 mr-md-5">
         <div class="row">
             <div class="col">
                 <hr>
@@ -30,11 +30,11 @@
                                 <th scope="col"></th>
                                 <th scope="col">Price</th>
                                 <th scope="col">Qty</th>
-                                <th scope="col">Subtotal</th>
+                                <th scope="col" class="d-none d-md-table-cell">Subtotal</th>
                             </tr>
                         </thead>
-
-                        {% for item in bag_items %}
+                        <tbody>
+                            {% for item in bag_items %}
                             <tr>
                                 <td class="p-3 w-25">
                                     <img class="img-fluid" src="{{ item.product.image.url }}">
@@ -54,9 +54,7 @@
                                                 <div class="input-group-prepend">
                                                     <button class="decrement-qty btn btn-sm btn-green" 
                                                         data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
-                                                        <span>
-                                                            <i class="fas fa-minus fa-sm"></i>
-                                                        </span>
+                                                        <i class="fas fa-minus fa-sm"></i>
                                                     </button>
                                                 </div>
                                                 <input class="form-control form-control-sm qty_input" type="number"
@@ -66,52 +64,57 @@
                                                 <div class="input-group-append">
                                                     <button class="increment-qty btn btn-sm btn-green"
                                                         data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
-                                                        <span>
-                                                            <i class="fas fa-plus fa-sm"></i>
-                                                        </span>
+                                                        <i class="fas fa-plus fa-sm"></i>
                                                     </button>
                                                 </div>
                                             </div>
                                         </div>
                                     </form>
-                                    <a class="update-link text-white"><small>Update</small></a>
-                                    <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}" data-size="{{ item.size }}"><small>Remove</small></a>
+                                    <a class="update-link text-white col-12"><small>Update</small></a>
+                                    <a class="remove-item text-danger float-right col-12" id="remove_{{ item.item_id }}" data-size="{{ item.size }}"><small>Remove</small></a>
                                 </td>
-                                <td class="py-3">
+                                <td class="py-3 d-none d-md-table-cell">
                                     <p class="my-0">£{{ item.product.price | calc_subtotal:item.quantity }}</p>
                                 </td>
                             </tr>
-                        {% endfor %}
-                        <tr>
-                            <td colspan="5" class="pt-5 text-right">
-                                <h6><strong>Bag Total: £{{ total|floatformat:2 }}</strong></h6>
-                                <h6>Delivery: £{{ delivery|floatformat:2 }}</h6>
-                                <h4 class="mt-4"><strong>Grand Total: £{{ grand_total|floatformat:2 }}</strong></h4>
-                                {% if free_delivery_delta > 0 %}
-                                    <p class="mb-1 text-danger">
-                                        You could get free delivery by spending just <strong>£{{ free_delivery_delta }}</strong> more!
-                                    </p>
-                                {% endif %}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="5" class="text-right">
-                                <a href="{% url 'products' %}" class="btn text-white border mt-5">
-                                    <span class="icon">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="text-uppercase">Keep Shopping</span>
-                                </a>
-                                <a href="{% url 'checkout' %}" class="btn btn-green font-weight-bold border mt-5 text-uppercase pt-2">
-                                    <span class="text-uppercase">Secure Checkout</span>
-                                    <span class="icon">
-                                        <i class="fas fa-lock"></i>
-                                    </span>
-                                </a>
-                            </td>
-                        </tr>
+                            <!-- Mobile-only Subtotal Row -->
+                            <tr class="d-block d-md-none">
+                                <td colspan="5" class="py-3">
+                                    <p class="my-0"><strong>Subtotal:</strong> £{{ item.product.price | calc_subtotal:item.quantity }}</p>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            <tr>
+                                <td colspan="5" class="pt-5 text-right">
+                                    <h6><strong>Bag Total: £{{ total|floatformat:2 }}</strong></h6>
+                                    <h6>Delivery: £{{ delivery|floatformat:2 }}</h6>
+                                    <h4 class="mt-4"><strong>Grand Total: £{{ grand_total|floatformat:2 }}</strong></h4>
+                                    {% if free_delivery_delta > 0 %}
+                                        <p class="mb-1 text-danger">
+                                            You could get free delivery by spending just <strong>£{{ free_delivery_delta }}</strong> more!
+                                        </p>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="5" class="text-right">
+                                    <a href="{% url 'products' %}" class="btn text-white border mt-5">
+                                        <span class="icon">
+                                            <i class="fas fa-chevron-left"></i>
+                                        </span>
+                                        <span class="text-uppercase">Keep Shopping</span>
+                                    </a>
+                                    <a href="{% url 'checkout' %}" class="btn btn-green font-weight-bold border mt-5 text-uppercase pt-2">
+                                        <span class="text-uppercase">Secure Checkout</span>
+                                        <span class="icon">
+                                            <i class="fas fa-lock"></i>
+                                        </span>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
-                </div>
+                </div>                
                 {% else %}
                     <p class="lead mb-5">Your bag is empty!</p>
                     <a href="{% url 'products' %}" class="btn btn-lg btn-green text-uppercase font-weight-bold mb-5">
