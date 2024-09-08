@@ -1,5 +1,13 @@
 <div class="collapse navbar-collapse" id="main-nav">
     <ul class="navbar-nav w-auto mx-auto">
+        <!-- Home Button (Visible only on mobile) -->
+        <li class="nav-item d-block d-lg-none">
+            <a class="logo-font font-weight-bold nav-link text-black text-uppercase" href="{% url 'home' %}">
+                Home
+            </a>
+        </li>
+
+        <!-- All Products Dropdown -->
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black mr-5 text-uppercase" href="#" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 All Products
