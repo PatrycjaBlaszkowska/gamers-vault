@@ -240,6 +240,35 @@ nav, #top-nav {
     background-color: #000;
 }
 
+/* Allauth forms */
+
+.allauth-form-inner-content {
+    margin-top: 50px; 
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.allauth-form-inner-content p a {
+    color: #44D62C;
+}
+
+.allauth-form-inner-content button {
+    background-color: #44D62C;
+    color: #fafafa;
+    display: inline-block;
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 400;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    padding: 0.375rem 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.allauth-form-inner-content small a {
+    color: #44D62C;
+} 
+
 /* media queries */
 
 /* Slightly larger container on xl screens */
