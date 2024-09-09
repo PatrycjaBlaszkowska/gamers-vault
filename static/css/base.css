@@ -252,7 +252,8 @@ nav, #top-nav {
     color: #44D62C;
 }
 
-.allauth-form-inner-content button {
+.allauth-form-inner-content button,
+.btn-logout {
     background-color: #44D62C;
     color: #fafafa;
     display: inline-block;
