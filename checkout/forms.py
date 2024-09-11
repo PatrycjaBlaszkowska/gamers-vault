@@ -28,10 +28,12 @@ class OrderForm(forms.ModelForm):
 
         self.fields['full_name'].widget.attrs['autofocus'] = True
         for field in self.fields:
+            placeholder = placeholders.get(field, "")
             if field != 'country':  
                 if self.fields[field].required:
-                    placeholder = f'{placeholders.get(field, "")} *' 
-                else:
-                    placeholder = placeholders.get(field, "")
+                    placeholder += " *"
                 self.fields[field].widget.attrs['placeholder'] = placeholder
                 self.fields[field].label = False
+            else:
+                # Handle country field separately
+                self.fields[field].label = False  # Hide label above the field
