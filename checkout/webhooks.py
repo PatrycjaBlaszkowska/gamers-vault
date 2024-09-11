@@ -6,6 +6,7 @@ from checkout.webhook_handler import StripeWH_Handler
 
 import stripe
 
+
 @require_POST
 @csrf_exempt
 def webhook(request):
@@ -28,7 +29,8 @@ def webhook(request):
         return HttpResponse(status=400)
     except stripe.error.SignatureVerificationError as e:
         # Invalid signature
-        return HttpResponse(status=400)
+        logger.error(f'Invalid signature: {e}')
+        return HttpResponse(status=401)
     except Exception as e:
         # General exception
         return HttpResponse(content=str(e), status=400)
@@ -52,33 +54,3 @@ def webhook(request):
     # Call the event handler with the event 
     response = event_handler(event)
     return response
-
-
-class StripeWH_Handler:
-    """ Handle Stripe webhooks """
-
-    def __init__(self, request):
-        self.request = request
-
-    def handle_event(self, event):
-        """ Handle a generic/unknown/unexpected webhook event """
-        return HttpResponse(
-            content=f'Unhandled webhook received {event["type"]}',
-            status=200
-        )
-
-    def handle_payment_intent_succeeded(self, event):
-        """ Handle the payment_intent.succeeded webhook from Stripe """
-        intent = event.data.object
-        print(intent)
-        return HttpResponse(
-            content=f'Webhook received {event["type"]}',
-            status=200
-        )
-
-    def handle_payment_intent_payment_failed(self, event):
-        """ Handle the payment_intent.payment_failed webhook from Stripe """
-        return HttpResponse(
-            content=f'Webhook received {event["type"]}',
-            status=200
-        )
