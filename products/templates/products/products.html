@@ -53,7 +53,7 @@
                                     src="{{ product.image.url }}" alt="{{ product.name }}">
                                 </a>
                                 <div class="card-body pb-0">
-                                    <p class="mb-0">{{ product.name }}</p>
+                                    <a href="{% url 'product_details' product.id %}" class="mb-0 text-white text-decoration-none">{{ product.name }}</a>
                                 </div>
                                 <div class="card-footer bg-dark pt-0 border-0 text-left">
                                     <div class="row">
@@ -70,6 +70,12 @@
                                                 <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
                                             {% else %}
                                                 <small class="text-muted">No Rating</small>
+                                            {% endif %}
+                                            {% if request.user.is_superuser %}
+                                                <small class="ml-3">
+                                                    <a href="{% url 'edit_product' product.id %}">Edit</a>
+                                                    <a href="{% url 'delete_product' product.id %}" class="text-danger">Delete</a>
+                                                </small>
                                             {% endif %}
                                         </div>
                                     </div>
