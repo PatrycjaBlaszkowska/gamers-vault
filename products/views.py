@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 
@@ -64,6 +65,7 @@ def all_products(request):
 
     return render(request, 'products/products.html', context)
 
+
 def product_details(request, product_id):
     """ A view to show individual product details. """
 
@@ -76,8 +78,13 @@ def product_details(request, product_id):
     return render(request, 'products/product_details.html', context)
 
 
+@login_required
 def add_product(request):
     """ A view to add a product to the store """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only storeowners can add new products.')
+        return redirect(reverse('home'))
+
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
@@ -97,8 +104,13 @@ def add_product(request):
     return render(request, template, context)
 
 
+@login_required
 def edit_product(request, product_id):
     """ A view to edit a product in the store """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only storeowners can edit products.')
+        return redirect(reverse('home'))
+
     product = get_object_or_404(Product, pk=product_id)
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES, instance=product)
@@ -121,9 +133,16 @@ def edit_product(request, product_id):
     return render(request, template, context)
 
 
+@login_required
 def delete_product(request, product_id):
     """ A view to delete the product from the store """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only storeowners can delete products.')
+        return redirect(reverse('home'))
+
     product = get_object_or_404(Product, pk=product_id)
     product.delete()
     messages.success(request, 'Successfully deleted product!')
     return redirect(reverse('products'))
+
+
