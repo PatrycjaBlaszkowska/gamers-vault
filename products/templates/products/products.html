@@ -72,14 +72,14 @@
                                                 <small class="text-muted">No Rating</small>
                                             {% endif %}
                                             {% if product.id in wishlist_items %}
-                                                <a href="{% url 'add_to_wishlist' product.id %}">
+                                                <a href="{% url 'toggle_wishlist' product.id %}">
                                                     <i class="ml-2 fa-solid fa-heart text-danger"></i>
                                                 </a>
                                             {% else %}
-                                                <a href="{% url 'add_to_wishlist' product.id %}">
+                                                <a href="{% url 'toggle_wishlist' product.id %}">
                                                     <i class="ml-2 fa-regular fa-heart text-danger"></i>
                                                 </a>
-                                            {% endif %} 
+                                            {% endif %}
                                             {% if request.user.is_superuser %}
                                                 <small class="ml-3">
                                                     <a href="{% url 'edit_product' product.id %}">Edit</a>

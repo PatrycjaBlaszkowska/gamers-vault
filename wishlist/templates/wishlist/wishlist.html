@@ -47,6 +47,22 @@
                                                 {% else %}
                                                     <small class="text-muted">No Rating</small>
                                                 {% endif %}
+                                                <!-- Toggle heart icon based on presence in wishlist -->
+                                                {% if item in wishlist_items %}
+                                                    <a href="{% url 'toggle_wishlist' product.id %}">
+                                                        <i class="ml-2 fa-solid fa-heart text-danger"></i>
+                                                    </a>
+                                                {% else %}
+                                                    <a href="{% url 'toggle_wishlist' product.id %}">
+                                                        <i class="ml-2 fa-regular fa-heart text-danger"></i>
+                                                    </a>
+                                                {% endif %}
+                                                {% if request.user.is_superuser %}
+                                                    <small class="ml-3">
+                                                        <a href="{% url 'edit_product' product.id %}">Edit</a>
+                                                        <a href="{% url 'delete_product' product.id %}" class="text-danger">Delete</a>
+                                                    </small>
+                                                {% endif %}
                                             </div>
                                         </div>
                                     </div>
