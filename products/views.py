@@ -15,9 +15,13 @@ def all_products(request):
     query = None
     categories = Category.objects.all()  
     subcategories = Subcategory.objects.all()
-    wishlist_items = Wishlist.objects.filter(user=request.user).values_list('product_id', flat=True)
     sort = None
     direction = None
+
+    if request.user.is_authenticated:
+        wishlist_items = Wishlist.objects.filter(user=request.user).values_list('product_id', flat=True)
+    else:
+        wishlist_items = []
 
     if request.GET:
         category_filter = request.GET.get('category', None)
