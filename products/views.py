@@ -5,6 +5,7 @@ from django.db.models import Q
 from django.db.models.functions import Lower
 
 from .models import Product, Category, Subcategory
+from wishlist.models import Wishlist
 from .forms import ProductForm
 
 def all_products(request):
@@ -14,6 +15,7 @@ def all_products(request):
     query = None
     categories = Category.objects.all()  
     subcategories = Subcategory.objects.all()
+    wishlist_items = Wishlist.objects.filter(user=request.user).values_list('product_id', flat=True)
     sort = None
     direction = None
 
@@ -61,6 +63,7 @@ def all_products(request):
         'subcategories': subcategories,
         'current_categories': categories,
         'current_sorting': current_sorting,
+        'wishlist_items': wishlist_items,
     }
 
     return render(request, 'products/products.html', context)
