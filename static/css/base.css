@@ -129,7 +129,7 @@ nav, #top-nav {
 /* home page section */
 
 .bg-section {
-    background: url('/media/home-page.jpg') no-repeat center center fixed;
+    background: url('/media/home-page.jpg') center center / cover no-repeat;
     background-size: cover;
     color: #fafafa;
     width: 100vw; 
