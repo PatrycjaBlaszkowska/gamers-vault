@@ -248,3 +248,20 @@ def edit_review(request, review_id):
     }
     
     return render(request, 'products/product_details.html', context)
+
+
+@login_required
+def delete_review(request, review_id):
+    """ A view to delete a product review. """
+    review = get_object_or_404(ProductReview, pk=review_id)
+
+    if request.method == 'POST':
+        product = review.product 
+        review.delete()
+        messages.success(request, "Your review has been deleted.")
+        return redirect('product_details', product_id=product.id)
+    
+    context = {
+        'product': review.product,  
+    }
+    return render(request, 'products/product_details.html', context)
