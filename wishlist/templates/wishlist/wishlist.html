@@ -61,6 +61,7 @@
                                                         <a href="{% url 'delete_product' product.id %}" class="text-danger">Delete</a>
                                                     </small>
                                                 {% endif %}
+                                                <small class="text-muted">Added on: {{ item.added_on|date:"M d, Y" }}</small>
                                             </div>
                                         </div>
                                     </div>
