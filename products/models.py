@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Category(models.Model):
 
@@ -36,3 +37,19 @@ class Product(models.Model):
 
 def __str__(self):
     return self.name
+
+
+class ProductReview(models.Model):
+    product = models.ForeignKey(Product, related_name='reviews', null=True, blank=True, on_delete=models.SET_NULL)
+    user = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL)
+    title = models.CharField(max_length=254)
+    rating = models.PositiveIntegerField()
+    content = models.TextField()
+    added_on = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.product.name} - {self.title}"
+
+    class Meta:
+        ordering = ['-added_on']
+

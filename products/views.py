@@ -1,27 +1,34 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.db.models import Q
+from django.db.models import Q, Avg, Case, When, Value, IntegerField
 from django.db.models.functions import Lower
 
-from .models import Product, Category, Subcategory
+from .models import Product, Category, Subcategory, ProductReview
 from wishlist.models import Wishlist
-from .forms import ProductForm
+from .forms import ProductForm, ProductReviewForm
+
+from django.db.models import Case, When, Value, IntegerField, F
+
 
 def all_products(request):
     """ A view to show all products, including sorting and searching queries. """
     
     products = Product.objects.all()
     query = None
-    categories = Category.objects.all()  
+    categories = Category.objects.all()
     subcategories = Subcategory.objects.all()
     sort = None
     direction = None
 
     if request.user.is_authenticated:
         wishlist_items = Wishlist.objects.filter(user=request.user).values_list('product_id', flat=True)
+        # Fetch user ratings for the products
+        user_ratings = ProductReview.objects.filter(user=request.user).values('product_id', 'rating')
+        user_ratings_dict = {item['product_id']: item['rating'] for item in user_ratings}
     else:
         wishlist_items = []
+        user_ratings_dict = {}
 
     if request.GET:
         category_filter = request.GET.get('category', None)
@@ -42,7 +49,6 @@ def all_products(request):
             if sortkey == 'category':
                 sortkey = 'category__name'
 
-
         if 'direction' in request.GET:
             direction = request.GET['direction']
             if direction == 'desc':
@@ -57,29 +63,50 @@ def all_products(request):
             
             queries = Q(name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
-    
+
+    # Annotate products with user rating if available
+    products = products.annotate(
+        user_rating=Case(
+            *[When(id=pk, then=Value(rating)) for pk, rating in user_ratings_dict.items()],
+            default=Value(0),
+            output_field=IntegerField(),
+        )
+    )
+
     current_sorting = f'{sort}_{direction}'
 
     context = {
         'products': products,
         'search_term': query,
-        'categories': categories,  
+        'categories': categories,
         'subcategories': subcategories,
         'current_categories': categories,
         'current_sorting': current_sorting,
         'wishlist_items': wishlist_items,
+        'user_ratings': user_ratings_dict,
     }
 
     return render(request, 'products/products.html', context)
 
 
-def product_details(request, product_id):
-    """ A view to show individual product details. """
 
-    product = get_object_or_404(Product, pk=product_id)
+def product_details(request, product_id):
+    """ A view to show individual product details and reviews. """
     
+    product = get_object_or_404(Product, pk=product_id)
+    reviews = product.reviews.all()
+    review_form = ProductReviewForm()
+
+    if reviews.exists():
+        average_rating = reviews.aggregate(Avg('rating'))['rating__avg']
+    else:
+        average_rating = product.rating
+
     context = {
-        'product' : product,
+        'product': product,
+        'reviews': reviews,
+        'average_rating': average_rating,
+        'review_form': review_form,
     }
 
     return render(request, 'products/product_details.html', context)
@@ -153,3 +180,34 @@ def delete_product(request, product_id):
     return redirect(reverse('products'))
 
 
+@login_required
+def add_review(request, product_id):
+    """ A view to add a product review. """
+
+    product = get_object_or_404(Product, pk=product_id)
+
+    if request.method == 'POST':
+        review_form = ProductReviewForm(request.POST)
+        
+        if review_form.is_valid():
+            existing_review = ProductReview.objects.filter(product=product, user=request.user).first()
+
+            if existing_review:
+                messages.error(request, 'You have already reviewed this product.')
+                return redirect('product_details', product_id=product.id)
+
+            review = review_form.save(commit=False)
+            review.product = product
+            review.user = request.user
+            review.save()
+            messages.success(request, 'Your review has been added!')
+            return redirect('product_details', product_id=product.id)
+        else:
+            messages.error(request, 'Failed to add review. Please ensure the form is valid.')
+
+        review_form = ProductReviewForm()
+        context = {
+            'product': product,
+            'review_form': review_form,
+        }
+        return render(request, 'products/product_details.html', context)
