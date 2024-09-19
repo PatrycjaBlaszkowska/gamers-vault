@@ -182,32 +182,69 @@ def delete_product(request, product_id):
 
 @login_required
 def add_review(request, product_id):
-    """ A view to add a product review. """
-
+    """ A view to add or edit a product review. """
+    
     product = get_object_or_404(Product, pk=product_id)
+    # Check if the user has already reviewed the product
+    existing_review = ProductReview.objects.filter(product=product, user=request.user).first()
 
     if request.method == 'POST':
-        review_form = ProductReviewForm(request.POST)
-        
+        # If there's an existing review, update it
+        if existing_review:
+            review_form = ProductReviewForm(request.POST, instance=existing_review)
+        else:
+            review_form = ProductReviewForm(request.POST)
+
         if review_form.is_valid():
-            existing_review = ProductReview.objects.filter(product=product, user=request.user).first()
-
-            if existing_review:
-                messages.error(request, 'You have already reviewed this product.')
-                return redirect('product_details', product_id=product.id)
-
             review = review_form.save(commit=False)
             review.product = product
             review.user = request.user
             review.save()
-            messages.success(request, 'Your review has been added!')
+            
+            if existing_review:
+                messages.success(request, 'Your review has been updated!')
+            else:
+                messages.success(request, 'Your review has been added!')
             return redirect('product_details', product_id=product.id)
         else:
             messages.error(request, 'Failed to add review. Please ensure the form is valid.')
 
-        review_form = ProductReviewForm()
-        context = {
-            'product': product,
-            'review_form': review_form,
-        }
-        return render(request, 'products/product_details.html', context)
+    else:
+        # Pre-populate the form with the existing review if there is one
+        if existing_review:
+            review_form = ProductReviewForm(instance=existing_review)
+        else:
+            review_form = ProductReviewForm()
+
+    context = {
+        'product': product,
+        'review_form': review_form,
+        'existing_review': existing_review,
+    }
+
+    return render(request, 'products/product_details.html', context)
+
+@login_required
+def edit_review(request, review_id):
+    """ A view to edit a product review. """
+    review = get_object_or_404(ProductReview, pk=review_id)
+
+    if request.method == 'POST':
+        review_form = ProductReviewForm(request.POST, instance=review)
+        
+        if review_form.is_valid():
+            review_form.save()
+            messages.success(request, "Your review has been updated!")
+            return redirect('product_details', product_id=review.product.id)
+        else:
+            messages.error(request, "Failed to update the review. Please ensure the form is valid.")
+    else:
+        review_form = ProductReviewForm(instance=review)
+
+    context = {
+        'product': review.product,
+        'review': review,
+        'review_form': review_form,
+    }
+    
+    return render(request, 'products/product_details.html', context)
