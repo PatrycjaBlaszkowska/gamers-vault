@@ -65,6 +65,11 @@ hr {
     overflow-y: auto;
 }
 
+.link-green {
+    color: #44D62C;
+    text-decoration: none;
+}
+
 /* navigation bar section */
 
 nav, #top-nav {

@@ -104,7 +104,8 @@
                     {% if reviews %}
                         {% for review in reviews %}
                             <div class="review my-4 p-3 border">
-                                <h5>{{ review.title }} - {{ review.rating }} / 5</h5>
+                                <h5 class="text-uppercase">{{ review.title }}</h5>
+                                <p><i class="fas fa-star mr-1"></i>{{ review.rating }} / 5</p>
                                 <p>{{ review.content }}</p>
                                 <small class="text-muted">By {{ review.user.username }} on {{ review.added_on }}</small>
                                 <!-- Edit and Delete Buttons (Only visible for review's author) -->
@@ -129,11 +130,11 @@
             {% if request.user.is_authenticated %}
                 <div class="row mt-5">
                     <div class="col-12">
-                        <h4>Add Your Review</h4>
-                        <form method="POST" action="{% url 'add_review' product.id %}">
+                        <h4>Add Your Review :</h4>
+                        <form method="POST" action="{% url 'add_review' product.id %}" class="p-2 border mt-4 mb-4">
                             {% csrf_token %}
                             <div class="form-group">
-                                <legend class="fieldset-label small w-auto">Title</legend>
+                                <legend class="fieldset-label small w-auto">Title :</legend>
                                 {{ review_form.title|as_crispy_field }}
                             </div>
                             <div class="form-group">
@@ -145,13 +146,13 @@
                                 {{ review_form.content|as_crispy_field }}
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-green mb-2">Submit Review</button>
+                                <button type="submit" class="btn btn-green text-white text-uppercase">Submit Review</button>
                             </div>
                         </form>
                     </div>
                 </div>
             {% else %}
-                <p class="lead text-center mb-4 mt-2">Please <a href="{% url 'account_login' %}">log in</a> to add a review.</p>
+                <p class="lead text-center mb-4 mt-2">Please <a href="{% url 'account_login' %}" class="link-green">log in</a> to add a review.</p>
             {% endif %}
         </div>
     </div>
