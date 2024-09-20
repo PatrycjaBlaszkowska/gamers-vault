@@ -96,6 +96,16 @@ nav, #top-nav {
     
 }
 
+.mobile-logo {
+    background-color: #44D62C;
+}
+
+.mobile-logo a {
+    color: #000;
+    font-family: 'Oswald', 'sans-serif';
+    text-transform: uppercase;
+}
+
 #delivery-banner {
     background-color: #333333;
     color: #fafafa;
@@ -176,7 +186,7 @@ nav, #top-nav {
 }
 
 .bestsellers-section img {
-    max-width: 100%;           
+    max-width: 90%;           
     max-height: 70%; 
     object-fit: cover;        
     border-radius: 8px;
