@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h2 class="text-center mt-3">Contact Us</h2>
+            <hr>
+        </div>
+    </div>
+    <div class="row justify-content-center"> <!-- Center the row's content -->
+        <div class="col-12 col-md-8 col-lg-6 mb-5"> <!-- Adjust form width on different screen sizes -->
+            <form method="POST" action="" class="p-4 border mt-4 mb-4">
+                {% csrf_token %}
+                <div class="form-group">
+                    <legend class="fieldset-label small w-auto">Name :</legend>
+                    {{ contact_query_form.name|as_crispy_field }}
+                </div>
+                <div class="form-group">
+                    <legend class="fieldset-label small w-auto">Email :</legend>
+                    {{ contact_query_form.email|as_crispy_field }}
+                </div>
+                <div class="form-group">
+                    <legend class="fieldset-label small w-auto">Query type :</legend>
+                    {{ contact_query_form.query_type|as_crispy_field }}
+                </div>
+                <div class="form-group">
+                    <legend class="fieldset-label small w-auto">Related order :</legend>
+                    {{ contact_query_form.order|as_crispy_field }}
+                </div>
+                <div class="form-group">
+                    <legend class="fieldset-label small w-auto">Message :</legend>
+                    {{ contact_query_form.message|as_crispy_field }}
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-green text-white text-uppercase mt-2">Send Message</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -18,8 +18,6 @@ class ProductForm(forms.ModelForm):
         self.fields['category'].choices = category_choices
 
 
-from django import forms
-from .models import ProductReview
 
 class ProductReviewForm(forms.ModelForm):
     class Meta:

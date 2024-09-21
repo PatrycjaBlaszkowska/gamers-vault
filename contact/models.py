@@ -3,6 +3,10 @@ from django.contrib.auth.models import User
 from checkout.models import Order
 
 class ContactQuery(models.Model):
+
+    class Meta:
+        verbose_name_plural = 'Contact queries'
+
     GENERAL = 'general'
     ORDER = 'order'
     QUERY_TYPE_CHOICES = [
