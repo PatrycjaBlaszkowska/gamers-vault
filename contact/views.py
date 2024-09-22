@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from .forms import ContactQueryForm
 from checkout.models import Order
 from profiles.models import UserProfile  
@@ -20,6 +21,8 @@ def contact(request):
         if contact_form.is_valid():
             contact_form.save()
             return redirect('contact_success')
+        else:
+           messages.error(request, 'Failed to send contact query. Please ensure the form is valid.')
 
     context = {
         'contact_form': contact_form,
