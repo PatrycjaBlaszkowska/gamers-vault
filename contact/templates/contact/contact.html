@@ -17,31 +17,33 @@
             <hr>
         </div>
     </div>
-    <div class="row justify-content-center"> <!-- Center the row's content -->
-        <div class="col-12 col-md-8 col-lg-6 mb-5"> <!-- Adjust form width on different screen sizes -->
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6 mb-5">
             <form method="POST" action="" class="p-4 border mt-4 mb-4">
                 {% csrf_token %}
                 <div class="form-group">
                     <legend class="fieldset-label small w-auto">Name :</legend>
-                    {{ contact_query_form.name|as_crispy_field }}
+                    {{ contact_form.name|as_crispy_field }}
                 </div>
                 <div class="form-group">
                     <legend class="fieldset-label small w-auto">Email :</legend>
-                    {{ contact_query_form.email|as_crispy_field }}
+                    {{ contact_form.email|as_crispy_field }}
                 </div>
                 <div class="form-group">
                     <legend class="fieldset-label small w-auto">Query type :</legend>
-                    {{ contact_query_form.query_type|as_crispy_field }}
+                    {{ contact_form.query_type|as_crispy_field }}
                 </div>
+
                 {% if request.user.is_authenticated %}
-                    <div class="form-group">
-                        <legend class="fieldset-label small w-auto">Related order :</legend>
-                        {{ contact_query_form.order|as_crispy_field }}
-                    </div>         
+                    <div class="form-group" id="related-order-container" style="display: none;">
+                        <legend class="fieldset-label small w-auto">Related order:</legend>
+                        {{ contact_form.order|as_crispy_field }}
+                    </div>
                 {% endif %}
+
                 <div class="form-group">
                     <legend class="fieldset-label small w-auto">Message :</legend>
-                    {{ contact_query_form.message|as_crispy_field }}
+                    {{ contact_form.message|as_crispy_field }}
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-green text-white text-uppercase mt-2">Send Message</button>
@@ -50,4 +52,24 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        const queryTypeField = document.querySelector('select[name="query_type"]');
+        const relatedOrderContainer = document.getElementById('related-order-container');
+
+        // Show or hide the related order field based on query type selection
+        queryTypeField.addEventListener('change', function() {
+            if (this.value === 'order') { // Check if the selected value is 'order'
+                relatedOrderContainer.style.display = 'block';
+            } else {
+                relatedOrderContainer.style.display = 'none';
+            }
+        });
+    });
+</script>
 {% endblock %}
