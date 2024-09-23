@@ -93,6 +93,11 @@ def all_products(request):
 def product_details(request, product_id):
     """ A view to show individual product details and reviews. """
     
+    if request.user.is_authenticated:
+         wishlist_items = Wishlist.objects.filter(user=request.user).values_list('product_id', flat=True)
+    else:
+        wishlist_items = []
+
     product = get_object_or_404(Product, pk=product_id)
     reviews = product.reviews.all()
     review_form = ProductReviewForm()
@@ -107,6 +112,7 @@ def product_details(request, product_id):
         'reviews': reviews,
         'average_rating': average_rating,
         'review_form': review_form,
+        'wishlist_items': wishlist_items,
     }
 
     return render(request, 'products/product_details.html', context)
