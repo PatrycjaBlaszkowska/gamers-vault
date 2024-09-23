@@ -306,14 +306,14 @@ nav, #top-nav {
 /* media queries */
 
 /* Slightly larger container on xl screens */
-@media (min-width: 1200px) {
+@media only screen and (min-width: 1200px) {
     .container {
       max-width: 80%;
     }
 }
-  
+
 /* fixed top navbar only on medium and up */
-@media (min-width: 992px) {
+@media only screen and (min-width: 992px) {
     .fixed-top-desktop-only {
     position: sticky; 
         top: 0;
@@ -322,4 +322,3 @@ nav, #top-nav {
         z-index: 1030; 
     }
 }
-
