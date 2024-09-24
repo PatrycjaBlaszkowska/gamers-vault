@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from .models import Order, OrderLineItem
+from profiles.models import UserProfile 
 from products.models import Product
 
 import json
