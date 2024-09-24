@@ -97,6 +97,10 @@ https://github.com/IanLunn/Hover/blob/master/css/hover.css */
     color: #fafafa;
 }
 
+.text-muted {
+    color: #44D62C !important;
+}
+
 /* navigation bar section */
 
 nav, #top-nav {
