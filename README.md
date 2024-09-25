@@ -1,5 +1,35 @@
 # GAMER'S VAULT
 
+[Link to a live site](https://gamers-vault-72a0e73da873.herokuapp.com/)
+
+![Responsive view of mixology master website](/docs/images/gamers-vault-responsive.png)
+
+# Introduction to Gamer's Vault: A Full-Stack E-Commerce Platform for Gaming Equipment
+
+Welcome to my fourth project, part of the Code Institute Full Stack Development Course. The aim of this project is to develop a fully functional, full-stack e-commerce web application using Django.
+
+**Gamer's Vault** is a user-friendly platform dedicated to gamers seeking quality gaming equipment.
+
+## Key Features:
+
+- **User Registration and Login**:  
+  Users can create an account to manage their shopping experience and access additional features.
+
+- **Wishlist Creation**:  
+  Logged-in users can curate a personalized wishlist of their favorite gaming products, making it easy to keep track of what they want.
+
+- **Product Reviews**:  
+  Registered users can share their opinions on products by writing reviews, helping fellow gamers make informed purchasing decisions.
+
+- **Secure Purchasing**:  
+  Users can seamlessly purchase gaming equipment directly from the platform, all while enjoying a secure and reliable shopping experience.
+
+- **Order Inquiries**:  
+  Users can easily contact the shop regarding their orders, enhancing customer support and satisfaction.
+
+- **Guest Checkout**:  
+  Guests can browse and purchase products without creating an account, ensuring a smooth and hassle-free shopping experience.
+
 
 ## UXD – User Experience Design
 
