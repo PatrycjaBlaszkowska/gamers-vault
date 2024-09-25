@@ -8,28 +8,7 @@
 
 Welcome to my fourth project, part of the Code Institute Full Stack Development Course. The aim of this project is to develop a fully functional, full-stack e-commerce web application using Django.
 
-**Gamer's Vault** is a user-friendly platform dedicated to gamers seeking quality gaming equipment.
-
-## Key Features:
-
-- **User Registration and Login**:  
-  Users can create an account to manage their shopping experience and access additional features.
-
-- **Wishlist Creation**:  
-  Logged-in users can curate a personalized wishlist of their favorite gaming products, making it easy to keep track of what they want.
-
-- **Product Reviews**:  
-  Registered users can share their opinions on products by writing reviews, helping fellow gamers make informed purchasing decisions.
-
-- **Secure Purchasing**:  
-  Users can seamlessly purchase gaming equipment directly from the platform, all while enjoying a secure and reliable shopping experience.
-
-- **Order Inquiries**:  
-  Users can easily contact the shop regarding their orders, enhancing customer support and satisfaction.
-
-- **Guest Checkout**:  
-  Guests can browse and purchase products without creating an account, ensuring a smooth and hassle-free shopping experience.
-
+**Gamer's Vault** offers a seamless shopping experience for gaming enthusiasts, featuring user registration for personalized account management and wishlist creation. Registered users can write product reviews to assist others in making informed decisions. The site ensures secure purchasing and provides easy order inquiries for enhanced customer support. Additionally, the guest checkout option allows non-registered users to make purchases without needing an account, providing flexibility and convenience.
 
 ## UXD – User Experience Design
 
@@ -93,4 +72,66 @@ As the creator of this e-commerce platform, my primary goals are:
 
 6. **As a Registered User,** I want to be able to remove items from my Wishlist if I no longer desire them, so that I can keep my Wishlist up to date.
 
+## The Scope Plane 
+
+The planning process allowed me to prioritize the implementation of features based on their importance to my user stories, enabling me to identify which ones could be completed within the given deadline and which ones would need to be postponed for later implementation.
+
+### Features implemented upon webpage release:
+
+1. **User Registration and Login**:  
+   Users can create an account to manage their shopping experience and access additional features.
+
+2. **Wishlist Creation**:  
+   Logged-in users can curate a personalized wishlist of their favorite gaming products, making it easy to keep track of what they want.
+
+3. **Product Reviews**:  
+   Registered users can share their opinions on products by writing reviews, helping fellow gamers make informed purchasing decisions.
+
+4. **Secure Purchasing**:  
+   Users can seamlessly purchase gaming equipment directly from the platform, all while enjoying a secure and reliable shopping experience.
+
+5. **Order Inquiries**:  
+   Users can easily contact the shop regarding their orders, enhancing customer support and satisfaction.
+
+6. **Guest Checkout**:  
+   Guests can browse and purchase products without creating an account, ensuring a smooth and hassle-free shopping experience.
+
+7. **Shopping Basket**:  
+   Users can easily add products to their shopping basket for checkout, streamlining the purchasing process.
+
+8. **Search Bar**:  
+   Users can quickly find products using the search functionality, making navigation fast and easy.
+
+9. **User Dashboard**:  
+   Registered users can access a dashboard to view their order history and manage their account.
+
+10. **Product Filter**:  
+    Users can filter products based on criteria like price, category, and brand to find what they need faster.
+
+11. **Product Categories**:  
+    Products are organized into categories, allowing users to browse specific types of products efficiently.
+
+
+### Features planned to implement later:
+
+- **Two-step authentication**
+- **Live chat**
+- **Q&A Forum**
+
+*Above decisions have been made based on the below table.*
+
+| Feature         | Feasibility | Importance |
+| --------------- |:-----------:|:----------:|
+| Registration    |      5      |     5      |
+| Two-step auth.  |      4      |     3      |
+| Wishlist        |      5      |     5      |
+| Product reviews |      5      |     5      |
+| Contact         |      5      |     4      |
+| Live chat       |      3      |     2      |
+| Secure purch.   |      5      |     5      |
+| Basket          |      5      |     5      |
+| Search bar      |      5      |     5      |
+| User dashboard  |      5      |     4      |
+| Product filter  |      5      |     4      |
+| Product cat.    |      5      |     5      |
 
