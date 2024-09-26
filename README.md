@@ -135,3 +135,62 @@ The planning process allowed me to prioritize the implementation of features bas
 | Product filter  |      5      |     4      |
 | Product cat.    |      5      |     5      |
 
+
+## The Structure Plane
+
+### Colors:
+
+`#000`:
+
+- Body
+- Footer links
+- Navbar icons
+- Navbar font color
+- Checkout toast button
+
+![#000 Hex Color](/docs/images/000.PNG)
+
+`#FAFAFA`:
+
+- All font colors around the page
+
+![#FAFAFA Hex Color](/docs/images/fafafa.PNG)
+
+`#44D62C`:
+
+- Navbar background
+- Category tags on product cards and product detail pages
+- Rating on product cards and product detail pages
+- Buttons
+- Horizontal rules (hr tags)
+- Footer background
+- Free delivery banner - toast
+
+![#44D62C Hex Color](/docs/images/44d62c.PNG)
+
+`#333333`:
+
+- Delivery banner background
+- 'Up' button (to take user back to the top of the page)
+
+![#333333 Hex Color](/docs/images/333333.PNG)
+
+`rgba(50, 50, 50, 0.8)` :
+
+- Toast background
+
+`rgba(23, 162, 184, .85)` :
+
+- Loading overlay
+
+`#F39C12` :
+
+- Quotation marks
+
+![#F39C12 Hex Color](/docs/images/f39c12.PNG)
+
+`#DCDCDC` :
+
+- Blockquote footer font
+
+![#DCDCDC Hex Color](/docs/images/dcdcdc.PNG)

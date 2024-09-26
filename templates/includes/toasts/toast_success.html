@@ -38,7 +38,9 @@
               </p>
             </strong>
             {% if free_delivery_delta > 0 %}
-              <p class="mb-0 p-2 bg-warning shadow-sm text-black text-center">
+            <!-- Inline CSS was used for the background color as Bootstrap overrides all custom classes. 
+                The '!important' rule did not resolve the issue. -->
+              <p class="mb-0 p-2 hadow-sm text-black text-center" style="background-color: #44D62C">
                 Spend <strong>£{{ free_delivery_delta }}</strong> more to get free next day delivery!
               </p>
             {% endif %}
