@@ -194,3 +194,44 @@ The planning process allowed me to prioritize the implementation of features bas
 - Blockquote footer font
 
 ![#DCDCDC Hex Color](/docs/images/dcdcdc.PNG)
+
+**Bootstrap Colors** : 
+
+`#DEE2E6` :
+
+![#DEE2E6 Hex Color](/docs/images/dee2e6.PNG)
+
+- borders
+
+`#FFFFFF` :
+
+- icons
+- font
+
+![#FFFFFF Hex Color](/docs/images/ffffff.PNG)
+
+`#28A745` :
+
+- header font in 'success' toast
+
+![#28A745 Hex Color](/docs/images/28a745.PNG)
+
+`#17A2B8` :
+
+- header font in 'info' toast
+
+![#17A2B8 Hex Color](/docs/images/17a2b8.PNG)
+
+`#DC3545` :
+
+- header font in 'error' toast
+- font
+- wishlist icon
+
+![#DC3545 Hex Color](/docs/images/dc3545.PNG)
+
+`#FFC107` :
+
+- header font in 'warning' toast
+
+![#FFC107 Hex Color](/docs/images/ffc107.PNG)
