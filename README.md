@@ -235,3 +235,17 @@ The planning process allowed me to prioritize the implementation of features bas
 - header font in 'warning' toast
 
 ![#FFC107 Hex Color](/docs/images/ffc107.PNG)
+
+### Fonts:
+
+**Roboto** :
+
+The decision to use the Roboto font from Google as the primary typeface was driven by its popularity and user-friendly design. Roboto offers excellent readability across different screen sizes, ensuring an optimal user experience for everyone interacting with the content.
+
+**Oswald** :
+
+The Oswald font was chosen for the logo due to its bold and distinctive appearance, which effectively enhances brand recognition. Its modern, condensed design conveys a sense of professionalism while maintaining clarity and readability across various sizes and platforms. Oswald’s strong, clean lines help the logo stand out, making it both memorable and visually striking. This choice ensures that the brand identity is consistent and impactful, whether displayed on large banners or smaller digital screens.
+
+**Helvetica** :
+
+The decision to use the Helvetica font for Stripe elements was made to ensure a clean, modern, and professional appearance. As a widely used and highly legible typeface, Helvetica aligns well with Stripe’s emphasis on trust, security, and user experience. Its neutrality complements the minimalist design of payment forms, ensuring the focus remains on the transaction process.
