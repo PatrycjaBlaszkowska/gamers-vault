@@ -181,7 +181,7 @@ The planning process allowed me to prioritize the implementation of features bas
 
 `rgba(23, 162, 184, .85)` :
 
-- Loading overlay
+- Loading overlay 
 
 `#F39C12` :
 
