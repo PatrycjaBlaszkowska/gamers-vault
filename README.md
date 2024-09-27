@@ -453,7 +453,7 @@ The default Django `User` model handles authentication and includes fields such 
 
 ---
 
-#### Relationship :
+#### Relationships :
 
 - **UserProfile** links to **User** (One-to-One).
 - **Order** links to **UserProfile** (Many-to-One).
