@@ -249,3 +249,16 @@ The Oswald font was chosen for the logo due to its bold and distinctive appearan
 **Helvetica** :
 
 The decision to use the Helvetica font for Stripe elements was made to ensure a clean, modern, and professional appearance. As a widely used and highly legible typeface, Helvetica aligns well with Stripe’s emphasis on trust, security, and user experience. Its neutrality complements the minimalist design of payment forms, ensuring the focus remains on the transaction process.
+
+
+**Images** :
+
+Images for this project has been downloaded from : 
+
+- [Amazon](https://www.amazon.co.uk/ref=nav_logo)
+- [GSMA](https://www.gsma.com/)
+
+**More information in credits section.**
+
+### Database :
+
