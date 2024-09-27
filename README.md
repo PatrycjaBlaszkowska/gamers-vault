@@ -453,3 +453,12 @@ The default Django `User` model handles authentication and includes fields such 
 
 ---
 
+#### Relationship :
+
+- **UserProfile** links to **User** (One-to-One).
+- **Order** links to **UserProfile** (Many-to-One).
+- **OrderLineItem** links to **Order** and **Product** (Many-to-One for each).
+- **Product** links to **Category** and **Subcategory** (Many-to-One).
+- **ProductReview** links to **Product** and **User** (Many-to-One for each).
+- **Wishlist** links to **User** and **Product** (Many-to-One for each).
+- **ContactQuery** links to **User** and **Order** (Many-to-One for each).
