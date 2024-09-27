@@ -262,3 +262,194 @@ Images for this project has been downloaded from :
 
 ### Database :
 
+I decided to use **retalional database** in my project.
+
+A **relational database**  is used for several reasons that align with the structure and needs of your application:
+
+1. **Data Integrity**: Relational databases enforce constraints such as `ForeignKey`, `Unique`, and `Not Null`, which ensure data consistency. For example, the `Order` model's relationship with the `UserProfile` ensures that every order is tied to a valid user.
+
+2. **Relationships Between Models**: The models have relational structures. The `ForeignKey` fields, such as those between `Order` and `OrderLineItem` or `Product` and `Subcategory`, allow efficient mapping of relationships, which is a core feature of relational databases.
+
+3. **ACID Compliance**: Relational databases typically ensure atomicity, consistency, isolation, and durability, meaning transactions (like order creation and payment processing) are reliable and safe from data corruption.
+
+4. **Normalization**: Data is organized to minimize redundancy. For instance, user information is stored in a separate `UserProfile` table instead of repeating it for every order.
+
+5. **Structured Querying**: SQL (Structured Query Language) enables complex queries, including `JOIN`s and aggregations, which are necessary to fetch related data across models (e.g., retrieving all `OrderLineItem`s for an `Order`).
+
+---
+
+#### *DATABASE SCHEMA* :
+
+The schema for each model, detailing the structure and relationships, is presented below.
+
+#### 1. **User Model (Django Default)**
+
+The default Django `User` model handles authentication and includes fields such as `username`, `password`, and `email`. I extended its functionality using the `UserProfile` model.
+
+---
+
+#### 2. **UserProfile Model**
+
+**Table Name**: `user_profile`
+
+**Description**: This table stores additional user information, primarily related to delivery details and order history, to extend the functionality of the default Django `User` model.
+
+| Field                  | Data Type            | Nullable | Constraints       | Foreign Key          |
+|------------------------|----------------------|----------|-------------------|----------------------|
+| id                     | Integer (Auto)       | No       | Primary Key       |                      |
+| user_id                | Integer              | No       | Unique            | FK to `User`          |
+| default_full_name       | Varchar(100)         | Yes      |                   |                      |
+| default_phone_number    | Varchar(20)          | Yes      |                   |                      |
+| default_street_address1 | Varchar(80)          | Yes      |                   |                      |
+| default_street_address2 | Varchar(80)          | Yes      |                   |                      |
+| default_town_or_city    | Varchar(40)          | Yes      |                   |                      |
+| default_county          | Varchar(80)          | Yes      |                   |                      |
+| default_postcode        | Varchar(20)          | Yes      |                   |                      |
+| default_country         | Country (ISO Code)   | Yes      |                   |                      |
+
+---
+
+#### 3. **Order Model**
+
+**Table Name**: `order`
+
+**Description**: This table stores individual orders placed by users, including user details, delivery costs, and the total amount for each order.
+
+| Field                  | Data Type            | Nullable | Constraints       | Foreign Key              |
+|------------------------|----------------------|----------|-------------------|--------------------------|
+| id                     | Integer (Auto)       | No       | Primary Key       |                          |
+| order_number           | Varchar(32)          | No       | Unique, Editable  |                          |
+| user_profile_id        | Integer              | Yes      |                   | FK to `UserProfile`      |
+| full_name              | Varchar(50)          | No       |                   |                          |
+| email                  | Varchar(254)         | No       |                   |                          |
+| phone_number           | Varchar(20)          | No       |                   |                          |
+| country                | Country (ISO Code)   | No       |                   |                          |
+| postcode               | Varchar(20)          | No       |                   |                          |
+| town_or_city           | Varchar(40)          | No       |                   |                          |
+| street_address1        | Varchar(80)          | No       |                   |                          |
+| street_address2        | Varchar(80)          | Yes      |                   |                          |
+| county                 | Varchar(80)          | Yes      |                   |                          |
+| date                   | DateTime             | No       | Auto Add          |                          |
+| delivery_cost          | Decimal (6,2)        | No       | Default = 0       |                          |
+| order_total            | Decimal (10,2)       | No       | Default = 0       |                          |
+| grand_total            | Decimal (10,2)       | No       | Default = 0       |                          |
+| original_bag           | Text                 | Yes      |                   |                          |
+| stripe_pid             | Varchar(254)         | Yes      |                   |                          |
+
+---
+
+#### 4. **OrderLineItem Model**
+
+**Table Name**: `order_line_item`
+
+**Description**: This table stores individual items associated with an order, linking the order to specific products and tracking quantity and price per item.
+
+| Field                  | Data Type            | Nullable | Constraints       | Foreign Key              |
+|------------------------|----------------------|----------|-------------------|--------------------------|
+| id                     | Integer (Auto)       | No       | Primary Key       |                          |
+| order_id               | Integer              | No       |                   | FK to `Order`            |
+| product_id             | Integer              | No       |                   | FK to `Product`          |
+| quantity               | Integer              | No       | Default = 0       |                          |
+| lineitem_total         | Decimal (6,2)        | No       | Editable=False    |                          |
+
+---
+
+#### 5. **Product Model**
+
+**Table Name**: `product`
+
+**Description**: This table stores product information including pricing, descriptions, and relationships with categories and subcategories.
+
+| Field                  | Data Type            | Nullable | Constraints       | Foreign Key              |
+|------------------------|----------------------|----------|-------------------|--------------------------|
+| id                     | Integer (Auto)       | No       | Primary Key       |                          |
+| category_id            | Integer              | Yes      |                   | FK to `Category`         |
+| subcategory_id         | Integer              | Yes      |                   | FK to `Subcategory`      |
+| sku                    | Varchar(254)         | Yes      |                   |                          |
+| name                   | Varchar(254)         | No       |                   |                          |
+| description            | Text                 | No       |                   |                          |
+| price                  | Decimal (6,2)        | No       |                   |                          |
+| rating                 | Decimal (6,2)        | Yes      |                   |                          |
+| image_url              | Varchar(1024)        | Yes      |                   |                          |
+| image                  | Image                | Yes      |                   |                          |
+
+---
+
+#### 6. **Category Model**
+
+**Table Name**: `category`
+
+**Description**: This table stores information about product categories, which are used to organize products.
+
+| Field                  | Data Type            | Nullable | Constraints       | Foreign Key              |
+|------------------------|----------------------|----------|-------------------|--------------------------|
+| id                     | Integer (Auto)       | No       | Primary Key       |                          |
+| name                   | Varchar(254)         | No       |                   |                          |
+
+---
+
+#### 7. **Subcategory Model**
+
+**Table Name**: `subcategory`
+
+**Description**: This table stores information about product subcategories, each of which is linked to a parent category.
+
+| Field                  | Data Type            | Nullable | Constraints       | Foreign Key              |
+|------------------------|----------------------|----------|-------------------|--------------------------|
+| id                     | Integer (Auto)       | No       | Primary Key       |                          |
+| category_id            | Integer              | No       |                   | FK to `Category`         |
+| name                   | Varchar(254)         | No       |                   |                          |
+
+---
+
+#### 8. **ProductReview Model**
+
+**Table Name**: `product_review`
+
+**Description**: This table stores user reviews for products, including ratings, review content, and user information.
+
+| Field                  | Data Type            | Nullable | Constraints       | Foreign Key              |
+|------------------------|----------------------|----------|-------------------|--------------------------|
+| id                     | Integer (Auto)       | No       | Primary Key       |                          |
+| product_id             | Integer              | Yes      |                   | FK to `Product`          |
+| user_id                | Integer              | Yes      |                   | FK to `User`             |
+| title                  | Varchar(254)         | No       |                   |                          |
+| rating                 | Integer              | No       |                   |                          |
+| content                | Text                 | No       |                   |                          |
+| added_on               | DateTime             | No       | Auto Add          |                          |
+
+---
+
+#### 9. **Wishlist Model**
+
+**Table Name**: `wishlist`
+
+**Description**: This table stores products that have been added to a user's wishlist.
+
+| Field                  | Data Type            | Nullable | Constraints       | Foreign Key              |
+|------------------------|----------------------|----------|-------------------|--------------------------|
+| id                     | Integer (Auto)       | No       | Primary Key       |                          |
+| user_id                | Integer              | No       |                   | FK to `User`             |
+| product_id             | Integer              | No       |                   | FK to `Product`          |
+| added_on               | DateTime             | No       | Auto Add          |                          |
+
+---
+
+#### 10. **ContactQuery Model**
+
+**Table Name**: `contact_query`
+
+**Description**: This table stores queries or contact messages submitted by users or guests. Queries can be related to general issues or specific orders.
+
+| Field                  | Data Type            | Nullable | Constraints       | Foreign Key              |
+|------------------------|----------------------|----------|-------------------|--------------------------|
+| id                     | Integer (Auto)       | No       | Primary Key       |                          |
+| user_id                | Integer              | Yes      |                   | FK to `User`             |
+| name                   | Varchar(100)         | No       |                   |                          |
+| email                  | Varchar(254)         | No       |                   |                          |
+| query_type             | Varchar(20)          | No       | Default = 'General'|                         |
+| order_id               | Integer              | Yes      |                   | FK to `Order`            |
+| message                | Text                 | No       |                   |                          |
+
+---
+
