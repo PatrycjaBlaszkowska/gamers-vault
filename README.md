@@ -471,7 +471,16 @@ As part of an ongoing effort to continually improve the project, I identified a 
 
 **Logo Addition for Mobile Devices** : 
 
-The logo has been reinstated in the mobile navigation bar to enhance branding and improve user experience. This logo serves as a home page link, allowing users to easily navigate back to the main page with a single tap. This change aims to streamline navigation and reinforce brand recognition on smaller screens.
+- The logo has been reinstated in the mobile navigation bar to enhance branding and improve user experience. This logo serves as a home page link, allowing users to easily navigate back to the main page with a single tap. This change aims to streamline navigation and reinforce brand recognition on smaller screens.
+
+**Additional Enhancements**:
+
+- Free Delivery Banner: 
+ - A "Free delivery on orders over £50!" banner has been added to both desktop and mobile views to promote a key selling point and encourage purchases.
+- Contact Link: 
+   - An additional <li> for the contact page has been included in the navigation bar, providing users with easy access to customer support and inquiries.
+
+*These updates collectively aim to improve user engagement and accessibility while maintaining a clear and attractive navigation structure.*
 
 [Login Page](/docs/wireframes/login-page-wireframes.pdf)
 
@@ -554,3 +563,33 @@ To improve usability on mobile devices, the following adjustments have been made
 
 **Button Change**: 
 - The confirmation button on the order confirmation page has been updated from "Back to Profile" to "Back to Shopping." This change is intended to enhance user experience by encouraging customers to continue browsing and shopping after completing their order.
+
+### ADDITIONAL PAGES :
+
+**Unplanned Feature Addition: Contact page**
+
+*Feature Introduction*: During the development process, an unforeseen feature was added to the platform—a **Contact Page**. This page is designed for both guest and logged-in users, providing a centralized location for users to submit general inquiries and order-related queries.
+
+The contact page aims to enhance user support by streamlining communication and ensuring that users can easily reach out for assistance. This addition reflects a commitment to improving customer service and engagement across the platform.
+
+![Contact Page - desktop](/docs/images/contact-page-desktop.png)
+
+![Contact Page - mobile](/docs/images/contact-page-mobile.png)
+
+## The Surface Plane
+
+### *Features present across the project* :
+
+### Navigation bar :
+
+The navigation bar is a persistent feature on every page and has been designed to be fully responsive, ensuring an optimal user experience across all devices and resolutions. On mobile devices, the navigation bar automatically transitions to a hamburger menu, providing easy access to all additional pages and sections. This intuitive design enables users to navigate the site with ease, regardless of their device or screen size.
+
+**Desktop** :
+
+![Navbar - desktop view](/docs/images/navbar-desktop.PNG)
+
+**Mobile** :
+
+![Navbar - mobile view(hamburger)](/docs/images/navbar-mobile-hamburger.PNG)
+
+![Navbar - mobile view(hamburger)](/docs/images/navbar-mobile.PNG)
