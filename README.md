@@ -462,3 +462,95 @@ The default Django `User` model handles authentication and includes fields such 
 - **ProductReview** links to **Product** and **User** (Many-to-One for each).
 - **Wishlist** links to **User** and **Product** (Many-to-One for each).
 - **ContactQuery** links to **User** and **Order** (Many-to-One for each).
+
+## The Skeleton Plane
+
+As part of an ongoing effort to continually improve the project, I identified a number of key features that were previously missing and were negatively impacting the overall user experience. In order to address this, I implemented several significant changes to the project, aimed at enhancing usability and functionality.
+
+[Navigation bar](/docs/wireframes/navbar-wireframe.pdf)
+
+**Logo Addition for Mobile Devices** : 
+
+The logo has been reinstated in the mobile navigation bar to enhance branding and improve user experience. This logo serves as a home page link, allowing users to easily navigate back to the main page with a single tap. This change aims to streamline navigation and reinforce brand recognition on smaller screens.
+
+[Login Page](/docs/wireframes/login-page-wireframes.pdf)
+
+**Login Form Enhancements** : 
+
+The option to create an account has been relocated just below the 'Sign Up' section (previously labeled 'Login') for improved clarity. Additionally, users now have the option to reset their password and select a "Remember Me" checkbox for convenience. These adjustments were made to align with the Allauth integration, which provides a more aesthetically pleasing and functional layout than the originally planned design.
+
+[Register Page](/docs/wireframes/register-page-wireframes.pdf)
+
+**Form Structure and Fields** : 
+
+The registration page has been enhanced to provide a more comprehensive user experience. Previously, the main form only included fields for a username and password, along with an option to log in for existing users. The new layout, based on Allauth, now includes the following fields:
+
+- Already have an account? Then please sign in. (Positioned at the top for better visibility.)
+- Email Address: Required field for entering an email address, with a confirmation field for verification.
+- Username: Required field for the user’s chosen username.
+- Password: The password field includes specific guidelines to enhance security:
+   - Password cannot be too similar to personal information.
+   - Must contain at least 8 characters.
+   - Cannot be a commonly used password.
+   - Cannot be entirely numeric.
+   - Confirm Password: A field to re-enter the password for verification.
+
+*These updates aim to improve usability and security while providing a clearer registration process.*
+
+[Shopping (products) page](/docs/wireframes/shopping-page-wireframes.pdf)
+
+**Desktop and Mobile View Enhancements** : 
+
+- **Products Home** : 
+   - I added a "Products Home" link, which allows users to easily navigate back to the products page. This addition enhances user experience by providing clearer navigation.
+
+- **Back to Top Button** : 
+   - A "Back to Top" button has been added to facilitate easy navigation back to the top of the page. This feature is currently in the development process.
+
+**Planned Features** : 
+
+I also recognized that I inadvertently missed some planned features for both mobile and desktop views, which are as follows:
+
+- **Sort By Dropdown**: 
+
+   - A sort-by dropdown feature is intended for the mobile view to enable users to easily filter products based on their preferences.
+
+- **Wishlist Functionality** : 
+
+   - A small heart icon will be included on each product card for users to add and remove items to and from their wishlist. This feature will be available on both desktop and mobile versions to enhance engagement and personalization.
+
+*These updates aim to create a more intuitive and user-friendly shopping experience.*
+
+[Product detail page](/docs/wireframes/product-page-wireframes.pdf)
+
+**Desktop and Mobile View Enhancements** : 
+
+- **Wishlist Functionality** : 
+
+   - A small heart icon will be included on product's card for users to add and remove items to and from their wishlist. This feature will be available on both desktop and mobile versions to enhance engagement and personalization.
+
+[Shopping Bag page](/docs/wireframes/checkout-page-wireframes.pdf)
+
+**Additional Features** : 
+
+The shopping bag has been enhanced with several new features for both desktop and mobile views:
+
+- Update/Remove Button: 
+   - Each product in the shopping bag now includes options to update the quantity or remove the item, providing users with greater control over their selections.
+
+**Mobile View Changes** : 
+
+To improve usability on mobile devices, the following adjustments have been made:
+
+- Image Removal: 
+   - The product image has been removed to provide more space, allowing for a cleaner layout and easier navigation.
+
+- Subtotal Adjustment: 
+   - The subtotal has been moved to the next line to ensure that the quantity button remains responsive and visible, even on the smallest devices. This change aims to enhance the overall shopping experience and accessibility.
+
+*These updates focus on making the shopping bag more functional and user-friendly across all devices.*
+
+[Order confirmation page](/docs/wireframes/order-confirmation-page-wireframes.pdf)
+
+**Button Change**: 
+- The confirmation button on the order confirmation page has been updated from "Back to Profile" to "Back to Shopping." This change is intended to enhance user experience by encouraging customers to continue browsing and shopping after completing their order.
