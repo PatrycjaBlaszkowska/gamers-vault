@@ -582,7 +582,7 @@ The contact page aims to enhance user support by streamlining communication and 
 
 ### Navigation bar :
 
-The navigation bar is a persistent feature on every page and has been designed to be fully responsive, ensuring an optimal user experience across all devices and resolutions. On mobile devices, the navigation bar automatically transitions to a hamburger menu, providing easy access to all additional pages and sections. This intuitive design enables users to navigate the site with ease, regardless of their device or screen size.
+The navigation bar is a consistent element across all pages and has been crafted to be entirely responsive, ensuring an excellent user experience on all devices and screen resolutions. On mobile devices, it seamlessly converts into a hamburger menu, granting users convenient access to all supplementary pages and sections. This user-friendly design allows for effortless navigation throughout the site, no matter the device or screen size.
 
 **Desktop** :
 
@@ -593,3 +593,108 @@ The navigation bar is a persistent feature on every page and has been designed t
 ![Navbar - mobile view(hamburger)](/docs/images/navbar-mobile-hamburger.PNG)
 
 ![Navbar - mobile view(hamburger)](/docs/images/navbar-mobile.PNG)
+
+### *Key Features* :
+
+1. **Dropdown Menus**: 
+   - The navigation bar includes dropdown menus for various product categories, such as Mice, Keyboards, and Headsets. These menus dynamically display relevant subcategories, enabling users to navigate directly to specific products. This organization streamlines the shopping experience, making it easier for customers to find exactly what they’re looking for.
+
+*All products*
+
+![Dropdown - all products)](/docs/images/dropdown-all-products.PNG)
+
+*Mice*
+
+![Dropdown - mice)](/docs/images/dropdown-mice.PNG)
+
+*Keyboards*
+
+![Dropdown - keyboards)](/docs/images/dropdown-keyboards.PNG)
+
+*Headsets*
+
+![Dropdown - headsets)](/docs/images/dropdown-headsets.PNG)
+
+2. **User Options Dropdown**: 
+   - The navigation bar features a user options dropdown accessible on mobile devices. This dropdown provides different options based on user authentication:
+     - **Authenticated Users**: If a user is logged in, they will see options such as:
+       - **Product Management** (for superusers)
+       - **My Profile**
+       - **My Wishlist**
+       - **Logout**
+
+      ![User options - dropdown)](/docs/images/user-options-dropdown.PNG)
+     
+     - **Guests**: If a user is not logged in, they will have the option to:
+       - **Register**
+       - **Login**
+
+      ![User options (guest) - dropdown)](/docs/images/user-options-guest-dropdown.PNG)
+
+### Search bar : 
+
+The search bar allows users to quickly find items by entering relevant search terms. This feature iterates through both **names** and **descriptions** of the items, providing a comprehensive search experience.
+
+### *Key Features* :
+
+- **Search by Term:** Users can input any keyword or phrase.
+- **Iterative Search:** The search functionality scans through:
+  - Item Names
+  - Item Descriptions
+- **Real-Time Results:** Results are displayed as users type, enhancing usability.
+
+**Desktop** :
+
+![Search bar - desktop view](/docs/images/search-bar-desktop.PNG)
+
+**Mobile** :
+
+![Search bar - mobile view](/docs/images/search-bar-mobile.PNG)
+
+### Footer :
+
+The footer is a permanent component on every page, designed to be fully responsive and compatible with all devices and screen resolutions. It also features a section for social media links that open in a new tab when clicked, enabling users to engage with the organization’s online presence without interrupting their browsing experience.
+
+![Footer](/docs/images/footer.PNG)
+
+### Hero image :
+
+The hero image is prominently displayed on the home page to instantly grab the user's attention and clearly convey the website's purpose. Overlaying the hero image is a banner that reads **"Advanced Gaming Gear,"** accompanied by a **"Shop Now"** button, inviting users to explore the offerings right away.
+
+![Hero image](/docs/images/hero-image.PNG)
+
+### Introduction section :
+
+The introduction section is divided into three subsections: **Info Section**, **Bestsellers**, and **What Customers Say**. Each subsection plays a crucial role in providing a comprehensive understanding of Gamer's Vault and enhancing user engagement.
+
+### *Info Section* :
+
+This subsection serves as an inviting entry point to the Gamer's Vault platform, showcasing its identity as a premier destination for gaming enthusiasts. It highlights the diverse range of products available, including the latest and greatest gaming keyboards, mice, and headsets. The text emphasizes that Gamer's Vault caters to all gamers, whether they are casual players or professionals, with high-quality gear designed to enhance their gaming experience. The mission statement reinforces the brand's commitment to providing top-tier equipment and accessories for gamers of all skill levels and encourages visitors to join the thriving community.
+
+![Info section](/docs/images/info-section.PNG)
+
+### *Bestsellers* :
+
+In this subsection, users are introduced to a curated selection of the most popular gaming products available at Gamer's Vault. This highlights the standout items that have garnered top ratings and reviews, showcasing their functionality and appeal. Featured products include:
+
+- Razer BlackWidow V4: A mechanical keyboard known for its responsive keys and customizable RGB lighting, perfect for both casual and competitive gaming.
+- Logitech G G502 X PLUS: A precision gaming mouse designed for accuracy and comfort, equipped with advanced features to enhance gameplay.
+- Razer BlackShark V2: An immersive headset offering superior sound quality and noise cancellation, ideal for gamers looking to fully immerse themselves in their gaming worlds.
+
+*This section aims to entice users to explore these bestsellers and discover the exceptional quality of the products offered.*
+
+![Bestsellers section](/docs/images/bestsellers-section.PNG)
+
+### *What Customers Say* :
+
+This subsection showcases testimonials from satisfied customers, adding a personal touch and building credibility for Gamer's Vault. The quotes reflect the positive experiences of various users, highlighting the strengths of the platform, such as:
+
+- The extensive selection of gaming gear and unmatched quality and service.
+- Excellent customer support that assists users in selecting the ideal products for their needs.
+- Exclusive deals and unbeatable prices that make Gamer's Vault a go-to choice for gamers.
+- Fast shipping and high-quality products that foster recommendations from customers to their peers.
+
+*By featuring these testimonials, this section aims to build trust and encourage potential customers to make purchases based on the experiences of others in the gaming community.*
+
+![Customer quotes](/docs/images/customer-quotes-section.PNG)
+
