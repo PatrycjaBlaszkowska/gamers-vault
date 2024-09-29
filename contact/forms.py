@@ -2,10 +2,6 @@ from django import forms
 from .models import ContactQuery
 from checkout.models import Order, OrderLineItem
 
-from django import forms
-from checkout.models import Order, OrderLineItem
-from .models import ContactQuery  # Assuming ContactQuery is your model
-
 class ContactQueryForm(forms.ModelForm):
     class Meta:
         model = ContactQuery
@@ -17,25 +13,34 @@ class ContactQueryForm(forms.ModelForm):
 
         # Populate the 'order' field with product names from related OrderLineItems
         if user_orders and user_orders.exists():
-            # Create a list of tuples with the order's product name and order number
             order_choices = []
             for order in user_orders:
-                # Get the related OrderLineItems
                 line_items = order.lineitems.all()
                 for item in line_items:
-                    # Append product name with order number to the choices
                     order_choices.append((order.id, f"{item.product.name}"))
-
             self.fields['order'].choices = order_choices
+            self.fields['order'].required = True  # Set as required when orders are present
         else:
-            # If no orders, display a placeholder option
+            # If no orders, make the 'order' field optional and hide it in the form
             self.fields['order'].choices = [('', 'No orders to choose from')]
+            self.fields['order'].required = False  # Make it optional if no orders are available
 
         # Set custom placeholders for other fields
         self.fields['message'].widget.attrs['placeholder'] = 'Write your message here...'
         self.fields['name'].widget.attrs['autofocus'] = True
 
-        # Set fields to not show labels and be required
+        # Set fields to not show labels
         for field in self.fields:
-            self.fields[field].label = False  
-            self.fields[field].required = True
+            self.fields[field].label = False
+
+    def clean_order(self):
+        """
+        Allow the 'order' field to be empty if there are no choices.
+        """
+        order = self.cleaned_data.get('order')
+        
+        # If the order field is optional (no choices), return None
+        if not self.fields['order'].required and order == '':
+            return None
+
+        return order
