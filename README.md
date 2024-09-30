@@ -538,7 +538,7 @@ I also recognized that I inadvertently missed some planned features for both mob
 
    - A small heart icon will be included on product's card for users to add and remove items to and from their wishlist. This feature will be available on both desktop and mobile versions to enhance engagement and personalization.
 
-[Shopping Bag page](/docs/wireframes/checkout-page-wireframes.pdf)
+[Shopping Bag page](/docs/wireframes/basket-page-wireframes.pdf)
 
 **Additional Features** : 
 
@@ -594,7 +594,7 @@ The navigation bar is a consistent element across all pages and has been crafted
 
 ![Navbar - mobile view(hamburger)](/docs/images/navbar-mobile.PNG)
 
-### *Key Features* :
+#### *Key Features* :
 
 1. **Dropdown Menus**: 
    - The navigation bar includes dropdown menus for various product categories, such as Mice, Keyboards, and Headsets. These menus dynamically display relevant subcategories, enabling users to navigate directly to specific products. This organization streamlines the shopping experience, making it easier for customers to find exactly what they’re looking for.
@@ -631,11 +631,13 @@ The navigation bar is a consistent element across all pages and has been crafted
 
       ![User options (guest) - dropdown)](/docs/images/user-options-guest-dropdown.PNG)
 
+<hr>
+
 ### Search bar : 
 
 The search bar allows users to quickly find items by entering relevant search terms. This feature iterates through both **names** and **descriptions** of the items, providing a comprehensive search experience.
 
-### *Key Features* :
+#### *Key Features* :
 
 - **Search by Term:** Users can input any keyword or phrase.
 - **Iterative Search:** The search functionality scans through:
@@ -651,11 +653,15 @@ The search bar allows users to quickly find items by entering relevant search te
 
 ![Search bar - mobile view](/docs/images/search-bar-mobile.PNG)
 
+<hr>
+
 ### Footer :
 
 The footer is a permanent component on every page, designed to be fully responsive and compatible with all devices and screen resolutions. It also features a section for social media links that open in a new tab when clicked, enabling users to engage with the organization’s online presence without interrupting their browsing experience.
 
 ![Footer](/docs/images/footer.PNG)
+
+<hr>
 
 ### Hero image :
 
@@ -663,17 +669,19 @@ The hero image is prominently displayed on the home page to instantly grab the u
 
 ![Hero image](/docs/images/hero-image.PNG)
 
+<hr>
+
 ### Introduction section :
 
 The introduction section is divided into three subsections: **Info Section**, **Bestsellers**, and **What Customers Say**. Each subsection plays a crucial role in providing a comprehensive understanding of Gamer's Vault and enhancing user engagement.
 
-### *Info Section* :
+#### *Info Section* :
 
 This subsection serves as an inviting entry point to the Gamer's Vault platform, showcasing its identity as a premier destination for gaming enthusiasts. It highlights the diverse range of products available, including the latest and greatest gaming keyboards, mice, and headsets. The text emphasizes that Gamer's Vault caters to all gamers, whether they are casual players or professionals, with high-quality gear designed to enhance their gaming experience. The mission statement reinforces the brand's commitment to providing top-tier equipment and accessories for gamers of all skill levels and encourages visitors to join the thriving community.
 
 ![Info section](/docs/images/info-section.PNG)
 
-### *Bestsellers* :
+#### *Bestsellers* :
 
 In this subsection, users are introduced to a curated selection of the most popular gaming products available at Gamer's Vault. This highlights the standout items that have garnered top ratings and reviews, showcasing their functionality and appeal. Featured products include:
 
@@ -685,7 +693,7 @@ In this subsection, users are introduced to a curated selection of the most popu
 
 ![Bestsellers section](/docs/images/bestsellers-section.PNG)
 
-### *What Customers Say* :
+#### *What Customers Say* :
 
 This subsection showcases testimonials from satisfied customers, adding a personal touch and building credibility for Gamer's Vault. The quotes reflect the positive experiences of various users, highlighting the strengths of the platform, such as:
 
@@ -698,3 +706,413 @@ This subsection showcases testimonials from satisfied customers, adding a person
 
 ![Customer quotes](/docs/images/customer-quotes-section.PNG)
 
+<hr>
+
+### 'Toasts' : 
+
+The Toast Notification feature provides users with immediate feedback on their actions within the shopping cart, enhancing the overall user experience.
+
+#### *Toast Types* :
+1. **Success Toast**: Confirms successful actions (e.g., adding items to the cart).
+
+![Success toast](/docs/images/success-toast.PNG)
+
+2. **Error Toast**: Notifies users of issues or failures during operations.
+
+![Error toast](/docs/images/error-toast.PNG)
+
+3. **Info Toast**: Provides general information.
+
+![Info toast](/docs/images/info-toast.PNG)
+
+4. **Custom Toast**: Displays a summary of the shopping bag contents, including item details, quantities, totals, and delivery information.
+
+![Custom toast](/docs/images/custom-toast.PNG)
+
+<hr>
+
+### Shopping Bag :
+
+The Shopping Bag feature allows users to view and manage their selected items before checkout. It provides a summary of the total costs, including subtotals and delivery fees. Users can easily update quantities or remove items from the bag.
+
+**Empty State** :
+
+When the bag is empty, a message "Your bag is empty" is displayed, along with a "Keep Shopping" button, encouraging users to continue browsing.
+
+![Shopping bag - empty](/docs/images/shopping-bag-empty.PNG)
+
+#### *Actions* :
+- **Update**: Modify item quantities.
+- **Remove**: Delete items from the bag.
+- **Continue Shopping**: Return to browse more products.
+- **Secure Checkout**: Proceed to finalize the purchase.
+
+**Dektop** :
+
+![Shopping bag - desktop](/docs/images/shopping-bag-desktop.PNG)
+
+**Mobile** :
+
+![Shopping bag - mobile](/docs/images/shopping-bag-mobile.PNG)
+
+<hr>
+
+### Dynamic Product Listing :
+
+This feature dynamically displays the number of products based on the user's search and filter choices. It includes several functionalities:
+
+1. Search Results Indicator:
+
+- If a user searches for a specific term or applies any filters (categories, subcategories, sorting), the product list will update accordingly.
+- If there are no applied filters or searches, the entire product catalog is shown.
+- The number of products currently visible is displayed at the top of the page.
+- If a search term is present, the result will display the number of products found, along with the specific search term (e.g., "5 Products found for 'gaming keyboard'").
+
+2. 'Products Home' Link:
+
+- When filters or a search term are applied, a link appears allowing the user to quickly navigate back to the full product catalog by resetting all filters.
+- The text will appear as "Products Home," and clicking this link removes any applied filters or search terms, returning the user to the full product listing.
+
+*This dynamic interface enhances the user experience by providing quick navigation between filtered and unfiltered product views, making it easier to browse, search, and explore the product catalog.*
+
+![Product Listing](/docs/images/products-listing.jpg)
+
+![Product Listing - search results](/docs/images/products-listing-search-results.jpg)
+
+<hr>
+
+### Product Sorting Functionality :
+
+This feature allows users to dynamically sort products in the catalog according to various criteria. The sorting options include:
+
+1. Price Sorting:
+
+   - Users can choose to sort products by price, either from low to high or high to low.
+
+2. Rating Sorting:
+   - Products can also be sorted based on their average rating, either from low to high or high to low.
+
+3. Name Sorting:
+   - Users can sort products alphabetically by their name, either from A-Z or Z-A.
+
+4. Category Sorting:
+   - Sorting by product category is also available, allowing products to be arranged in alphabetical order by category name.
+
+5. Reset Option:
+   - There is an option to reset the sorting, returning the product list to its default order.
+
+**How It Works** :
+- The sort selector automatically highlights the currently applied sorting method. If no sorting is applied, the selector will show "Sort by...".
+- The border color of the dropdown changes depending on whether a sort filter is active: it turns blue when sorting is applied and stays black when no sorting is selected.
+
+*This dynamic sorting feature improves user navigation, making it easier to find the desired products based on price, rating, name, or category preferences.*
+
+![Product Sorting](/docs/images/sort-by.png)
+
+<hr>
+
+### Responsive Product Grid with Dynamic Dividers :
+
+This feature dynamically adjusts the display of products in a grid format, ensuring a responsive design that looks good on all screen sizes. Here's how it works:
+
+1. Grid Layout:
+
+- Products are displayed in a grid layout that adapts to different screen sizes. Depending on the device's viewport, the number of products shown per row adjusts:
+   - Extra-large screens (≥1200px) show 4 products per row.
+   - Large screens (≥992px) show 3 products per row.
+   - Medium screens (≥768px) show 2 products per row.
+   - Small screens (≥576px) show 1 product per row.
+
+2. Dynamic Dividers:
+
+- Dividers (`<hr>`) are automatically inserted after every set number of products to create clear visual separation based on the screen size:
+   - After 1 product on small screens.
+   - After 2 products on medium screens.
+   - After 3 products on large screens.
+   - After 4 products on extra-large screens.
+- These dividers help visually organize the product list, making it easier for users to scan and browse through items.
+
+3. Additional Features:
+
+- Each product card includes:
+   - Product Image: A clickable image that leads to the product detail page.
+   - Product Name: Displayed as a link to the product detail page.
+   - Product Price: Displayed prominently in bold.
+   - Category Link: If a product belongs to a category, a tag icon links to other products in the same category.
+   - Rating: Shows the product's rating if available or displays "No Rating" otherwise.
+   - Wishlist Icon: Allows users to add or remove products from their wishlist.
+   - Admin Actions: If the user is an admin, they can edit or delete products directly from the product grid.
+
+**How it works** :
+
+- The grid layout is fully responsive, thanks to Bootstrap's grid system and custom logic that controls the layout and dividers based on the device's screen size.
+- The inclusion of responsive breakpoints ensures that the product display remains user-friendly and accessible across various devices, including phones, tablets, and desktops.
+
+*This feature greatly improves the user experience by offering a well-organized, easily navigable product grid that adapts to different devices, ensuring the content is always presented optimally.*
+
+**Desktop** : 
+
+![Products - desktop](/docs/images/products-desktop.png)
+
+**Mobile** : 
+
+![Products - mobile](/docs/images/products-mobile.png)
+
+<hr>
+
+### Product Detail Page : 
+
+The product detail page is designed to provide users with comprehensive information about a product and facilitate interaction through features like adding the product to the shopping bag, managing reviews, and more.
+
+1. Product Display Section
+
+This section showcases the product image and its key details:
+   - **Product Image** : A high-resolution image is displayed prominently, and users can click on it to open a full-size version in a new tab.
+   - **Product Name**  and Price: Displayed clearly along with the product's name and its price in a larger, bold font.
+   - **Category Link** : If a product is associated with a category, it is shown with a clickable tag icon that leads users to view more products in that category.
+   - **Product Rating** : Displays the average product rating out of 5 stars (if available), or shows "No Rating" if the product hasn’t been rated yet.
+
+2. Product Interaction Section
+
+This section allows users to interact with the product in the following ways:
+
+   - Wishlist Toggle: Allows users to add or remove the product from their wishlist by toggling between a filled heart (for products already in the wishlist) and an outlined heart.
+   - **Admin Actions (For Admin Users)** : If the user is an admin, additional options to Edit or Delete the product are provided.
+   - **Product Description** : A detailed description of the product is displayed below the key product details.
+   - **Quantity Selection and Add to Bag** : Users can select the quantity of the product using increment/decrement buttons and add it to their shopping bag by clicking the Add to Bag button. This form uses CSRF protection and redirects users back to the same product page after submission.
+
+3. Navigation Links
+
+- **Keep Shopping Button** : This button allows users to return to the product listings page and continue shopping.
+
+**Desktop** : 
+
+![Product detail - desktop](/docs/images/product-detail-desktop.png)
+
+**Mobile** : 
+
+![Product detai - mobile](/docs/images/product-detail-mobile.png)
+
+<hr>
+
+### Customer Reviews Section :
+
+This section provides users with the ability to view, add, and manage product reviews:
+
+1. Review Display
+   - Existing Reviews: If the product has been reviewed, users can see a list of all reviews, including:
+   - Review title, content, and star rating (out of 5).
+   - The username of the reviewer and the date the review was posted.
+   - Edit and Delete Buttons (Visible to the Reviewer): If the logged-in user wrote the review, they will see buttons to edit or delete the review.
+
+2. Add a Review
+   - Authenticated Users: If the user is logged in, they can add a new review by submitting a form with the following fields:
+   - Title: A brief title for the review.
+   - Rating: A rating from 1 to 5 stars.
+   - Content: A more detailed opinion about the product.
+   - After submission, the review is added to the list of product reviews.
+   - Non-Authenticated Users: If the user is not logged in, a message is displayed prompting them to log in to leave a review.
+
+3. Review Form Protection
+   - The review form uses CSRF tokens to ensure security.
+
+![Review - example](/docs/images/review-example.png)
+
+![Review - new](/docs/images/add-review.png)
+
+<hr>
+
+### Checkout Page Features :
+
+1. Order Summary Section
+
+- Feature Description: This section displays a summary of all the products in the user's shopping bag.
+- Details:
+   - Shows the product image, name, and quantity for each item.
+   - Displays the subtotal for each item based on the quantity.
+   - Displays the total cost, delivery charge, and grand total at the bottom of the order summary.
+- Purpose: Provides users with a clear and concise summary of their order before proceeding to payment.
+
+2. User Details Form
+
+- Feature Description: A form that collects the user's full name and email address.
+- Details:
+   - Includes crispy form fields for easy customization and form validation.
+   - If the user is authenticated, the "Save delivery information" checkbox is shown, allowing them to save their information for future use.
+   - f not authenticated, links are provided to create an account or log in.
+- Purpose: This form collects basic user information required for order processing.
+
+3. Delivery Information Form
+
+- Feature Description: A section where users provide delivery information.
+- Details:
+   - Collects the user's phone number, street address, city, postal code, county, and country.
+   - Allows the user to save this information for future purchases (for authenticated users).
+- Purpose: This section ensures that the necessary delivery details are collected for order fulfillment.
+
+4. Payment Section
+
+- Feature Description: This section handles the payment process.
+- Details:
+   - Integrates with Stripe to allow users to securely input their card details.
+   - Displays a "card-element" for Stripe integration, along with error handling for payment issues.
+   - Includes a hidden field for passing the Stripe client_secret value to the view, ensuring secure transaction processing.
+- Purpose: Allows users to complete their payment securely using the Stripe payment gateway.
+
+5. Submit Buttons
+
+- Feature Description: The "Complete Order" button submits the checkout form to finalize the purchase.
+- Details:
+   - "Adjust Bag" button allows users to return to their shopping bag to make changes before completing the order.
+   - The complete order button includes a lock icon to indicate that the process is secure.
+   - A disclaimer informs users of the exact amount that will be charged.
+- Purpose: Provides users with the final opportunity to review their order before submitting and completing the transaction.
+
+6. Loading Overlay
+
+- Feature Description: A loading overlay that displays while the payment is being processed.
+- Details:
+   - A spinner icon is shown to indicate that the page is loading.
+- Purpose: Provides feedback to the user that the payment process is ongoing, preventing multiple submissions or confusion.
+
+**Checkout: order and user details - dektop** :
+
+![Checkout: order and user details - desktop](/docs/images/checkout-order-and-user-details-desktop.png)
+
+**Checkout: order and user details - mobile** :
+
+![Checkout: order and user details - mobile](/docs/images/checkout-order-and-user-details-mobile.png)
+
+**Payment element** :
+
+![Checkout: payment element](/docs/images/checkout-payment.png)
+
+**Loading overlay** :
+
+![Checkout: loading overlay](/docs/images/loading-overlay.png)
+
+### Order Confirmation Page Features
+
+The **Order Confirmation Page** is designed to provide a detailed summary of the customer's purchase. After a successful checkout, this page gives the user a breakdown of their order, including product details, delivery information, and billing info. Below are the key features of the page:
+
+1. Thank You Message:
+
+- A welcoming message displays at the top of the page thanking the customer for their order.
+- A confirmation email is mentioned, reassuring the customer that it will be sent to their provided email address.
+
+2. Order Information:
+
+- Displays the Order Number, which helps customers refer to their order in future interactions.
+- The Order Date shows when the order was placed.
+
+3. Order Line Items:
+
+- Lists all the purchased products from the order.
+- Each item shows the product name, quantity, and the price per unit.
+- This feature ensures that customers can easily review what they have ordered.
+
+4. Delivery Information:
+
+- The section titled "Delivering To" outlines the delivery address details, including:
+   - Full Name
+   - Address 1 and Address 2 (if applicable)
+   - County (if applicable)
+   - Town or City
+   - Postal Code
+   - Country
+   - Phone Number
+- This helps customers verify their delivery information post-purchase.
+
+5. Billing Information:
+
+- A summary of the financial breakdown is provided, including:
+   - Order Total: The total price for all products purchased.
+   - Delivery Cost: The cost associated with shipping.
+   - Grand Total: The overall price including both product and delivery costs.
+- This gives a clear final breakdown of costs.
+
+6. Navigation Buttons:
+
+- Back to Profile Button: If the customer navigated from their profile, they are presented with a button to go back to the profile page for easy navigation.
+- Back to Shopping Button: For customers who did not navigate from their profile, a button is provided to return to the shopping area of the site to continue browsing.
+
+7. Mobile and Desktop Responsive Design:
+
+- The page is fully responsive and adapts to different screen sizes (desktop, tablet, and mobile). Layouts adjust appropriately for optimal viewing experiences.
+
+8. Data-Driven Content:
+
+- The page is dynamic and is populated using the customer's order data from the database.
+- Each section pulls data directly related to the user's order, ensuring that information displayed is accurate and specific to the individual.
+
+![Checkout: order confirmation](/docs/images/order-confirmation.png)
+
+### Contact Us Page Features
+
+The **Contact Us Page** allows users to submit inquiries or issues directly to the support team through a form. Below are the key features of this page:
+
+1. **Form Layout and Fields**:
+   - The form includes the following fields:
+     - **Name**: Captures the user's name.
+     - **Email**: The user's email address where they can be reached.
+     - **Query Type**: Allows users to specify the type of query (e.g., general, order-related).
+     - **Message**: The main body where users can explain their issue or inquiry.
+   - The form is styled using Bootstrap for a clean and professional appearance.
+   - Fields are rendered using Django Crispy Forms for enhanced form layout and user experience.
+
+2. **Related Order Field**:
+   - If the user is authenticated, the form includes an additional **Related Order** field.
+   - This field dynamically appears based on the **Query Type** selection. If the user selects "Order" as their query type, the **Related Order** field is revealed.
+   - The order field is populated with orders tied to the logged-in user, allowing them to easily select the order they are inquiring about.
+   - This dynamic behavior is controlled by JavaScript, ensuring a smooth user experience.
+
+3. **Form Validation**:
+   - Django’s form validation ensures that all required fields (Name, Email, Query Type, and Message) are filled in before the form is submitted.
+   - Error messages are displayed if any fields are missing or incorrectly filled.
+
+4. **Security**:
+   - The form uses **Django's CSRF token** to prevent cross-site request forgery attacks. The token is included in every form submission to ensure security.
+
+5. **Post-Submission Action**:
+   - Upon successful form submission, the data is sent to the server, and the user is redirected to a success page.
+   - If the form submission fails, an error message is displayed, asking the user to correct the form.
+
+6. **JavaScript Enhancements**:
+   - JavaScript is used to handle the dynamic display of the **Related Order** field.
+   - When the **Query Type** field changes, the **Related Order** field is shown or hidden based on whether the user selected "Order" as their query type.
+   - This improves usability by only showing relevant fields to the user.
+
+7. **Responsiveness**:
+   - The page is fully responsive, adapting to different screen sizes such as mobile, tablet, and desktop. The form layout adjusts accordingly for an optimal user experience across devices.
+
+8. **User Experience**:
+   - The use of Bootstrap classes ensures a visually appealing, clean, and simple form structure.
+   - Clear legends and placeholders guide users through the form, making it intuitive to fill out.
+   - Form buttons are styled to stand out and offer a clear call-to-action (e.g., "Send Message" button).
+
+![Contact - query](/docs/images/contact-query.png)
+
+### Thank You Page Features
+
+The **Thank You Page** is displayed after a user successfully submits a contact form. It provides a confirmation message and a button to return to browsing. Below are the key features of this page:
+
+1. **Thank You Message**:
+   - A personalized thank you message is shown to the user, addressing them by their username.
+   - The message confirms that their query has been received and informs them that the support team will respond within 3 working days.
+   - The tone of the message is polite and expresses gratitude for the user's patience.
+
+2. **Centered Button for Easy Navigation**:
+   - A large, **"Keep Browsing"** button is displayed centrally on the page to encourage users to continue browsing products.
+   - The button is styled with Bootstrap classes and has a green background with bold, uppercase text for visibility.
+   - The button contains an icon (a left-facing chevron) and text encouraging the user to explore more products.
+   - Clicking the button redirects users to the **Products** page.
+
+3. **Responsive Design**:
+   - The layout is fully responsive, ensuring that the thank you message and the button look good on all screen sizes, from mobile devices to large desktops.
+   - The page uses Bootstrap's grid system to center the text and button across different screen sizes.
+
+4. **User-Friendly Layout**:
+   - The page is designed to be simple and minimalistic. The confirmation text is large and easy to read.
+   - The button is prominent, guiding the user intuitively to the next action (browsing products).
+
+![Contact - success](/docs/images/contact-success.PNG)
