@@ -1228,3 +1228,27 @@ The **User Wishlist** feature allows logged-in users to save and manage a person
 **Mobile** :
 
 ![Wishlist - mobile](/docs/images/wishlist-mobile.PNG)
+
+## Technologies used :
+
+- [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+- [JavaScript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript)
+- [Python](https://developer.mozilla.org/en-US/docs/Glossary/Python)
+- [PostgreSQL](https://www.postgresql.org/docs/)
+- [Jest](https://jestjs.io/)
+- [jQuery](https://jquery.com/)
+- [Gitpod](https://www.gitpod.io/)
+- [Github](https://github.com/)
+- [Git](https://git-scm.com/)
+- [Bootstrap](https://getbootstrap.com/)
+- [Bulma](https://bulma.io/)
+- [FontAwsome](https://fontawesome.com/)
+- [Balsamiq](https://balsamiq.com/wireframes/?gad_source=1&gclid=Cj0KCQiAy9msBhD0ARIsANbk0A_UrgDIhg_KSUHNCOUn-D9DiHl_9Z1dwScGRuI4JET1bnKbQkqwSb8aArFqEALw_wcB)
+- [Google Fonts](https://fonts.google.com/)
+- [QuillBot](https://quillbot.com/)
+- [Google Developer Tools](https://developer.chrome.com/docs/devtools/)
+- [Responsive Viewer](https://chromewebstore.google.com/detail/responsive-viewer/inmopeiepgfljkpkidclfgbgbmfcennb?hl=en)
+- [Django](https://www.djangoproject.com/)
+- [Stripe](https://stripe.com/gb)
+- [AWS](https://aws.amazon.com/?nc2=h_lg)
