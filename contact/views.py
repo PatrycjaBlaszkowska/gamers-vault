@@ -64,7 +64,7 @@ def contact(request):
                 f"Query Type: {query_type}\n"
                 f"Message:\n{message}\n\n"
                 "Best regards,\n"
-                "The Support Team"
+                "The Gamer's Vault Support Team"
             )
             send_mail(subject_user, message_user, admin_email, [user_email])
 

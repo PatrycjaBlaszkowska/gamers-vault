@@ -1116,3 +1116,115 @@ The **Thank You Page** is displayed after a user successfully submits a contact 
    - The button is prominent, guiding the user intuitively to the next action (browsing products).
 
 ![Contact - success](/docs/images/contact-success.PNG)
+
+<hr>
+
+#### User profile features
+
+1. Profile Management
+
+   **Description:**  
+   Users can view and update their default delivery information directly from their profile page. This section enhances the user experience by allowing them to maintain up-to-date delivery details, ensuring smooth and accurate deliveries for future orders.
+
+   - **Form:**  
+   A form is provided for users to edit their delivery information. It is designed to be clean and responsive for easy use.
+   
+   - **Form Submission:**  
+   Users can submit their updated information securely via a POST request, ensuring their data is updated in the system.
+   
+   - **Security:**  
+   The form is protected with CSRF tokens to prevent cross-site request forgery, adding an extra layer of security.
+
+   ![Profile management](/docs/images/user-info.png)
+
+2. Order History
+
+   **Description:**  
+   Users can view a detailed history of all their previous orders in the Order History section. Each order includes important details such as the order number, date, the items ordered, and the total amount.
+
+   - **Table Display:**  
+   A responsive table is used to display key order information, including the order number, date, items purchased, and grand total.
+   
+   - **Order Details:**  
+   Each order number is clickable, allowing users to view a detailed breakdown of each order on a separate page. The order number is shortened for presentation but remains accessible for further details.
+   
+   - **Items List:**  
+   For each order, there is a detailed list showing the products purchased, including product names and quantities.
+
+   ![Profile management](/docs/images/order-history.png)
+
+3. Responsive Design
+
+   **Description:**  
+   Both the profile and order history sections are fully responsive, ensuring optimal viewing across all devices, from desktops to mobile phones.
+
+   - **Responsive Elements:**  
+   Forms, buttons, and tables adapt seamlessly to different screen sizes, providing an intuitive and user-friendly experience.
+   
+   - **Table Responsiveness:**  
+   The order history table adjusts for smaller screens, allowing horizontal scrolling if necessary, which prevents overflow issues on mobile devices.
+
+   **Desktop** :
+
+   ![My profile - desktop](/docs/images/my-profile-desktop.png)
+
+   **Mobile** :
+
+   ![My profile - mobile](/docs/images/my-profile-mobile.png)
+
+4. User Authentication
+
+   **Description:**  
+   The profile page and its features are available only to authenticated users. This ensures that sensitive information, such as order history and delivery details, is accessible only to logged-in users, protecting their privacy and data security.
+
+<hr>
+
+### User Authentication (Login & Registration) with Django Allauth
+
+The login and registration features in this project are powered by django-allauth, a robust and fully-featured authentication library for Django. This integration provides the following key functionalities:
+
+- Login: Users can securely log in using their email and password or other supported authentication methods. Django Allauth simplifies the authentication flow by managing session tokens and handling login attempts, including form validation and error handling.
+
+- Registration: New users can create an account via a registration form that includes email validation and optional username input. Django Allauth also supports email verification flows to ensure the authenticity of the user's email.
+
+- Account Management: Allauth provides built-in views and forms for users to manage their profiles, reset passwords, and update their account details.
+
+**Login** :
+
+![Login](/docs/images/login.PNG)
+
+**Register** :
+
+![Register](/docs/images/register.PNG)
+
+<hr>
+
+### User Wishlist
+
+Description:
+
+The **User Wishlist** feature allows logged-in users to save and manage a personalized list of their favorite products. This wishlist can be accessed at any time, making it easy for users to track products they are interested in purchasing later. The wishlist functionality is implemented on both the product pages and the wishlist page, offering a seamless experience across the site.
+
+- Key Functionality:
+
+   - Wishlist Display: The wishlist is displayed in a grid format, showcasing product images, names, prices, and categories. If a product has ratings, the average rating is shown; otherwise, a "No Rating" message is displayed.
+
+   - Product Details: Each product in the wishlist links to its respective product detail page, allowing users to view more information or purchase the item.
+
+   - Wishlist Toggle: Users can easily add or remove products from their wishlist by clicking the heart icon next to each product. A filled heart indicates the product is already in the wishlist, while an empty heart allows users to add the item.
+
+   - Admin Controls: For superusers, additional options appear on the wishlist, including links to edit or delete the product directly from the admin interface.
+
+   - Wishlist Timestamp: Each product added to the wishlist includes a timestamp showing the date it was added.
+
+   - Empty Wishlist: If the user’s wishlist is empty, a message is displayed encouraging the user to continue browsing products, with a button leading to the main product catalog.
+
+   - Back to Top Button: A floating "Back to Top" button is available for easy navigation back to the top of the page.
+
+**Desktop** :
+
+![Wishlist - desktop](/docs/images/wishlist-desktop.PNG)
+
+**Mobile** :
+
+![Wishlist - mobile](/docs/images/wishlist-mobile.PNG)
