@@ -241,15 +241,9 @@ def checkout_success(request, order_number):
     # Prepare the plain text email confirmation
     subject = f"Order Confirmation - {order_number}"
     body = (
+        f"Hi {order.full_name},\n"
         f"Thank you for your order!\n"
         f"Order Number: {order_number}\n"
-        f"Email: {order.email}\n"
-        f"Delivery Address:\n"
-        f"{order.full_name}\n"
-        f"{order.street_address1}\n"
-        f"{order.street_address2}\n"
-        f"{order.town_or_city}, {order.postcode}\n"
-        f"{order.country}\n\n"
         f"Order Details:\n"
     )
 
@@ -258,7 +252,7 @@ def checkout_success(request, order_number):
         body += f"- {item.product.name}: {item.quantity} x £{item.lineitem_total:.2f}\n"  # Changed price to lineitem_total
 
     body += f"\nTotal: £{order.grand_total:.2f}\n\n"  # Use grand_total for total amount
-    body += "If you have any questions, please contact us at " + settings.DEFAULT_FROM_EMAIL + ".\n"
+    body += "If you have any questions, please contact us at gamers-vault@gmail.com.\n"
 
     # Send the email
     send_mail(
