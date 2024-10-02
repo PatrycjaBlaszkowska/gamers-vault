@@ -3,6 +3,8 @@ from django.shortcuts import (
 )
 from django.views.decorators.http import require_POST
 from django.contrib import messages
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
 from django.conf import settings
 
 import stripe
@@ -34,6 +36,7 @@ def cache_checkout_data(request):
 
 
 def checkout(request):
+
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
  
@@ -209,18 +212,18 @@ def checkout(request):
 
 def checkout_success(request, order_number):
     """
-    Handle successful checkouts
+    Handle successful checkouts and send confirmation email
     """
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
 
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
-        #Attach the user's profile to the order
+        # Attach the user's profile to the order
         order.user_profile = profile
         order.save()
 
-        #Save the user's info
+        # Save the user's info
         if save_info:
             profile_data = {
                 'default_full_name': order.full_name,
@@ -236,6 +239,24 @@ def checkout_success(request, order_number):
             if user_profile_form.is_valid():
                 user_profile_form.save()
 
+    # Email confirmation logic
+    subject = f"Order Confirmation - {order_number}"
+    # Render the email message using a template
+    body = render_to_string('checkout/checkout_success.html', {
+        'order': order,
+        'contact_email': settings.DEFAULT_FROM_EMAIL
+    })
+
+    # Send the email
+    send_mail(
+        subject,
+        body,
+        settings.DEFAULT_FROM_EMAIL,
+        [order.email],  # Send to the order's email
+        fail_silently=False,
+    )
+
+    # Show a success message
     messages.success(request, f'Order successfully processed! \
         Your order number is {order_number}. A confirmation \
         email will be sent to {order.email}.')
