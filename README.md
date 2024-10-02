@@ -1656,3 +1656,27 @@ The **User Wishlist** feature allows logged-in users to save and manage a person
 - Laptop
 - Lenovo Tab M10 Plus
 - Iphone
+
+### Chrome Dev Tools :
+
+- Iphone SE
+- Iphone XR
+- Iphone 12 Pro
+- Iphone 14 Pro Max
+- Pixel 7
+- Pixel 2
+- Samsung Galaxy S8+
+- Samsung Galaxy S20 Ultra
+- Samsung Galaxy Note20
+- iPad Mini
+- iPad Air
+- iPad Pro
+- Surface Pro 7
+- Surface Duo
+- Galaxy Fold
+- Asus Zenbook Fold
+- Samsung Galaxy A51/71
+- Nest Hub
+- Nest Hub Max
+- Fire HD 10
+- Pixelbook Go

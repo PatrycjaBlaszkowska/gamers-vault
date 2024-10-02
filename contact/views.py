@@ -51,7 +51,7 @@ def contact(request):
                 f"Message:\n{message}\n\n"
                 f"User Email: {user_email}"
             )
-            admin_email = 'gamers-vault@gmail.com'
+            admin_email = settings.DEFAULT_FROM_EMAIL
             send_mail(subject_admin, message_admin, admin_email, [admin_email])
 
             # Send confirmation email to the user
@@ -66,7 +66,7 @@ def contact(request):
                 "Best regards,\n"
                 "The Gamer's Vault Support Team"
             )
-            send_mail(subject_user, message_user, admin_email, [user_email])
+            send_mail(subject_user, message_user, 'gamers-vault@gmail.com', [user_email])
 
             # Redirect to a success page
             return redirect('contact_success')
