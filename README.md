@@ -1179,6 +1179,66 @@ The **Thank You Page** is displayed after a user successfully submits a contact 
 
 <hr>
 
+#### User profile features
+
+1. Profile Management
+
+   **Description:**  
+   Users can view and update their default delivery information directly from their profile page. This section enhances the user experience by allowing them to maintain up-to-date delivery details, ensuring smooth and accurate deliveries for future orders.
+
+   - **Form:**  
+   A form is provided for users to edit their delivery information. It is designed to be clean and responsive for easy use.
+   
+   - **Form Submission:**  
+   Users can submit their updated information securely via a POST request, ensuring their data is updated in the system.
+   
+   - **Security:**  
+   The form is protected with CSRF tokens to prevent cross-site request forgery, adding an extra layer of security.
+
+   ![Profile management](/docs/images/user-info.png)
+
+2. Order History
+
+   **Description:**  
+   Users can view a detailed history of all their previous orders in the Order History section. Each order includes important details such as the order number, date, the items ordered, and the total amount.
+
+   - **Table Display:**  
+   A responsive table is used to display key order information, including the order number, date, items purchased, and grand total.
+   
+   - **Order Details:**  
+   Each order number is clickable, allowing users to view a detailed breakdown of each order on a separate page. The order number is shortened for presentation but remains accessible for further details.
+   
+   - **Items List:**  
+   For each order, there is a detailed list showing the products purchased, including product names and quantities.
+
+   ![Profile management](/docs/images/order-history.png)
+
+3. Responsive Design
+
+   **Description:**  
+   Both the profile and order history sections are fully responsive, ensuring optimal viewing across all devices, from desktops to mobile phones.
+
+   - **Responsive Elements:**  
+   Forms, buttons, and tables adapt seamlessly to different screen sizes, providing an intuitive and user-friendly experience.
+   
+   - **Table Responsiveness:**  
+   The order history table adjusts for smaller screens, allowing horizontal scrolling if necessary, which prevents overflow issues on mobile devices.
+
+   **Desktop** :
+
+   ![My profile - desktop](/docs/images/my-profile-desktop.png)
+
+   **Mobile** :
+
+   ![My profile - mobile](/docs/images/my-profile-mobile.png)
+
+4. User Authentication
+
+   **Description:**  
+   The profile page and its features are available only to authenticated users. This ensures that sensitive information, such as order history and delivery details, is accessible only to logged-in users, protecting their privacy and data security.
+
+<hr>
+
 ### User Authentication (Login & Registration) with Django Allauth
 
 The login and registration features in this project are powered by django-allauth, a robust and fully-featured authentication library for Django. This integration provides the following key functionalities:
@@ -1252,3 +1312,336 @@ The **User Wishlist** feature allows logged-in users to save and manage a person
 - [Django](https://www.djangoproject.com/)
 - [Stripe](https://stripe.com/gb)
 - [AWS](https://aws.amazon.com/?nc2=h_lg)
+
+# Testing 
+
+### User stories :
+
+[User stories testing](/docs/testing/testing.md)
+
+### Manual testing
+
+#### **Navigation Bar:**
+
+-   **Responsiveness:**
+
+    -   The navigation bar is fully responsive across all devices and resolutions.
+    -   On mobile devices, the navigation bar seamlessly transitions to a hamburger menu.
+    -   All links in the navigation bar are functioning correctly and redirecting as expected.
+
+-   **Dropdown Menus:**
+
+    -   Dropdown menus for product categories (Mice, Keyboards, Headsets) are displaying relevant subcategories dynamically.
+    -   All links within the dropdown menus are working as intended.
+
+-   **User Options Dropdown:**
+
+    -   **Authenticated Users:**
+        -   Options for logged-in users (Product Management, My Profile, My Wishlist, Logout) are visible and functioning as expected.
+
+    -   **Guests:**
+        -   Guest users can see and use options for Register and Login.
+
+<hr>
+
+#### **Search Bar:**
+
+-   **Search Functionality:**
+    -   The search bar allows users to input keywords and provides relevant results in real time.
+    -   The search functionality effectively scans both item names and descriptions, displaying accurate results as users type.
+
+<hr>
+
+#### **Footer:**
+
+-   The footer is fully responsive across all devices and resolutions.
+-   All links in the footer are functioning correctly and redirecting to the intended pages.
+-   Social media links open in a new tab as expected, allowing uninterrupted browsing.
+
+<hr>
+
+#### **Hero Image:**
+
+-   The hero image is displayed prominently on the home page, capturing user attention effectively.
+-   The overlay banner with "Advanced Gaming Gear" and the "Shop Now" button is functioning correctly, linking to the appropriate page.
+
+<hr>
+
+#### **Introduction Section:**
+
+-   **Info Section:**
+
+    -   The Info Section provides a comprehensive overview of Gamer's Vault and is displayed correctly on all devices.
+
+-   **Bestsellers:**
+
+    -   The Bestsellers section showcases the selected popular gaming products, with images and descriptions displaying as intended.
+
+-   **What Customers Say:**
+
+    -   Customer testimonials are displayed accurately, reflecting positive experiences and building credibility for the platform.
+
+<hr>
+
+#### **Toasts:**
+
+-   **Toast Notifications:**
+    -   **Success Toast:** Displays confirmation of successful actions (e.g., adding items to the cart) as expected.
+    -   **Error Toast:** Correctly notifies users of any issues during operations.
+    -   **Info Toast:** Provides general information effectively.
+    -   **Custom Toast:** Displays a summary of shopping bag contents accurately.
+
+<hr>
+
+#### **Shopping Bag:**
+
+-   **Empty State:**
+
+    -   When the shopping bag is empty, a message stating "Your bag is empty" is displayed, along with a "Keep Shopping" button.
+
+-   **Actions:**
+
+    -   Users can successfully update item quantities and remove items from the bag.
+    -   The "Continue Shopping" button returns users to the product browsing area.
+    -   The "Secure Checkout" button proceeds to the checkout page successfully.
+
+<hr>
+
+#### **Dynamic Product Listing:**
+
+-   **Search Results Indicator:**
+    -   The product list updates dynamically when users search or apply filters, displaying the correct number of products found.
+    -   The message accurately reflects the search term used, e.g., "5 Products found for 'gaming keyboard.'"
+
+-   **'Products Home' Link:**
+    -   The "Products Home" link appears correctly when filters or search terms are applied, and it successfully resets all filters upon clicking.
+
+<hr>
+
+#### **Product Sorting Functionality:**
+
+-   **Sorting Options:**
+    -   Users can sort products by price (low to high and high to low), rating, name (A-Z and Z-A), and category.
+    -   The sorting selector highlights the active sorting method and displays "Sort by..." when no sorting is applied.
+    -   Border color changes to blue when sorting is applied, confirming the user's selection.
+
+<hr>
+
+#### **Responsive Product Grid with Dynamic Dividers:**
+
+-   **Grid Layout:**
+
+    -   The product grid adapts correctly to various screen sizes, displaying the appropriate number of products per row based on device type.
+    -   Dividers are inserted correctly after the specified number of products, maintaining a clear visual separation.
+
+-   **Product Card Features:**
+
+    -   Each product card displays the product image, name, price, category link, rating, and wishlist icon accurately.
+    -   Admin actions (edit/delete) are visible and functional for admin users.
+
+<hr>
+
+#### **Product Detail Page:**
+
+-   **Product Display Section:**
+
+    -   The product image, name, and price are displayed prominently and correctly.
+    -   Category links function as intended, redirecting users to the appropriate category page.
+
+-   **Product Interaction Section:**
+
+    -   Users can toggle the wishlist icon successfully, with visual feedback indicating whether the product is in the wishlist.
+    -   Admin users see options to edit or delete products as intended.
+    -   Quantity selection and "Add to Bag" functionality work correctly, with proper CSRF protection in place.
+
+-   **Navigation Links:**
+
+    -   The "Keep Shopping" button redirects users back to the product listings page successfully.
+
+<hr>
+
+#### **Customer Reviews Section:**
+
+-   **Review Display:**
+
+    -   Existing reviews display correctly, showing the review title, content, star rating, username, and review date.
+    -   Edit and Delete buttons are visible only to the reviewer, allowing them to manage their own reviews.
+
+-   **Add a Review:**
+
+    -   Authenticated users can submit a new review using the review form.
+    -   Non-authenticated users see a prompt to log in before submitting a review.
+
+-   **Review Form Protection:**
+
+    -   The form correctly implements CSRF tokens for security.
+
+<hr>
+
+#### **Checkout Page Features:**
+
+-   **Order Summary Section:**
+
+    -   The order summary displays product images, names, and quantities accurately, along with subtotals, total costs, delivery charges, and the grand total.
+
+-   **User Details Form:**
+
+    -   The form collects user information effectively, with fields validated and styled correctly.
+    -   The "Save delivery information" option is visible for authenticated users.
+
+-   **Delivery Information Form:**
+
+    -   The delivery information fields collect all necessary details for order fulfillment.
+    -   The saving option for authenticated users functions as expected.
+
+-   **Payment Section:**
+
+    -   The Stripe integration works correctly, allowing users to input their card details securely.
+    -   Error handling for payment issues is in place, providing feedback if any problems occur during payment processing.
+
+-   **Submit Buttons:**
+
+    -   The "Complete Order" button submits the checkout form as intended.
+    -   The "Adjust Bag" button redirects users back to their shopping bag correctly.
+    
+-   **Loading Overlay:**
+
+    -   The loading overlay displays while the payment is processed, preventing multiple submissions and providing user feedback.
+
+<hr>
+
+#### **Order Confirmation Page**
+
+-   **Thank You Message:**
+
+    -   A welcoming message correctly displays at the top, thanking the customer for their order.
+    -   Confirmation email notification is included, reassuring users it will be sent to their provided email address.
+-   **Order Information:**
+
+    -   Displays the Order Number accurately for customer reference.
+    -   The Order Date shows the correct date when the order was placed.
+-   **Order Line Items:**
+
+    -   Lists all purchased products, showing product name, quantity, and price per unit correctly.
+    -   Ensures that customers can easily review their orders.
+-   **Delivery Information:**
+
+    -   The "Delivering To" section accurately outlines the delivery address details, including full name, address, county, town or city, postal code, country, and phone number.
+    -   Allows users to verify their delivery information post-purchase.
+-   **Billing Information:**
+
+    -   A summary of the financial breakdown is displayed, including the Order Total, Delivery Cost, and Grand Total, providing clarity on costs.
+-   **Navigation Buttons:**
+
+    -   "Back to Profile" button works correctly for users who navigated from their profile.
+    -   "Back to Shopping" button is functional for users who did not navigate from their profile.
+-   **Mobile and Desktop Responsive Design:**
+
+    -   The page is fully responsive, adapting to different screen sizes for optimal viewing experiences.
+-   **Data-Driven Content:**
+
+    -   The page dynamically populates content using the customer's order data, ensuring accuracy and relevance.
+
+<hr>
+
+#### **Contact Us Page**
+
+-   **Form Layout and Fields:**
+
+    -   The form includes Name, Email, Query Type, and Message fields, styled with Bootstrap and Django Crispy Forms for a professional appearance.
+-   **Related Order Field:**
+
+    -   This field appears dynamically based on the Query Type selection for authenticated users, populated with relevant orders.
+-   **Form Validation:**
+
+    -   Django's form validation ensures all required fields are filled, with error messages displayed for any missing or incorrectly filled fields.
+-   **Security:**
+
+    -   CSRF tokens are used to prevent cross-site request forgery, ensuring secure form submissions.
+-   **Post-Submission Action:**
+
+    -   Successful submissions redirect to a success page; errors prompt users to correct the form.
+-   **JavaScript Enhancements:**
+
+    -   JavaScript manages the dynamic display of the Related Order field based on user input.
+-   **Responsiveness:**
+
+    -   The page is fully responsive, adapting layout and design for all device sizes.
+-   **User Experience:**
+
+    -   Clear legends and placeholders guide users through the form, enhancing usability.
+
+<hr>
+
+#### **Thank You Page**
+
+-   **Thank You Message:**
+
+    -   A personalized message addresses the user by their username and confirms receipt of their query.
+-   **Centered Button for Easy Navigation:**
+
+    -   A prominent "Keep Browsing" button is displayed, redirecting users to the Products page.
+-   **Responsive Design:**
+
+    -   The layout is responsive, ensuring the thank you message and button are visually appealing across devices.
+-   **User-Friendly Layout:**
+
+    -   The simple, minimalistic design focuses on clarity and ease of navigation.
+
+<hr>
+
+#### **User Profile Features**
+
+1.  **Profile Management:**
+
+    -   Users can view and update their delivery information, with a secure form submission process and CSRF protection.
+2.  **Order History:**
+
+    -   A responsive table displays detailed order history, including order number, date, items purchased, and grand total.
+    -   Each order number is clickable for further details.
+3.  **Responsive Design:**
+
+    -   Profile and order history sections are fully responsive, adjusting seamlessly for different screen sizes.
+4.  **User Authentication:**
+
+    -   Features are only accessible to authenticated users, ensuring privacy and security for sensitive information.
+
+<hr>
+
+#### **User Authentication (Login & Registration) with Django Allauth**
+
+-   **Login:**
+
+    -   Secure login functionality is provided, managing session tokens and handling error validations.
+-   **Registration:**
+
+    -   New users can register with email validation and optional username input, including email verification.
+-   **Account Management:**
+
+    -   Built-in views for managing profiles, resetting passwords, and updating account details are available.
+
+<hr>
+
+#### **User Wishlist**
+
+-   **Key Functionality:**
+
+    -   Displays a personalized wishlist in a grid format with product images, names, prices, and ratings.
+-   **Product Details:**
+
+    -   Each product links to its detail page for further information.
+-   **Wishlist Toggle:**
+
+    -   Users can add/remove products easily with visual feedback.
+-   **Admin Controls:**
+
+    -   Superusers can edit/delete products directly from the wishlist.
+-   **Wishlist Timestamp:**
+
+    -   Each product in the wishlist includes the date it was added.
+-   **Empty Wishlist Message:**
+
+    -   Displays a message encouraging users to continue browsing when the wishlist is empty.
+-   **Back to Top Button:**
+
+    -   A floating button facilitates easy navigation back to the top of the page.
