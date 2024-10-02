@@ -1645,3 +1645,14 @@ The **User Wishlist** feature allows logged-in users to save and manage a person
 -   **Back to Top Button:**
 
     -   A floating button facilitates easy navigation back to the top of the page.
+
+### Test Cases 
+
+[Test cases](/docs/testing/test-cases.md)
+
+### Devices used during testing :
+
+- Desktop PC
+- Laptop
+- Lenovo Tab M10 Plus
+- Iphone
