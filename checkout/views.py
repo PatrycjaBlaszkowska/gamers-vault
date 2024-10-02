@@ -258,7 +258,7 @@ def checkout_success(request, order_number):
     send_mail(
         subject,
         body,
-        settings.DEFAULT_FROM_EMAIL,
+       'gamers-vault@gmail.com',
         [order.email],  # Send to the order's email
         fail_silently=False,
     )
