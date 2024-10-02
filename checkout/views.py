@@ -212,18 +212,17 @@ def checkout(request):
 
 def checkout_success(request, order_number):
     """
-    Handle successful checkouts and send confirmation email
+    Handle successful checkouts and send confirmation email.
     """
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
 
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
-        # Attach the user's profile to the order
         order.user_profile = profile
         order.save()
 
-        # Save the user's info
+        # Save user info if necessary
         if save_info:
             profile_data = {
                 'default_full_name': order.full_name,
@@ -239,13 +238,27 @@ def checkout_success(request, order_number):
             if user_profile_form.is_valid():
                 user_profile_form.save()
 
-    # Email confirmation logic
+    # Prepare the plain text email confirmation
     subject = f"Order Confirmation - {order_number}"
-    # Render the email message using a template
-    body = render_to_string('checkout/confirmation_email.html', {
-        'order': order,
-        'contact_email': settings.DEFAULT_FROM_EMAIL,
-    })
+    body = (
+        f"Thank you for your order!\n"
+        f"Order Number: {order_number}\n"
+        f"Email: {order.email}\n"
+        f"Delivery Address:\n"
+        f"{order.full_name}\n"
+        f"{order.street_address1}\n"
+        f"{order.street_address2}\n"
+        f"{order.town_or_city}, {order.postcode}\n"
+        f"{order.country}\n\n"
+        f"Order Details:\n"
+    )
+
+    # Loop through line items to include in the email
+    for item in order.lineitems.all():  # Use 'lineitems' to access related items
+        body += f"- {item.product.name}: {item.quantity} x £{item.lineitem_total:.2f}\n"  # Changed price to lineitem_total
+
+    body += f"\nTotal: £{order.grand_total:.2f}\n\n"  # Use grand_total for total amount
+    body += "If you have any questions, please contact us at " + settings.DEFAULT_FROM_EMAIL + ".\n"
 
     # Send the email
     send_mail(
@@ -257,10 +270,9 @@ def checkout_success(request, order_number):
     )
 
     # Show a success message
-    messages.success(request, f'Order successfully processed! \
-        Your order number is {order_number}. A confirmation \
-        email will be sent to {order.email}.')
+    messages.success(request, f'Order successfully processed! Your order number is {order_number}. A confirmation email will be sent to {order.email}.')
 
+    # Clear the shopping bag session if it exists
     if 'bag' in request.session:
         del request.session['bag']
 
