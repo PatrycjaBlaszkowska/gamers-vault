@@ -242,9 +242,9 @@ def checkout_success(request, order_number):
     # Email confirmation logic
     subject = f"Order Confirmation - {order_number}"
     # Render the email message using a template
-    body = render_to_string('checkout/checkout_success.html', {
+    body = render_to_string('checkout/confirmation_email.html', {
         'order': order,
-        'contact_email': settings.DEFAULT_FROM_EMAIL
+        'contact_email': settings.DEFAULT_FROM_EMAIL,
     })
 
     # Send the email
