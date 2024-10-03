@@ -51,9 +51,9 @@
             {% endelement %}
         {% endslot %}
         {% slot actions %}
-            {% element button name="action_add" type="submit" %}
+            <button name="action_add" type="submit" class="btn">
                 {% trans "Change Email" %}
-            {% endelement %}
+            <button>
         {% endslot %}
     {% endelement %}
     {% if new_emailaddress %}

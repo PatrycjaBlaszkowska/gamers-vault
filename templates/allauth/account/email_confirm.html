@@ -20,9 +20,9 @@
                 {% slot actions %}
                     {% csrf_token %}
                     {{ redirect_field }}
-                    {% element button type="submit" %}
+                    <button type="submit" class="btn">
                         {% trans 'Confirm' %}
-                    {% endelement %}
+                    </button>
                 {% endslot %}
             {% endelement %}
         {% else %}
