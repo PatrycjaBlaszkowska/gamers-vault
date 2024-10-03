@@ -66,7 +66,7 @@ def contact(request):
                 "Best regards,\n"
                 "The Gamer's Vault Support Team"
             )
-            send_mail(subject_user, message_user, 'gamers-vault@gmail.com', [user_email])
+            send_mail(subject_user, message_user, admin_email, [user_email])
 
             # Redirect to a success page
             return redirect('contact_success')

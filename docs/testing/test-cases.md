@@ -136,7 +136,16 @@ The user should be redirected to a thank you page, confirming the message was se
 
 ![Thank you page](/docs/images/test-case-8-results-thankyou-page.PNG)
 
+**User's mailbox** :
+
 ![Email confirmation](/docs/images/test-case-8-results-email.png)
+
+
+**Admins's mailbox** :
+
+![Admins's mailbox](/docs/images/contact-confirmation-admin.png)
+
+*The user's email address on the confirmation has not been censored, as this temporary email from [Temp-mail](https://temp-mail.org/en/)*
 
 ## Test Case 9: View Order History
 **Objective:** Ensure users can view their order history after logging in.
