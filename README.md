@@ -1680,3 +1680,8 @@ The **User Wishlist** feature allows logged-in users to save and manage a person
 - Nest Hub Max
 - Fire HD 10
 - Pixelbook Go
+
+![Responsive viewer - results p.1](/docs/images/responsive-viewer-one.PNG)
+![Responsive viewer - results p.2](docs/images/responsive-viewer-two.PNG)
+
+### Validation
