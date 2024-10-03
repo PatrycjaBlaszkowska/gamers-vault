@@ -1685,3 +1685,7 @@ The **User Wishlist** feature allows logged-in users to save and manage a person
 ![Responsive viewer - results p.2](docs/images/responsive-viewer-two.PNG)
 
 ### Validation
+
+[CSS validator](https://jigsaw.w3.org/css-validator/)
+
+![CSS validator results](/docs/images/css-validator.PNG)
