@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block page_header %}
+<!-- Header container -->
 <div class="container header-container">
     <div class="row">
         <div class="col"></div>
@@ -10,10 +11,12 @@
 {% endblock %}
 
 {% block content %}
+<!-- Main container for the thank you message -->
 <div class="container">
     <div class="row">
         <div class="col-12 text-center lead">
             <h2 class="mt-5">Thank you for contacting us {{ request.user.username }}!</h2>
+            <!-- Personalized thank you message displaying the user's name -->
             <p>We shall review your query and respond within 3 working days.</p>
             <p>Thank you for your patience!</p>
         </div>
@@ -24,9 +27,9 @@
         <div class="col-12 text-center">
             <a href="{% url 'products' %}" class="btn btn-lg btn-green text-uppercase font-weight-bold mb-5">
                 <span class="icon">
-                    <i class="fas fa-chevron-left"></i>
+                    <i class="fas fa-chevron-left"></i> <!-- Icon for the button -->
                 </span>
-                <span>Keep Browsing</span>
+                <span>Keep Browsing</span> <!-- Button text -->
             </a>
         </div>
     </div>

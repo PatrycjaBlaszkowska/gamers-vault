@@ -2,83 +2,99 @@
 {% load static %}
 
 {% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
+<!-- Header container to match page styling consistency with a blank row for potential future content -->
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
     </div>
+</div>
 {% endblock %}
 
 {% block content %}
-    <div class="bg-section">
-        <div class="bg-content">
-            <h1 class="display-4 text-uppercase font-weight-bold">Advanced Gaming Gear</h1>
-        </div>
-        <div class="bg-button">
-            <h4>
-                <a href="{% url 'products' %}" class="btn btn-md btn-green text-uppercase py-3 font-weight-bold">Shop Now</a>
-            </h4>
-        </div>
+<!-- Main Hero Section with background and call-to-action -->
+<div class="bg-section">
+    <!-- Title for the homepage hero section, showcasing the store's theme -->
+    <div class="bg-content">
+        <h1 class="display-4 text-uppercase font-weight-bold">Advanced Gaming Gear</h1>
     </div>
-    <div class="info-section text-center my-5 p-0 p-md-0 p-3">
-        <h2 class="text-uppercase font-weight-bold pb-3">Welcome to Gamer's Vault</h2>
-        <p class="lead">Your one-stop shop for the latest and greatest in gaming keyboards, mice, and headsets.<br> 
-            Whether you're a casual gamer or a pro, we've got you covered with top-notch gear designed to elevate your gaming experience.
-        </p>
-        <p class="lead">
-            Founded by gaming enthusiasts, for gaming enthusiasts. Our mission is to deliver top-tier gaming equipment and accessories that cater to all gamers, from beginners to pros.<br> 
-            Join our community and gear up with the best in the industry!
-        </p>
+    <!-- Shop Now button directing users to the products page -->
+    <div class="bg-button">
+        <h4>
+            <a href="{% url 'products' %}" class="btn btn-md btn-green text-uppercase py-3 font-weight-bold">Shop Now</a>
+        </h4>
     </div>
-    <hr>
-    <div class="bestsellers-section text-center my-5 p-0 p-md-0 p-3">
-        <h2 class="text-uppercase font-weight-bold">Explore Our Bestsellers</h2>
-        <p>Discover our top-rated gaming gear, from RGB keyboards to noise-cancelling headsets, designed to give you the edge in every game.</p>
-        <div class="row">
-            <div class="col-md-4 d-flex flex-column align-items-center justify-content-center">
-                <img src="{% static 'images/bestsellers-keyboard.jpg' %}" alt="Razer BlackWidow V4" class="mb-3">
-                <a href="{% url 'products' %}?subcategory=Mechanical&category=Keyboards" class="text-white text-decoration-none">
-                    <h5>Mechanical Keyboards</h5>
-                </a>
-            </div>
-            <div class="col-md-4 d-flex flex-column align-items-center justify-content-center">
-                <img src="{% static 'images/bestsellers-mouse.jpg' %}" alt="Logitech G G502 X PLUS" class="mb-3">
-                <a href="{% url 'products' %}?subcategory=Wireless&category=Mice" class="text-white text-decoration-none mt-3"> 
-                    <h5>Precision Mice</h5>
-                </a>    
-            </div>
-            <div class="col-md-4 d-flex flex-column align-items-center justify-content-center">
-                <img src="{% static 'images/bestsellers-headset.jpg' %}" alt="Razer BlackShark V2" class="mb-3">
-                <a href="{% url 'products' %}?subcategory=Wireless&category=Headsets" class="text-white text-decoration-none mt-3">
-                    <h5>Immersive Headsets</h5>
-                </a>    
-            </div>
-        </div>
-    </div>
-    <hr>
-    <div class="qoute-section text-center my-5 p-0 -md-0 p-3">
-        <h2 class="text-uppercase font-weight-bold pb-3">What Our Customers Say</h2>
-        <blockquote class="blockquote quote-right">
-            <p class="mb-0"><i class="fa-solid fa-quote-left"></i> Gamer's Vault has the best selection of gaming gear. The quality and service are unmatched! <i class="fa-solid fa-quote-right"></i></p>
-            <footer class="blockquote-footer">John Doe, Pro Gamer</footer>
-        </blockquote>
-        <hr class="hr-half-right">
-        <blockquote class="blockquote quote-left">
-            <p class="mb-0"><i class="fa-solid fa-quote-right"></i> The customer support team at Gamer's Vault is fantastic! They helped me pick the perfect setup for my needs. <i class="fa-solid fa-quote-right"></i></p>
-            <footer class="blockquote-footer">Jane Smith, Casual Gamer</footer>
-        </blockquote>
-        <hr class="hr-half-left">
-        <blockquote class="blockquote quote-right">
-            <p class="mb-0"><i class="fa-solid fa-quote-left"></i> I love the exclusive deals at Gamer's Vault. Their prices and product range are unbeatable! <i class="fa-solid fa-quote-right"></i></p>
-            <footer class="blockquote-footer">Alex Johnson, Streamer</footer>
-        </blockquote>
-        <hr class="hr-half-right">
-        <blockquote class="blockquote quote-left">
-            <p class="mb-0"><i class="fa-solid fa-quote-left"></i> Fast shipping and top-notch products! I always recommend Gamer's Vault to my fellow gamers. <i class="fa-solid fa-quote-right"></i></p>
-            <footer class="blockquote-footer">Chris Lee, eSports Coach</footer>
-        </blockquote>
-        <hr class="hr-half-left">    
-    </div>
-    
-{% endblock %}
+</div>
 
+<!-- Introduction section describing the store's purpose and mission -->
+<div class="info-section text-center my-5 p-0 p-md-0 p-3">
+    <h2 class="text-uppercase font-weight-bold pb-3">Welcome to Gamer's Vault</h2>
+    <p class="lead">Your one-stop shop for the latest and greatest in gaming keyboards, mice, and headsets.<br> 
+        Whether you're a casual gamer or a pro, we've got you covered with top-notch gear designed to elevate your gaming experience.
+    </p>
+    <p class="lead">
+        Founded by gaming enthusiasts, for gaming enthusiasts. Our mission is to deliver top-tier gaming equipment and accessories that cater to all gamers, from beginners to pros.<br> 
+        Join our community and gear up with the best in the industry!
+    </p>
+</div>
+<hr>
+
+<!-- Bestsellers Section showcasing popular products with links to respective categories -->
+<div class="bestsellers-section text-center my-5 p-0 p-md-0 p-3">
+    <h2 class="text-uppercase font-weight-bold">Explore Our Bestsellers</h2>
+    <p>Discover our top-rated gaming gear, from RGB keyboards to noise-cancelling headsets, designed to give you the edge in every game.</p>
+    <div class="row">
+        <!-- Bestseller #1: Keyboards -->
+        <div class="col-md-4 d-flex flex-column align-items-center justify-content-center">
+            <img src="{% static 'images/bestsellers-keyboard.jpg' %}" alt="Razer BlackWidow V4" class="mb-3">
+            <a href="{% url 'products' %}?subcategory=Mechanical&category=Keyboards" class="text-white text-decoration-none">
+                <h5>Mechanical Keyboards</h5>
+            </a>
+        </div>
+        <!-- Bestseller #2: Mice -->
+        <div class="col-md-4 d-flex flex-column align-items-center justify-content-center">
+            <img src="{% static 'images/bestsellers-mouse.jpg' %}" alt="Logitech G G502 X PLUS" class="mb-3">
+            <a href="{% url 'products' %}?subcategory=Wireless&category=Mice" class="text-white text-decoration-none mt-3"> 
+                <h5>Precision Mice</h5>
+            </a>    
+        </div>
+        <!-- Bestseller #3: Headsets -->
+        <div class="col-md-4 d-flex flex-column align-items-center justify-content-center">
+            <img src="{% static 'images/bestsellers-headset.jpg' %}" alt="Razer BlackShark V2" class="mb-3">
+            <a href="{% url 'products' %}?subcategory=Wireless&category=Headsets" class="text-white text-decoration-none mt-3">
+                <h5>Immersive Headsets</h5>
+            </a>    
+        </div>
+    </div>
+</div>
+<hr>
+
+<!-- Customer Quotes Section, highlighting testimonials with alternating alignment for styling -->
+<div class="qoute-section text-center my-5 p-0 -md-0 p-3">
+    <h2 class="text-uppercase font-weight-bold pb-3">What Our Customers Say</h2>
+    <!-- Quote #1 -->
+    <blockquote class="blockquote quote-right">
+        <p class="mb-0"><i class="fa-solid fa-quote-left"></i> Gamer's Vault has the best selection of gaming gear. The quality and service are unmatched! <i class="fa-solid fa-quote-right"></i></p>
+        <footer class="blockquote-footer">John Doe, Pro Gamer</footer>
+    </blockquote>
+    <hr class="hr-half-right">
+    <!-- Quote #2 -->
+    <blockquote class="blockquote quote-left">
+        <p class="mb-0"><i class="fa-solid fa-quote-right"></i> The customer support team at Gamer's Vault is fantastic! They helped me pick the perfect setup for my needs. <i class="fa-solid fa-quote-right"></i></p>
+        <footer class="blockquote-footer">Jane Smith, Casual Gamer</footer>
+    </blockquote>
+    <hr class="hr-half-left">
+    <!-- Quote #3 -->
+    <blockquote class="blockquote quote-right">
+        <p class="mb-0"><i class="fa-solid fa-quote-left"></i> I love the exclusive deals at Gamer's Vault. Their prices and product range are unbeatable! <i class="fa-solid fa-quote-right"></i></p>
+        <footer class="blockquote-footer">Alex Johnson, Streamer</footer>
+    </blockquote>
+    <hr class="hr-half-right">
+    <!-- Quote #4 -->
+    <blockquote class="blockquote quote-left">
+        <p class="mb-0"><i class="fa-solid fa-quote-left"></i> Fast shipping and top-notch products! I always recommend Gamer's Vault to my fellow gamers. <i class="fa-solid fa-quote-right"></i></p>
+        <footer class="blockquote-footer">Chris Lee, eSports Coach</footer>
+    </blockquote>
+    <hr class="hr-half-left">    
+</div>
+
+{% endblock %}

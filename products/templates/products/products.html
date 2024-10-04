@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block page_header %}
+    <!-- Header section -->
     <div class="container header-container">
         <div class="row">
             <div class="col"></div>
@@ -10,19 +11,26 @@
 {% endblock %}
 
 {% block content %}
+    <!-- Main Product Page Container -->
     <div class="container-fluid products-container">
+        <!-- Page Header -->
         <div class="row">
             <div class="col text-center mt-4">
                 <h2>Products</h2>
                 <hr class="w-50">
             </div>
         </div>
+
+        <!-- Sorting and Search Results Display -->
         <div class="row">
             <div class="product-container col-10 offset-1">
                 <div class="row mt-1 mb-2">
+                    <!-- Sorting Options Dropdown -->
                     <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
                         <div class="sort-select-wrapper w-50">
+                            <!-- Sorting dropdown with dynamic border color based on current sorting -->
                             <select id="sort-selector" class="custom-select custom-select-sm rounded-0 border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
+                                <!-- Options for different sorting criteria -->
                                 <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
                                 <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
                                 <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)</option>
@@ -35,30 +43,41 @@
                             </select>
                         </div>
                     </div>
+
+                    <!-- Display Search Results and Navigation Links -->
                     <div class="col-12 col-md-6 order-md-first">
                         <p class="text-muted mt-3 text-center text-md-left">
+                            <!-- If a filter is applied, show 'Products Home' link -->
                             {% if search_term or current_categories or current_subcategories or current_sorting != 'None_None' %}
                                 <span class="small"><a href="{% url 'products' %}" class="text-white">Products Home</a> | </span>
                             {% endif %}
+                            <!-- Display number of products and, if applicable, search term -->
                             {{ products|length }} Products{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
                         </p>
                     </div>
                 </div>
+
+                <!-- Product Listing -->
                 <div class="row">
                     {% for product in products %}
+                        <!-- Card for each product with Bootstrap responsive classes -->
                         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-2">
                             <div class="card bg-dark h-100 border-0">
+                                <!-- Product image linking to the product details page -->
                                 <a href="{% url 'product_details' product.id %}">
                                     <img class="card-img-top img-fluid"
                                     src="{{ product.image.url }}" alt="{{ product.name }}">
                                 </a>
+                                <!-- Product name -->
                                 <div class="card-body pb-0">
                                     <a href="{% url 'product_details' product.id %}" class="mb-0 text-white text-decoration-none">{{ product.name }}</a>
                                 </div>
+                                <!-- Product details such as price, category, and ratings -->
                                 <div class="card-footer bg-dark pt-0 border-0 text-left">
                                     <div class="row">
                                         <div class="col">
                                             <p class="lead mb-0 text-left font-weight-bold">£{{ product.price }}</p>
+                                            <!-- Category Link -->
                                             {% if product.category %}
                                             <p class="small mt-1 mb-0">
                                                 <a class="text-muted" href="{% url 'products' %}?category={{ product.category.name }}">
@@ -66,6 +85,7 @@
                                                 </a>
                                             </p>
                                             {% endif %}
+                                            <!-- Product Rating or No Rating Placeholder -->
                                             {% if product.user_rating %}
                                                 <small class="text-muted">
                                                     <i class="fas fa-star mr-1"></i>{{ product.user_rating|floatformat:1 }} / 5
@@ -77,6 +97,7 @@
                                             {% else %}
                                                 <small class="text-muted">No Rating</small>
                                             {% endif %}
+                                            <!-- Wishlist Toggle Heart Icon -->
                                             {% if product.id in wishlist_items %}
                                                 <a href="{% url 'toggle_wishlist' product.id %}">
                                                     <i class="ml-2 fa-solid fa-heart text-danger"></i>
@@ -86,6 +107,7 @@
                                                     <i class="ml-2 fa-regular fa-heart text-danger"></i>
                                                 </a>
                                             {% endif %}
+                                            <!-- Edit and Delete Options for Admin -->
                                             {% if request.user.is_superuser %}
                                                 <small class="ml-3">
                                                     <a href="{% url 'edit_product' product.id %}">Edit</a>
@@ -97,31 +119,27 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Row Breaks for Responsive Layouts -->
                         {% if forloop.counter|divisibleby:1 %}
-                            <div class="col-12 d-sm-none mb-5">
-                                <hr>
-                            </div>
+                            <div class="col-12 d-sm-none mb-5"><hr></div>
                         {% endif %}                        
                         {% if forloop.counter|divisibleby:2 %}
-                            <div class="col-12 d-none d-sm-block d-md-block d-lg-none mb-5">
-                                <hr>
-                            </div>
+                            <div class="col-12 d-none d-sm-block d-md-block d-lg-none mb-5"><hr></div>
                         {% endif %}
                         {% if forloop.counter|divisibleby:3 %}
-                            <div class="col-12 d-none d-lg-block d-xl-none mb-5">
-                                <hr>
-                            </div>
+                            <div class="col-12 d-none d-lg-block d-xl-none mb-5"><hr></div>
                         {% endif %}
                         {% if forloop.counter|divisibleby:4 %}
-                            <div class="col-12 d-none d-xl-block mb-5">
-                                <hr>
-                            </div>
+                            <div class="col-12 d-none d-xl-block mb-5"><hr></div>
                         {% endif %}
                     {% endfor %}
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Back to Top Button -->
     <br>
     <div class="btt-button shadow-sm border">
         <a class="btt-link d-flex h-100">
@@ -132,30 +150,27 @@
 
 {% block postloadjs %}
     {{ block.super }}
+    <!-- Back to Top Button Script -->
     <script>
-		$('.btt-link').click(function(e) {
-			window.scrollTo(0,0)
-		})
-	</script>
-    
+        $('.btt-link').click(function(e) {
+            window.scrollTo(0,0);
+        });
+    </script>
+
+    <!-- Sorting Script -->
     <script>
         $('#sort-selector').change(function() {
             const selector = $(this);
             const currentUrl = new URL(window.location);
-    
             const selectedVal = selector.val();
             if (selectedVal != "reset") {
-                const sort = selectedVal.split("_")[0];
-                const direction = selectedVal.split("_")[1];
-    
+                const [sort, direction] = selectedVal.split("_");
                 currentUrl.searchParams.set("sort", sort);
                 currentUrl.searchParams.set("direction", direction);
-    
                 window.location.replace(currentUrl);
             } else {
                 currentUrl.searchParams.delete("sort");
                 currentUrl.searchParams.delete("direction");
-    
                 window.location.replace(currentUrl);
             }
         });

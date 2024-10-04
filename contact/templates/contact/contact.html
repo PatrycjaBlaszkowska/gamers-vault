@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block page_header %}
+<!-- Header container -->
 <div class="container header-container">
     <div class="row">
         <div class="col"></div>
@@ -10,43 +11,46 @@
 {% endblock %}
 
 {% block content %}
+<!-- Main container for the contact form -->
 <div class="container">
     <div class="row">
         <div class="col">
             <h2 class="text-center mt-3">Contact Us</h2>
-            <hr>
+            <hr> <!-- Horizontal line under the title -->
         </div>
     </div>
     <div class="row justify-content-center">
         <div class="col-12 col-md-8 col-lg-6 mb-5">
+            <!-- Contact form, method is POST to send data securely -->
             <form method="POST" action="" class="p-4 border mt-4 mb-4">
-                {% csrf_token %}
+                {% csrf_token %} <!-- CSRF token for security -->
                 <div class="form-group">
                     <legend class="fieldset-label small w-auto">Name :</legend>
-                    {{ contact_form.name|as_crispy_field }}
+                    {{ contact_form.name|as_crispy_field }} <!-- Render name field using Crispy Forms -->
                 </div>
                 <div class="form-group">
                     <legend class="fieldset-label small w-auto">Email :</legend>
-                    {{ contact_form.email|as_crispy_field }}
+                    {{ contact_form.email|as_crispy_field }} <!-- Render email field using Crispy Forms -->
                 </div>
                 <div class="form-group">
                     <legend class="fieldset-label small w-auto">Query type :</legend>
-                    {{ contact_form.query_type|as_crispy_field }}
+                    {{ contact_form.query_type|as_crispy_field }} <!-- Render query type field using Crispy Forms -->
                 </div>
 
-                {% if request.user.is_authenticated %}
+                {% if request.user.is_authenticated %} <!-- Conditional rendering for authenticated users -->
                     <div class="form-group" id="related-order-container" style="display: none;">
                         <legend class="fieldset-label small w-auto">Related order:</legend>
-                        {{ contact_form.order|as_crispy_field }}
+                        {{ contact_form.order|as_crispy_field }} <!-- Render order field using Crispy Forms -->
                     </div>
                 {% endif %}
 
                 <div class="form-group">
                     <legend class="fieldset-label small w-auto">Message :</legend>
-                    {{ contact_form.message|as_crispy_field }}
+                    {{ contact_form.message|as_crispy_field }} <!-- Render message field using Crispy Forms -->
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-green text-white text-uppercase mt-2">Send Message</button>
+                    <!-- Submit button to send the contact form -->
                 </div>
             </form>
         </div>
@@ -58,16 +62,17 @@
 {{ block.super }}
 
 <script type="text/javascript">
+    // Wait for the DOM content to fully load
     document.addEventListener('DOMContentLoaded', function() {
-        const queryTypeField = document.querySelector('select[name="query_type"]');
-        const relatedOrderContainer = document.getElementById('related-order-container');
+        const queryTypeField = document.querySelector('select[name="query_type"]'); // Select the query type dropdown
+        const relatedOrderContainer = document.getElementById('related-order-container'); // Container for related order input
 
-        // Show or hide the related order field based on query type selection
+        // Show or hide the related order field based on the query type selection
         queryTypeField.addEventListener('change', function() {
             if (this.value === 'order') { // Check if the selected value is 'order'
-                relatedOrderContainer.style.display = 'block';
+                relatedOrderContainer.style.display = 'block'; // Show related order field
             } else {
-                relatedOrderContainer.style.display = 'none';
+                relatedOrderContainer.style.display = 'none'; // Hide related order field
             }
         });
     });

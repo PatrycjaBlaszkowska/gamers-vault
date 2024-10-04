@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block page_header %}
+<!-- Header container -->
 <div class="container header-container">
     <div class="row">
         <div class="col"></div>
@@ -10,7 +11,9 @@
 {% endblock %}
 
 {% block content %}
+<!-- Main content container for the Add Product form -->
 <div class="container">
+    <!-- Page header section, with title and subtitle for context -->
     <div class="row">
         <div class="col-12 col-md-6">
             <hr>
@@ -19,10 +22,14 @@
             <hr>
         </div>
     </div>
+
+    <!-- Form row containing the add product form with file upload capability -->
     <div class="row">
         <div class="col-12 col-md-6">
+            <!-- Form to add a new product; enctype enables file uploads -->
             <form action="{% url 'add_product' %}" method="POST" class="form mb-3" enctype="multipart/form-data">
                 {% csrf_token %}
+                <!-- Loop to render each field in the form using Crispy Forms styling, except for the image field -->
                 {% for field in form %}
                     {% if field.name != 'image' %}
                         {{ field | as_crispy_field }}
@@ -30,6 +37,7 @@
                         {{ field }}
                     {% endif %}
                 {% endfor %}
+                <!-- Buttons to either cancel or submit the form, aligned to the right for styling consistency -->
                 <div class="text-right">
                     <a href="{% url 'products' %}" class="btn btn-green font-weight-bold text-white">Cancel</a>
                     <button class="btn btn-green font-weight-bold text-white" type="submit">Add Product</button>
@@ -42,6 +50,7 @@
 
 {% block postloadjs %}
     {{ block.super }}
+    <!-- JavaScript to update the display with the selected file name for the image upload -->
     <script>
         $('#new-image').change(function() {
             const file = $('#new-image')[0].files[0];

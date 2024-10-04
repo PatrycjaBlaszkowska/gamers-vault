@@ -3,6 +3,7 @@
 {% load bag_tools %}
 
 {% block page_header %}
+    <!-- Header container -->
     <div class="container header-container">
         <div class="row">
             <div class="col"></div>
@@ -11,6 +12,7 @@
 {% endblock %}
 
 {% block content %}
+    <!-- Main Content Container -->
     <div class="container ml-md-5 mr-md-5">
         <div class="row">
             <div class="col">
@@ -19,12 +21,15 @@
                 <hr>
             </div>
         </div>
+        
         <div class="row">
             <div class="col">
                 {% if bag_items %}
+                <!-- Table for Bag Items (Only if there are items in the bag) -->
                 <div class="table-responsive">
                     <table class="table table-sm table-borderless text-white">
                         <thead>
+                            <!-- Table Header -->
                             <tr>
                                 <th scope="col">Product Info</th>
                                 <th scope="col" class="d-none d-sm-block"></th>
@@ -34,38 +39,49 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <!-- Loop through each item in the bag -->
                             {% for item in bag_items %}
                             <tr>
+                                <!-- Product Image Column (Hidden on Small Screens) -->
                                 <td class="p-3 w-25 d-none d-sm-block">
                                     <a href="{% url 'product_details' item.product.id %}">
                                         <img class="img-fluid" src="{{ item.product.image.url }}">
                                     </a>
                                 </td>
+                                
+                                <!-- Product Info and SKU -->
                                 <td class="py-3">
                                     <a href="{% url 'product_details' item.product.id %}">
                                         <p class="my-0 text-white"><strong>{{ item.product.name }}</strong></p>
                                     </a>
                                     <p class="my-0 small text-muted">SKU: {{ item.product.sku|upper }}</p>
                                 </td>
+                                
+                                <!-- Price Column -->
                                 <td class="py-3">
                                     <p class="my-0">£{{ item.product.price }}</p>
                                 </td>
+                                
+                                <!-- Quantity Adjustment Form -->
                                 <td class="py-3 w-25">
                                     <form class="form update-form" method="POST" action="{% url 'adjust_bag' item.item_id %}">
                                         {% csrf_token %}
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
+                                                    <!-- Decrement Quantity Button -->
                                                     <button class="decrement-qty btn btn-sm btn-green" 
                                                         data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
                                                         <i class="fas fa-minus fa-sm"></i>
                                                     </button>
                                                 </div>
+                                                <!-- Quantity Input Field -->
                                                 <input class="form-control form-control-sm qty_input" type="number"
                                                     name="quantity" value="{{ item.quantity }}" min="1" max="99"
                                                     data-item_id="{{ item.item_id }}"
                                                     id="id_qty_{{ item.item_id }}">
                                                 <div class="input-group-append">
+                                                    <!-- Increment Quantity Button -->
                                                     <button class="increment-qty btn btn-sm btn-green"
                                                         data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
                                                         <i class="fas fa-plus fa-sm"></i>
@@ -74,13 +90,17 @@
                                             </div>
                                         </div>
                                     </form>
+                                    <!-- Update and Remove Links -->
                                     <a class="update-link text-white col-12"><small>Update</small></a>
                                     <a class="remove-item text-danger float-right col-12" id="remove_{{ item.item_id }}" data-size="{{ item.size }}"><small>Remove</small></a>
                                 </td>
+                                
+                                <!-- Subtotal Column (Hidden on Mobile) -->
                                 <td class="py-3 d-none d-md-table-cell">
                                     <p class="my-0">£{{ item.product.price | calc_subtotal:item.quantity }}</p>
                                 </td>
                             </tr>
+                            
                             <!-- Mobile-only Subtotal Row -->
                             <tr class="d-block d-md-none">
                                 <td colspan="5" class="py-3">
@@ -88,11 +108,14 @@
                                 </td>
                             </tr>
                             {% endfor %}
+                            
+                            <!-- Bag Total, Delivery, and Grand Total -->
                             <tr>
                                 <td colspan="5" class="pt-5 text-right">
                                     <h6><strong>Bag Total: £{{ total|floatformat:2 }}</strong></h6>
                                     <h6>Delivery: £{{ delivery|floatformat:2 }}</h6>
                                     <h4 class="mt-4"><strong>Grand Total: £{{ grand_total|floatformat:2 }}</strong></h4>
+                                    <!-- Free Delivery Message (If Applicable) -->
                                     {% if free_delivery_delta > 0 %}
                                         <p class="mb-1 text-danger">
                                             You could get free delivery by spending just <strong>£{{ free_delivery_delta }}</strong> more!
@@ -100,6 +123,8 @@
                                     {% endif %}
                                 </td>
                             </tr>
+                            
+                            <!-- Keep Shopping and Checkout Buttons -->
                             <tr>
                                 <td colspan="5" class="text-right">
                                     <a href="{% url 'products' %}" class="btn text-white border mt-3">
@@ -118,8 +143,9 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>                
+                </div>
                 {% else %}
+                    <!-- Message for Empty Bag -->
                     <p class="lead mb-5">Your bag is empty!</p>
                     <a href="{% url 'products' %}" class="btn btn-lg btn-green text-uppercase font-weight-bold mb-5">
                         <span class="icon">
@@ -131,7 +157,6 @@
             </div>
         </div>
     </div>
-
 {% endblock %}
 
 {% block postloadjs %}
@@ -139,13 +164,13 @@
 {% include 'products/includes/quantity_input_script.html' %}
 
 <script>
-    // Update quantity on click
+    // JavaScript for updating quantity on click of the 'Update' link
     $('.update-link').click(function(e) {
         const form = $(this).prev('.update-form');
         form.submit();
     });
 
-    // Remove item and reload on click
+    // JavaScript for removing item from the bag and reloading page
     $('.remove-item').click(function(e) {
         const csrfToken = "{{ csrf_token }}";
         const itemId = $(this).attr('id').split('remove_')[1];
@@ -158,6 +183,4 @@
          });
     });
 </script>
-
-
 {% endblock %}

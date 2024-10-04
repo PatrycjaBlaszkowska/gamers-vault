@@ -2,41 +2,52 @@
 {% load static %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
+    <!-- Load custom CSS for the profile page -->
+    <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
 {% endblock %}
 
 {% block page_header %}
-<div class="container header-container">
-    <div class="row">
-        <div class="col"></div>
+    <!-- Header section -->
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
     </div>
-</div>
 {% endblock %}
 
 {% block content %}
+    <!-- Main Profile Section -->
     <div class="container">
         <div class="row">
             <div class="col">
                 <hr>
+                <!-- Profile Header -->
                 <h2 class="mr-5 ml-5">My Profile</h2>
                 <hr>
             </div>
         </div>
+
         <div class="row">
+            <!-- Default Delivery Information Form -->
             <div class="col-12 col-lg-6 pb-3">
                 <p class="text-muted">Default Delivery Information</p>
+                <!-- Form for updating delivery information -->
                 <form action="{% url 'profile' %}" method="POST" class="mt-3" id="profile-update-form">
                     {% csrf_token %}
-                    {{ form|crispy }}
+                    {{ form|crispy }} <!-- Form rendering using crispy forms for styling -->
                     <button class="btn btn-green float-right mb-3 text-uppercase font-weight-bold">Update Information</button>
                 </form>
             </div>
+
+            <!-- Order History Section -->
             <div class="col-12 col-lg-6 pb-3">
                 <p class="text-muted">Order History</p>
+                <!-- Responsive table for displaying order history -->
                 <div class="table-responsive order-history">
                     <table class="table table-sm text-white">
                         <thead>
                             <tr>
+                                <!-- Table headers for order details -->
                                 <th>Order Number</th>
                                 <th>Date</th>
                                 <th>Items</th>
@@ -45,14 +56,18 @@
                         </thead>
                         <tbody>
                             {% for order in orders %}
+                                <!-- Loop through each order and display details -->
                                 <tr>
                                     <td>
+                                        <!-- Link to order detail page with truncated order number -->
                                         <a href="{% url 'order_history' order.order_number %}" 
                                             title="{{ order.order_number }}" class="text-white">
                                             {{ order.order_number|truncatechars:6 }}
                                         </a>
                                     </td>
+                                    <!-- Display order date -->
                                     <td>{{ order.date }}</td>
+                                    <!-- List items in each order -->
                                     <td>
                                         <ul class="list-unstyled">
                                             {% for item in order.lineitems.all %}
@@ -62,6 +77,7 @@
                                             {% endfor %}
                                         </ul>
                                     </td>
+                                    <!-- Display order total -->
                                     <td>£{{ order.grand_total }}</td>
                                 </tr>
                             {% endfor %}
