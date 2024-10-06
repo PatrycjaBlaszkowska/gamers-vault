@@ -64,6 +64,7 @@ The order confirmation page should display a thank-you message, order details, a
 
 ![Order confirmation](/docs/images/order-confirmation.png)
 ![Email confirmation](/docs/images/test-case-4-results.png)
+![Stripe webhook](/docs/images/webhook.PNG)
 
 *Please note that the checkout process for guests and logged-in users is identical. The only addition for logged-in users is the ability to save their delivery info.*
 
