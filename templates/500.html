@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container error-container pt-5">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2>Oops, Something went wrong!</h2>
+            <a href="{% url 'home' %}" class="btn btn-green mt-3 font-weight-bold">Take me back!</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
