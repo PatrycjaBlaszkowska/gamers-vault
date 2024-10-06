@@ -164,23 +164,45 @@
 {% include 'products/includes/quantity_input_script.html' %}
 
 <script>
-    // JavaScript for updating quantity on click of the 'Update' link
-    $('.update-link').click(function(e) {
-        const form = $(this).prev('.update-form');
-        form.submit();
+    function handleUpdateClick() {
+        $('.update-link').click(function(e) {
+            e.preventDefault(); // Prevent default link action
+            const form = $(this).prev('.update-form'); // Find the corresponding form
+            form.submit(); // Submit the form
+        });
+    }
+
+    function handleRemoveClick() {
+        $('.remove-item').click(function(e) {
+            e.preventDefault(); // Prevent default link action
+            const csrfToken = "{{ csrf_token }}"; // Get CSRF token
+            const itemId = $(this).attr('id').split('remove_')[1]; // Extract item ID from the element ID
+            const url = `/bag/remove/${itemId}/`; // Construct the URL for removal
+            const data = {'csrfmiddlewaretoken': csrfToken}; // Data to send in the request
+
+            $.post(url, data)
+             .done(function() {
+                 location.reload(); // Reload the page upon success
+             })
+             .fail(function() {
+                 console.error('Failed to remove item'); // Log error on failure
+             });
+        });
+    }
+
+    function init() {
+        handleUpdateClick(); // Attach update click handler
+        handleRemoveClick(); // Attach remove click handler
+    }
+
+    $(document).ready(function() {
+        init(); // Initialize the functions when the DOM is ready
     });
 
-    // JavaScript for removing item from the bag and reloading page
-    $('.remove-item').click(function(e) {
-        const csrfToken = "{{ csrf_token }}";
-        const itemId = $(this).attr('id').split('remove_')[1];
-        const url = `/bag/remove/${itemId}/`;
-        const data = {'csrfmiddlewaretoken': csrfToken};
+    // Attach functions to the window object for testing
+    window.handleUpdateClick = handleUpdateClick;
+    window.handleRemoveClick = handleRemoveClick;
+    window.init = init; 
 
-        $.post(url, data)
-         .done(function() {
-             location.reload();
-         });
-    });
 </script>
 {% endblock %}
