@@ -159,20 +159,21 @@
 
     <!-- Sorting Script -->
     <script>
-        $('#sort-selector').change(function() {
-            const selector = $(this);
-            const currentUrl = new URL(window.location);
-            const selectedVal = selector.val();
-            if (selectedVal != "reset") {
-                const [sort, direction] = selectedVal.split("_");
-                currentUrl.searchParams.set("sort", sort);
-                currentUrl.searchParams.set("direction", direction);
-                window.location.replace(currentUrl);
-            } else {
-                currentUrl.searchParams.delete("sort");
-                currentUrl.searchParams.delete("direction");
-                window.location.replace(currentUrl);
-            }
-        });
+    $('#sort-selector').change(function() {
+        const selector = $(this);
+        const currentUrl = new URL(window.location.href); 
+        const selectedVal = selector.val();
+
+        if (selectedVal !== "reset") {
+            const [sort, direction] = selectedVal.split("_");
+            currentUrl.searchParams.set("sort", sort);
+            currentUrl.searchParams.set("direction", direction);
+            window.location.replace(currentUrl);
+        } else {
+            currentUrl.searchParams.delete("sort");
+            currentUrl.searchParams.delete("direction");
+            window.location.replace(currentUrl);
+        }
+    });
     </script>
 {% endblock %}

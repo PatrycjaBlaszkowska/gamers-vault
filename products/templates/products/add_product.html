@@ -50,11 +50,5 @@
 
 {% block postloadjs %}
     {{ block.super }}
-    <!-- JavaScript to update the display with the selected file name for the image upload -->
-    <script>
-        $('#new-image').change(function() {
-            const file = $('#new-image')[0].files[0];
-            $('#filename').text(`Image will be set to: ${file.name}`);
-        });
-    </script>
+    {% include 'products/includes/display_name_script.html' %}
 {% endblock %}
