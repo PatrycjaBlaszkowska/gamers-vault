@@ -17,6 +17,7 @@ from profiles.forms import UserProfileForm
 from profiles.models import UserProfile
 from bag.contexts import bag_contents
 
+
 @require_POST
 def cache_checkout_data(request):
     try:
@@ -39,7 +40,7 @@ def checkout(request):
 
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
- 
+
     if request.method == 'POST':
         bag = request.session.get('bag', {})
 
@@ -73,21 +74,27 @@ def checkout(request):
                     order_line_item.save()
                 except Product.DoesNotExist:
                     messages.error(request, (
-                        "One of the products in your bag wasn't found in our database. "
-                        "Please call us for assistance!")
-                    )
+                        "One of the products in your bag wasn't found "
+                        "in our database. "
+                        "Please call us for assistance!"
+                    ))
                     order.delete()
                     return redirect(reverse('view_bag'))
 
             request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            return redirect(
+                reverse('checkout_success', args=[order.order_number])
+            )
         else:
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
     else:
         bag = request.session.get('bag', {})
         if not bag:
-            messages.error(request, "There's nothing in your bag at the moment")
+            messages.error(
+                request,
+                "There's nothing in your bag at the moment"
+            )
             return redirect(reverse('products'))
 
         current_bag = bag_contents(request)
@@ -99,12 +106,13 @@ def checkout(request):
             currency=settings.STRIPE_CURRENCY,
         )
 
-        # Attempt to prefill the form with any info the user maintains in their profile
+        # Attempt to prefill the form with any info
+        # the user maintains in their profile
         if request.user.is_authenticated:
             try:
                 profile = UserProfile.objects.get(user=request.user)
                 order_form = OrderForm(initial={
-                    'full_name': profile.default_full_name,  # Use profile, not profile.user
+                    'full_name': profile.default_full_name,
                     'email': profile.user.email,
                     'phone_number': profile.default_phone_number,
                     'country': profile.default_country,
@@ -168,22 +176,28 @@ def checkout(request):
                     order_line_item.save()
                 except Product.DoesNotExist:
                     messages.error(request, (
-                        "One of the products in your bag wasn't found in our database. "
+                        "One of the products in your bag wasn't found"
+                        "in our database."
                         "Please call us for assistance!")
                     )
                     order.delete()
                     return redirect(reverse('view_bag'))
 
             request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            return redirect(
+                reverse('checkout_success', args=[order.order_number])
+            )
         else:
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
     else:
         bag = request.session.get('bag', {})
         if not bag:
-            messages.error(request, "There's nothing in your bag at the moment")
-            return redirect(reverse('products'))
+            messages.error(
+                request,
+                "There's nothing in your bag at the moment"
+            )
+        return redirect(reverse('products'))
 
         current_bag = bag_contents(request)
         total = current_bag['grand_total']
@@ -248,23 +262,33 @@ def checkout_success(request, order_number):
     )
 
     # Loop through line items to include in the email
-    for item in order.lineitems.all():  # Use 'lineitems' to access related items
-        body += f"- {item.product.name}: {item.quantity} x £{item.lineitem_total:.2f}\n"  # Changed price to lineitem_total
+    for item in order.lineitems.all():
+        body += (
+            f"- {item.product.name}: "
+            f"{item.quantity} x £{item.lineitem_total:.2f}\n"
+        )
 
-    body += f"\nTotal: £{order.grand_total:.2f}\n\n"  # Use grand_total for total amount
-    body += "If you have any questions, please contact us at gamers-vault@gmail.com.\n"
+    body += (f"\nTotal: £{order.grand_total:.2f}\n\n")
+    body += (
+            "If you have any questions, please contact us at "
+            "gamers-vault@gmail.com.\n"
+    )
 
     # Send the email
     send_mail(
         subject,
         body,
-       'gamers-vault@gmail.com',
+        'gamers-vault@gmail.com',
         [order.email],  # Send to the order's email
         fail_silently=False,
     )
 
     # Show a success message
-    messages.success(request, f'Order successfully processed! Your order number is {order_number}. A confirmation email will be sent to {order.email}.')
+    messages.success(
+        request,
+        f'Order successfully processed! Your order number is {order_number}. '
+        f'A confirmation email will be sent to {order.email}.'
+    )
 
     # Clear the shopping bag session if it exists
     if 'bag' in request.session:

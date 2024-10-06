@@ -12,8 +12,9 @@ from django.db.models import Case, When, Value, IntegerField, F
 
 
 def all_products(request):
-    """ A view to show all products, including sorting and searching queries. """
-    
+    """ A view to show all products,
+    including sorting and searching queries. """
+
     products = Product.objects.all()
     query = None
     categories = Category.objects.all()
@@ -22,10 +23,15 @@ def all_products(request):
     direction = None
 
     if request.user.is_authenticated:
-        wishlist_items = Wishlist.objects.filter(user=request.user).values_list('product_id', flat=True)
+        wishlist_items = Wishlist.objects.filter(
+            user=request.user).values_list('product_id', flat=True)
         # Fetch user ratings for the products
-        user_ratings = ProductReview.objects.filter(user=request.user).values('product_id', 'rating')
-        user_ratings_dict = {item['product_id']: item['rating'] for item in user_ratings}
+        user_ratings = ProductReview.objects.filter(
+            user=request.user).values('product_id', 'rating')
+        user_ratings_dict = {
+            item['product_id']: item['rating']
+            for item in user_ratings
+        }
     else:
         wishlist_items = []
         user_ratings_dict = {}
@@ -58,17 +64,26 @@ def all_products(request):
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
-                messages.error(request, "You didn't enter any search criteria!")
+                messages.error(
+                    request,
+                    "You didn't enter any search criteria!"
+                )
                 return redirect(reverse('products'))
-            
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+
+            queries = (
+                Q(name__icontains=query) |
+                Q(description__icontains=query)
+            )
             products = products.filter(queries)
 
     # Annotate products with user rating if available
     products = products.annotate(
         user_rating=Case(
-            *[When(id=pk, then=Value(rating)) for pk, rating in user_ratings_dict.items()],
-            default=Value(0),
+            [
+                When(id=pk, then=Value(rating))
+                for pk, rating in user_ratings_dict.items()
+            ],
+            default=Value(0),  # Added comma here
             output_field=IntegerField(),
         )
     )
@@ -89,12 +104,12 @@ def all_products(request):
     return render(request, 'products/products.html', context)
 
 
-
 def product_details(request, product_id):
     """ A view to show individual product details and reviews. """
-    
+
     if request.user.is_authenticated:
-         wishlist_items = Wishlist.objects.filter(user=request.user).values_list('product_id', flat=True)
+        wishlist_items = Wishlist.objects.filter(
+            user=request.user).values_list('product_id', flat=True)
     else:
         wishlist_items = []
 
@@ -122,18 +137,23 @@ def product_details(request, product_id):
 def add_product(request):
     """ A view to add a product to the store """
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry, only storeowners can add new products.')
+        messages.error(
+            request,
+            'Sorry, only storeowners can add new products.'
+        )
         return redirect(reverse('home'))
 
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
-            product =  form.save()
+            product = form.save()
             messages.success(request, 'Successfully added product!')
             return redirect(reverse('product_details', args=[product.id]))
         else:
-            messages.error(request, 'Failed to add product. Please ensure the form is valid.')
-    else: 
+            messages.error(
+                request,
+                'Failed to add product. Please ensure the form is valid.'
+            )
         form = ProductForm()
 
     template = 'products/add_product.html'
@@ -159,8 +179,11 @@ def edit_product(request, product_id):
             messages.success(request, 'Successfully updated product!')
             return redirect(reverse('product_details', args=[product.id]))
         else:
-            messages.error(request, 'Failed to update product. Please ensure the form is valid.')
-    else: 
+            messages.error(
+                request,
+                'Failed to update product. Please ensure the form is valid.'
+            )
+    else:
         form = ProductForm(instance=product)
         messages.info(request, f'You are editing {product.name}')
 
@@ -189,15 +212,19 @@ def delete_product(request, product_id):
 @login_required
 def add_review(request, product_id):
     """ A view to add or edit a product review. """
-    
+
     product = get_object_or_404(Product, pk=product_id)
     # Check if the user has already reviewed the product
-    existing_review = ProductReview.objects.filter(product=product, user=request.user).first()
+    existing_review = ProductReview.objects.filter(
+        product=product,
+        user=request.user).first()
 
     if request.method == 'POST':
         # If there's an existing review, update it
         if existing_review:
-            review_form = ProductReviewForm(request.POST, instance=existing_review)
+            review_form = ProductReviewForm(
+                request.POST,
+                instance=existing_review)
         else:
             review_form = ProductReviewForm(request.POST)
 
@@ -206,14 +233,17 @@ def add_review(request, product_id):
             review.product = product
             review.user = request.user
             review.save()
-            
+
             if existing_review:
                 messages.success(request, 'Your review has been updated!')
             else:
                 messages.success(request, 'Your review has been added!')
             return redirect('product_details', product_id=product.id)
         else:
-            messages.error(request, 'Failed to add review. Please ensure the form is valid.')
+            messages.error(
+                request,
+                'Failed to add review. Please ensure the form is valid.'
+            )
 
     else:
         # Pre-populate the form with the existing review if there is one
@@ -230,6 +260,7 @@ def add_review(request, product_id):
 
     return render(request, 'products/product_details.html', context)
 
+
 @login_required
 def edit_review(request, review_id):
     """ A view to edit a product review. """
@@ -237,13 +268,16 @@ def edit_review(request, review_id):
 
     if request.method == 'POST':
         review_form = ProductReviewForm(request.POST, instance=review)
-        
+
         if review_form.is_valid():
             review_form.save()
             messages.success(request, "Your review has been updated!")
             return redirect('product_details', product_id=review.product.id)
         else:
-            messages.error(request, "Failed to update the review. Please ensure the form is valid.")
+            messages.error(
+                request,
+                "Failed to update the review. Please ensure the form is valid."
+            )
     else:
         review_form = ProductReviewForm(instance=review)
 
@@ -252,7 +286,7 @@ def edit_review(request, review_id):
         'review': review,
         'review_form': review_form,
     }
-    
+
     return render(request, 'products/product_details.html', context)
 
 
@@ -262,12 +296,12 @@ def delete_review(request, review_id):
     review = get_object_or_404(ProductReview, pk=review_id)
 
     if request.method == 'POST':
-        product = review.product 
+        product = review.product
         review.delete()
         messages.success(request, "Your review has been deleted.")
         return redirect('product_details', product_id=product.id)
-    
+
     context = {
-        'product': review.product,  
+        'product': review.product,
     }
     return render(request, 'products/product_details.html', context)

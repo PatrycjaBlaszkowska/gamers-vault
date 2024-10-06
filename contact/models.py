@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from checkout.models import Order
 
+
 class ContactQuery(models.Model):
 
     class Meta:
@@ -14,11 +15,18 @@ class ContactQuery(models.Model):
         (ORDER, 'Order Query')
     ]
 
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    user = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, blank=True
+    )
     name = models.CharField(max_length=100, blank=False)
     email = models.EmailField(blank=False)
-    query_type = models.CharField(max_length=20, choices=QUERY_TYPE_CHOICES, default=GENERAL)
-    order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True, blank=True)
+    query_type = models.CharField(
+        max_length=20, choices=QUERY_TYPE_CHOICES, default=GENERAL
+    )
+
+    order = models.ForeignKey(
+        Order, on_delete=models.SET_NULL, null=True, blank=True
+    )
     message = models.TextField()
 
     def __str__(self):
