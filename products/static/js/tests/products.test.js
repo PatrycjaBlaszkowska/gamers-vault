@@ -242,10 +242,6 @@ describe('Sort Selector Functionality', () => {
         
         const expectedUrl = 'http://example.com/?sort=price&direction=asc';
         
-        // Log for debugging
-        console.log('Expected:', expectedUrl);
-        console.log('Received:', window.location.replace.mock.calls[0][0].toString()); // Convert to string for comparison
-
         // Use toEqual for better diagnostics
         expect(window.location.replace.mock.calls[0][0].toString()).toEqual(expectedUrl); // Convert to string
     });
@@ -254,11 +250,7 @@ describe('Sort Selector Functionality', () => {
         $('#sort-selector').val('reset').change(); // Simulate change event
         
         const expectedUrl = 'http://example.com/';
-        
-        // Log for debugging
-        console.log('Expected:', expectedUrl);
-        console.log('Received:', window.location.replace.mock.calls[0][0].toString()); // Convert to string for comparison
-        
+          
         expect(window.location.replace.mock.calls[0][0].toString()).toEqual(expectedUrl); // Convert to string
     });
 });

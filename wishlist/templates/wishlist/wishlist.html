@@ -114,35 +114,7 @@
     <script type="text/javascript">
         // Scroll to the top of the page when the back-to-top button is clicked
         $('.btt-link').click(function(e) {
-            window.scrollTo(0,0)
-        })
-    </script>
-    
-    <script type="text/javascript">
-        // Handle sorting logic when the sort selector changes
-        $('#sort-selector').change(function() {
-            const selector = $(this);
-            const currentUrl = new URL(window.location);
-
-            const selectedVal = selector.val();
-            if (selectedVal != "reset") {
-                const sort = selectedVal.split("_")[0]; // Get the sort field
-                const direction = selectedVal.split("_")[1]; // Get the sort direction
-
-                // Update URL parameters
-                currentUrl.searchParams.set("sort", sort);
-                currentUrl.searchParams.set("direction", direction);
-
-                // Redirect to the updated URL
-                window.location.replace(currentUrl);
-            } else {
-                // Reset sorting parameters
-                currentUrl.searchParams.delete("sort");
-                currentUrl.searchParams.delete("direction");
-
-                // Redirect to the updated URL
-                window.location.replace(currentUrl);
-            }
+            window.scrollTo(0,0);
         });
-    </script>
+    </script>   
 {% endblock %}
