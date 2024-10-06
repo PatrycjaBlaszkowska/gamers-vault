@@ -1319,6 +1319,13 @@ The **User Wishlist** feature allows logged-in users to save and manage a person
 
 [User stories testing](/docs/testing/testing.md)
 
+### Automatic Testing(Jest):
+
+As part of testing protocol, all functions have undergone a thorough examination using Jest, a popular JavaScript testing framework. Each function has been carefully written and tested to ensure it meets the expected behavior and functionality requirements.
+
+
+![User stories testing](/docs/images/jest-results.PNG)
+
 ### Manual testing
 
 #### **Navigation Bar:**
@@ -1688,4 +1695,27 @@ The **User Wishlist** feature allows logged-in users to save and manage a person
 
 [CSS validator](https://jigsaw.w3.org/css-validator/)
 
+- 0 warnings
+- 0 errors
+
 ![CSS validator results](/docs/images/css-validator.PNG)
+
+[Js validator](https://jshint.com/)
+
+- 0 warnings
+- 0 errors
+
+![JS validator results](/docs/images/jshint-results.PNG)
+
+**IMPORTANT!** :
+
+To ensure that JSHint works as intended and to avoid any errors or undefined variables in tested JavaScript code, below JSHint directives have to be included on the top of the testig file while using [Js validator](https://jshint.com/) :
+
+`/*jshint esversion: 8 */` :
+
+- This directive tells JSHint to use ECMAScript version 8 (ES2017) features. Including this directive is essential as it ensures compatibility and prevents unnecessary warnings.
+
+`/*globals $: false */` : 
+
+- This directive informs JSHint that the variable `$` is a global variable and should not be flagged as undefined.
+
