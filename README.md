@@ -1719,3 +1719,9 @@ To ensure that JSHint works as intended and to avoid any errors or undefined var
 
 - This directive informs JSHint that the variable `$` is a global variable and should not be flagged as undefined.
 
+[Python validator](https://pep8ci.herokuapp.com/)
+
+- 0 warnings
+- 0 errors
+
+![Python validator results](/docs/images/python-validator-results.PNG)
