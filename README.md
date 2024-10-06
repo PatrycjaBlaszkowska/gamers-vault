@@ -276,8 +276,6 @@ A **relational database**  is used for several reasons that align with the struc
 
 5. **Structured Querying**: SQL (Structured Query Language) enables complex queries, including `JOIN`s and aggregations, which are necessary to fetch related data across models (e.g., retrieving all `OrderLineItem`s for an `Order`).
 
----
-
 #### *DATABASE SCHEMA* :
 
 The schema for each model, detailing the structure and relationships, is presented below.
@@ -991,6 +989,8 @@ This section provides users with the ability to view, add, and manage product re
 
 ![Checkout: loading overlay](/docs/images/loading-overlay.png)
 
+<hr>
+
 ### Order Confirmation Page Features
 
 The **Order Confirmation Page** is designed to provide a detailed summary of the customer's purchase. After a successful checkout, this page gives the user a breakdown of their order, including product details, delivery information, and billing info. Below are the key features of the page:
@@ -1047,6 +1047,8 @@ The **Order Confirmation Page** is designed to provide a detailed summary of the
 
 ![Checkout: order confirmation](/docs/images/order-confirmation.png)
 
+<hr>
+
 ### Contact Us Page Features
 
 The **Contact Us Page** allows users to submit inquiries or issues directly to the support team through a form. Below are the key features of this page:
@@ -1091,6 +1093,8 @@ The **Contact Us Page** allows users to submit inquiries or issues directly to t
    - Form buttons are styled to stand out and offer a clear call-to-action (e.g., "Send Message" button).
 
 ![Contact - query](/docs/images/contact-query.png)
+
+<hr>
 
 ### Thank You Page Features
 
