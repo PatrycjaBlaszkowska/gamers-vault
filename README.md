@@ -1725,3 +1725,228 @@ To ensure that JSHint works as intended and to avoid any errors or undefined var
 - 0 errors
 
 ![Python validator results](/docs/images/python-validator-results.PNG)
+
+## Deployment 
+
+The master branch of this repository is the most current version and has been used for the deployed version of the site.
+The Code Institiue student template was used to create this project.
+
+[Code Institute Template for Gitpod](https://github.com/Code-Institute-Org/gitpod-full-template)
+
+1. Click **Use This Template** button.
+2. Give your repository a name, and description.
+3. Open [Gitpod EDI](https://www.gitpod.io/) and log into your account.
+4. Click **New Workspace** button.
+5. Create a workspace from your project repository by creating a clone.
+
+### Creating a clone :
+
+1. From the repository, click **Code**.
+2. In the **Clone >> HTTPS** section, copy the clone URL for the repository.
+3. Paste a link into the designated area on the Gitpod.
+
+### Forking :
+
+1. From the repository, click **Fork**.
+2. Give your repository a name.
+3. Click **Create fork**.
+
+
+### Creating an App with the Heroku :
+
+1. Navigate to [Heroku.com](https://www.heroku.com/).
+2. Create a new account or login.
+3. Click the **new** button, then **create new app** button.
+4. Choose your app name and the region and click **create app**.
+
+### Connecting your Heroku account to your Github repository :
+
+1. In your app choose **Deploy** tab and choose *Github* as your deployment method. 
+2. Enter the GitHub repository name and click on *Search*.
+3. Once the correct repository is found, click on *Connect*.
+
+### Setting you enviroment variables  :
+
+1. Navigate to the **Settings** tab in your Heroku dashboard.
+2. Click on **Reveal Config Vars** to set the necessary variables.
+
+## Required Environment Variables
+
+- **DATABASE_URL**: The URL to your database.
+- **DEBUG**: Set to `True` during development. **IMPORTANT**: Change this to `False` once the development process is complete.
+- **ALLOWED_HOSTS**: Set this to your Heroku app's URL (e.g., `yourapp.herokuapp.com`).
+- **CSRF_TRUSTED_ORIGINS**: Set this to your Heroku app's URL (e.g., `https://yourapp.herokuapp.com`).
+- **SECRET_KEY**: A custom secret key for your Django application.
+- **AWS_ACCESS_KEY_ID**: Your AWS access key ID (if using AWS services).
+- **AWS_SECRET_ACCESS_KEY**: Your AWS secret access key (if using AWS services).
+- **USE_AWS**: Set to `True` if you are using AWS services; otherwise, set to `False`.
+- **STRIPE_PUBLIC_KEY**: Your Stripe public key for client-side operations.
+- **STRIPE_SECRET_KEY**: Your Stripe secret key for server-side operations.
+- **STRIPE_WEBHOOK_SECRET**: Your Stripe webhook secret for handling webhooks.
+
+
+> **IMPORTANT**: **NEVER SHARE** the above details with anyone due to security reasons!
+
+To successfully deploy your project to Heroku, ensure you include `requirements.txt` and `Procfile` files in your project root.
+
+### Creating `requirements.txt` and `Procfile`
+
+You can create these files using the following commands in the Gitpod CLI:
+
+```bash
+pip3 freeze --local > requirements.txt
+echo web: gunicorn gamers_vault.wsgi:application > Procfile
+
+```
+
+### Running project locally :
+
+**You will need create a env.py file, which contains all the enviroment variables you used on Heroku, Please note this file should be added to a .gitignore file to prevent the file from being commited.** 
+
+**AS MENTION ALREADY PLEASE REMEMBER THAT YOU SHOULD NEVER SHARE THESE DETAILS WITH ANYONE DUE TO THE SECURITY REASONS!**
+
+1. Please refer to the above guide in order to clone or fork the repository. 
+2. Once the project has been loaded please run the following command in the CLI to install the project required packages.
+3. Please do not include `USE_AWS` variable in the env.py it's only necessary for the deployed project.
+4. Please set `DEVELOPMENT` variable to true during development process so you can see emails in the console/terminal.
+
+`pip install -r requirements.txt`
+
+### AWS S3 Bucket Setup Guide
+
+**Step 1: Create Your AWS Account**
+1. Sign up for an Amazon AWS account if you don’t already have one.
+
+**Step 2: Create a New S3 Bucket**
+1. In the AWS Management Console, search for **S3** and select it.
+2. Click on **Create bucket** to initiate the bucket creation process.
+3. Configure your bucket settings and ensure you **allow public access**.
+
+**Step 3: Enable Static Website Hosting**
+1. Navigate to the **Properties** tab of your newly created bucket.
+2. Find the **Static website hosting** section and enable it.
+3. Set **index.html** as the index document.
+4. Save your changes.
+
+**Step 4: Configure CORS (Cross-Origin Resource Sharing)**
+1. Go to the **Permissions** tab and find the **CORS configuration** section.
+2. Use the following CORS policy:
+
+   ```json
+   [
+     {
+       "AllowedHeaders": ["Authorization"],
+       "AllowedMethods": ["GET"],
+       "AllowedOrigins": ["*"],
+       "ExposeHeaders": []
+     }
+   ]
+    ```
+**Step 5: Set Up Bucket Policy**
+1. In the Permissions tab, locate the Bucket Policy section.
+2. Click on Generate Bucket Policy. Take note of the Bucket ARN provided.
+3. Choose S3 Bucket Policy as the type of policy.
+4. For the Principal, enter *.
+5. Use the ARN you noted earlier and add a statement.
+6. Generate the policy, then copy the resulting JSON document.
+7. Return to the previous tab and paste the policy into the Edit Bucket policy field.
+8. Save the changes.
+
+**Step 6: Configure Access Control List (ACL)**
+1. Under the Access Control List (ACL) settings, find the Public access section.
+2. Tick the box for List under Everyone (public access).
+3. Accept the prompt that indicates this means the bucket will be publicly accessible.
+4. Save your changes.
+
+### AWS IAM (Identity and Access Management) Configuration
+
+**Step 1: Create a User Group**
+1. From the IAM dashboard in AWS, navigate to User Groups.
+2. Click Create group and follow the prompts to set it up.
+
+**Step 2: Create a Policy**
+1. Within the user group settings, select Policies.
+2. Click Create policy.
+3. Switch to the JSON tab and click Import managed policy.
+4. Select AmazonS3FullAccess from the list.
+5. Modify the resource section to include the Bucket ARN you noted earlier when setting up the bucket policy.
+6. Proceed to the Review policy step, where you can name and describe your policy.
+7. Click Create policy.
+
+**Step 3: Attach Policy to User Group**
+1. Return to the user group you created.
+2. Go to Permissions and select Add permissions.
+3. Choose Attach Policies and select the policy you just created.
+4. Confirm the addition of permissions.
+
+**Step 4: Create a New User**
+1. In the Users section, select Add user.
+2. Enter a username and select Programmatic access as the access type.
+3. Click Next, then add this user to the group you just created.
+4. Click through to Next and then Create User.
+5. Download the .csv file containing the access key and secret access key.
+
+    >**Note: The .csv file is only available for download once. Keep it safe!**
+
+**Connecting Heroku to AWS S3**
+
+1. Install the necessary libraries by running:
+
+```bash
+pip3 install boto3
+pip3 install django-storages
+pip3 freeze > requirements.txt
+```
+
+2. Add the access key and secret access key from your .csv file to your Heroku Config Vars under the Settings tab.
+3. Remove the `DISABLE_COLLECTSTATIC` variable from your config vars if it exists.
+4. Deploy your application to Heroku.
+
+**Step 5: Set Up Media Storage**
+
+1. With your S3 bucket configured, create a new folder named media at the same level as your static folder.
+2. Upload any required media files into this folder.
+3. Ensure that both media and static files are set to be publicly accessible under permissions.
+
+### Stripe Account Setup and Integration Guide
+
+**Step 1: Create a Stripe Account**
+1. Go to the [Stripe website](https://stripe.com).
+2. Click on the **Sign Up** button in the top right corner.
+3. Fill in the required information, including your email address, full name, and a password.
+4. Verify your email by clicking on the link sent to your email address.
+5. After verification, log in to your Stripe account.
+
+**Step 2: Set Up Your Account**
+1. **Business Information**:
+   - After logging in, you’ll be prompted to provide information about your business, including its name, type (individual or company), and address.
+   - Ensure that the information you provide is accurate, as it will be used for tax and compliance purposes.
+
+2. **Connect Your Bank Account**:
+   - Stripe will ask you to connect your bank account to facilitate payouts.
+   - Enter your bank account details, including the account number and routing number.
+
+3. **Identity Verification**:
+   - Stripe may require you to verify your identity.
+   - Upload any required identification documents (e.g., a government-issued ID) as requested.
+
+**Step 3: Obtain Your Secret API Key**
+1. Once your account setup is complete, go to the **Dashboard**.
+2. Click on the **Developers** section in the left sidebar.
+3. Select **API keys**.
+4. You’ll see your **Publishable key** and **Secret key**.
+   - **Publishable key**: Used in client-side code.
+   - **Secret key**: Used in server-side code. Keep this key confidential.
+5. To view your **Secret key**, click the **Reveal test key** button. 
+
+   > **Note**: Ensure you are in **Test Mode** to use the test keys while developing.
+
+**Step 4: Obtain Your Webhook Secret**
+1. In the **Developers** section, click on **Webhooks** in the left sidebar.
+2. Click the **Add endpoint** button to create a new webhook.
+3. In the URL field, enter the endpoint where your application will listen for webhook events. This is typically an endpoint in your server (e.g., `https://yourdomain.com/webhooks/stripe`).
+4. Select all events.
+5. Click **Add endpoint** to save your webhook configuration.
+6. After creating the webhook, you will see the **Webhook Signing Secret**. This secret is used to verify that incoming requests to your webhook endpoint are from Stripe.
+
+   > **Note**: Copy this secret and store it securely. You’ll need it for verifying the webhook signature in your application.
