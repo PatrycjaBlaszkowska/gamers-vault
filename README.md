@@ -1726,7 +1726,7 @@ To ensure that JSHint works as intended and to avoid any errors or undefined var
 
 ![Python validator results](/docs/images/python-validator-results.PNG)
 
-## Deployment 
+# Deployment 
 
 The master branch of this repository is the most current version and has been used for the deployed version of the site.
 The Code Institiue student template was used to create this project.
@@ -1950,3 +1950,55 @@ pip3 freeze > requirements.txt
 6. After creating the webhook, you will see the **Webhook Signing Secret**. This secret is used to verify that incoming requests to your webhook endpoint are from Stripe.
 
    > **Note**: Copy this secret and store it securely. You’ll need it for verifying the webhook signature in your application.
+
+# Credits 
+
+### Images :
+
+- [AMAZON](https://www.amazon.co.uk/ref=nav_logo)
+- [GSMA](https://www.gsma.com/)
+
+[Home page image](https://www.gsma.com/newsroom/wp-content/uploads/Open-Gateway-MWC-image-2048x1365.jpg)
+
+**Products images**
+
+The product images used in this project were sourced from Amazon. While these images provided a great starting point, their sizes and backgrounds did not meet the desired specifications for my project.
+
+**Editing Process**
+
+To enhance the images, I utilized the GIMP application, a powerful and free image editing tool. The following steps were taken during the editing process:
+
+*Background Removal:*
+
+The original backgrounds of the product images were removed using GIMP. This was necessary to create a clean and professional look for the products.
+
+*Custom Background Addition:*
+
+After removing the original backgrounds, custom backgrounds were added that better fit the project's aesthetic and branding.
+
+*Size Adjustment:*
+
+All images were resized to 500 x 500 pixels to maintain consistency across the product listings. This size was chosen to ensure that the images are suitable for display on our website while keeping the resolution clear.
+
+**Tools Used**
+
+[GIMP](https://www.gimp.org/): A free and open-source image editor available at gimp.org. This application allows for advanced image manipulation, including background removal and resizing.
+
+### Code :
+
+- "Growing" effect of social links(footer) and buttons has been taken from [Hover.css](https://ianlunn.github.io/Hover/).
+- Code Institute - Boutique Ado walkthrough project
+
+### Frameworks :
+
+- [Bootstrap](https://getbootstrap.com/) :
+   - Used for navigation bar, grid system, buttons.
+
+- [Bulma](https://bulma.io/) :
+   - icon design
+
+# Important Notice
+
+<div style="color: red; text-transform: uppercase;">
+    <strong>⚠️ This project is for educational purposes only. No revenue is being generated from it.</strong>
+</div>
