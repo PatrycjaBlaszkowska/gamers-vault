@@ -461,6 +461,8 @@ The default Django `User` model handles authentication and includes fields such 
 - **Wishlist** links to **User** and **Product** (Many-to-One for each).
 - **ContactQuery** links to **User** and **Order** (Many-to-One for each).
 
+![Databse diagram](./docs/images/database-diagram.png)
+
 ## The Skeleton Plane
 
 As part of an ongoing effort to continually improve the project, I identified a number of key features that were previously missing and were negatively impacting the overall user experience. In order to address this, I implemented several significant changes to the project, aimed at enhancing usability and functionality.
