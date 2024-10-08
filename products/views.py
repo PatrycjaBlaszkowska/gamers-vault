@@ -79,7 +79,7 @@ def all_products(request):
     # Annotate products with user rating if available
     products = products.annotate(
         user_rating=Case(
-            [
+            *[
                 When(id=pk, then=Value(rating))
                 for pk, rating in user_ratings_dict.items()
             ],
