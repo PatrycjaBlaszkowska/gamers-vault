@@ -1739,7 +1739,7 @@ The Code Institiue student template was used to create this project.
 
 1. Click **Use This Template** button.
 2. Give your repository a name, and description.
-3. Open [Gitpod EDI](https://www.gitpod.io/) and log into your account.
+3. Open [Gitpod IDE](https://www.gitpod.io/) and log into your account.
 4. Click **New Workspace** button.
 5. Create a workspace from your project repository by creating a clone.
 
