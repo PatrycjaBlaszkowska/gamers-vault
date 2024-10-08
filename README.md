@@ -1699,12 +1699,33 @@ As part of testing protocol, all functions have undergone a thorough examination
 
 ### Validation
 
+[HTML validator](https://validator.w3.org/nu/)
+
+- o warnings 
+- 0 errors **IN MY OWN CODE**
+
+![HTMl validator results](/docs/images/html-validator-results.PNG)
+
+- <div style="color: red; text-transform: uppercase;">
+    <strong>⚠️ 1 error on the register / sign up page.</strong>
+   </div>
+
+![Validator error - allauth](/docs/images/validation-error-allauth.PNG)
+
+**EXPLENATION**
+
+The registration page template and its functionality are derived directly from the [django-allauth](https://docs.allauth.org/en/latest/) library. This template structure follows the default implementation provided by the django-allauth library and **has not been customized**. Any errors encountered are due to the original HTML structure used by django-allauth.
+
+<hr>
+
 [CSS validator](https://jigsaw.w3.org/css-validator/)
 
 - 0 warnings
 - 0 errors
 
-![CSS validator results](/docs/images/css-validator.PNG)
+![CSS validator results](/docs/images/css-validation-results.PNG)
+
+<hr>
 
 [Js validator](https://jshint.com/)
 
@@ -1724,6 +1745,8 @@ To ensure that JSHint works as intended and to avoid any errors or undefined var
 `/*globals $: false */` : 
 
 - This directive informs JSHint that the variable `$` is a global variable and should not be flagged as undefined.
+
+<hr>
 
 [Python validator](https://pep8ci.herokuapp.com/)
 
@@ -2002,6 +2025,9 @@ All images were resized to 500 x 500 pixels to maintain consistency across the p
 
 - [Bulma](https://bulma.io/) :
    - icon design
+
+- [Django](https://www.djangoproject.com/) :
+   - application's functionality
 
 # Important Notice
 
